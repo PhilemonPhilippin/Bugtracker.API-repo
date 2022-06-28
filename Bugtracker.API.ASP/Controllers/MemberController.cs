@@ -1,5 +1,5 @@
 ﻿using Bugtracker.API.ASP.ApiModels;
-using Bugtracker.API.ASP.Mappers;
+using Bugtracker.API.ASP.ApiMappers;
 using Bugtracker.API.BLL.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

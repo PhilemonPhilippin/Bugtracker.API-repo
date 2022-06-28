@@ -1,7 +1,7 @@
 ﻿using Bugtracker.API.ASP.ApiModels;
 using Bugtracker.API.BLL.DataTransferObjects;
 
-namespace Bugtracker.API.ASP.Mappers
+namespace Bugtracker.API.ASP.ApiMappers
 {
     public static class MemberApiMapper
     {

@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Bugtracker.API.DB", "Bugtracker.API.DB\Bugtracker.API.DB.sqlproj", "{BE80D4AD-1E94-4D21-97FA-DB634578CFA1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bugtracker.API.ADO", "Bugtracker.API.ADO\Bugtracker.API.ADO.csproj", "{94310B95-0123-4F9B-B509-39E3861CF2B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,10 @@ Global
 		{BE80D4AD-1E94-4D21-97FA-DB634578CFA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE80D4AD-1E94-4D21-97FA-DB634578CFA1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BE80D4AD-1E94-4D21-97FA-DB634578CFA1}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{94310B95-0123-4F9B-B509-39E3861CF2B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94310B95-0123-4F9B-B509-39E3861CF2B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94310B95-0123-4F9B-B509-39E3861CF2B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94310B95-0123-4F9B-B509-39E3861CF2B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -7,6 +7,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Bugtracker.API.DB", "Bugtra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bugtracker.API.ADO", "Bugtracker.API.ADO\Bugtracker.API.ADO.csproj", "{94310B95-0123-4F9B-B509-39E3861CF2B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bugtracker.API.DAL", "Bugtracker.API.DAL\Bugtracker.API.DAL.csproj", "{80B003F4-CB4C-4338-8D40-99EBEAA9339C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{94310B95-0123-4F9B-B509-39E3861CF2B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94310B95-0123-4F9B-B509-39E3861CF2B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94310B95-0123-4F9B-B509-39E3861CF2B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80B003F4-CB4C-4338-8D40-99EBEAA9339C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80B003F4-CB4C-4338-8D40-99EBEAA9339C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80B003F4-CB4C-4338-8D40-99EBEAA9339C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80B003F4-CB4C-4338-8D40-99EBEAA9339C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

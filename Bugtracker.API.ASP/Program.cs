@@ -4,10 +4,21 @@ using Bugtracker.API.BLL.Services;
 using Bugtracker.API.DAL.Interfaces;
 using Bugtracker.API.DAL.Repositories;
 
+// Create bugtrackerapi variable for my cors
+var BugtrackerApi = "_BugtrackerApi";
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: BugtrackerApi,
+                      policy =>
+                      {
+                          policy.WithOrigins("https://localhost:7036");
+                      });
+});
 
+// Add services to the container.
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -34,6 +45,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// Use the cors policy - after routing but before authorization
+app.UseCors(BugtrackerApi);
 
 app.UseAuthorization();
 

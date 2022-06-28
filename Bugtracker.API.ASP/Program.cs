@@ -27,7 +27,7 @@ builder.Services.AddSwaggerGen();
 // Config injection
 builder.Services.AddTransient<Connection>((service) =>
 {
-    return new Connection(builder.Configuration.GetConnectionString("CockxConnectionString"));
+    return new Connection(builder.Configuration.GetConnectionString("HerseConnectionString"));
 });
 
 // DAL

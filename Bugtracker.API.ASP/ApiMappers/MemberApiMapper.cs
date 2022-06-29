@@ -11,7 +11,7 @@ namespace Bugtracker.API.ASP.ApiMappers
             {
                 IdMember = member.IdMember,
                 Login = member.Login,
-                PasswordHash = member.PasswordHash,
+                PasswordHash = member.Password,
                 EmailAddress = member.EmailAddress,
                 Firstname = member.Firstname,
                 Lastname = member.Lastname

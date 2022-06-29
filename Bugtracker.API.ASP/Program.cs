@@ -14,7 +14,10 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: BugtrackerWasm,
                       policy =>
                       {
-                          policy.WithOrigins("https://localhost:7036");
+                          policy.WithOrigins("https://localhost:7036")
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+
                       });
 });
 

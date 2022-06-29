@@ -19,7 +19,7 @@ namespace Bugtracker.API.ASP.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok(_memberService.GetAll().ToArray());
+            return Ok(_memberService.GetAll().Select(dto => dto.ToApiModel()));
         }
         [HttpPost]
         public IActionResult Register(MemberApiModel member)

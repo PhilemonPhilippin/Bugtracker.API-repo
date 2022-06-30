@@ -31,7 +31,7 @@ namespace Bugtracker.API.DAL.Repositories
         }
         public override int? Insert(MemberEntity entity)
         {
-            Command cmd = new Command($"INSERT INTO {TableName} (Login, Password_Hash, Email_Address, Firstname, Lastname) OUTPUT inserted.{TableId} VALUES (@Login, @Password_Hash, @Email_Address, @Firstname, @Lastname);");
+            Command cmd = new Command("PPSP_InsertMember", true);
 
             cmd.AddParameter("Login", entity.Login);
             cmd.AddParameter("Password_Hash", entity.PasswordHash);

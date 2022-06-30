@@ -8,7 +8,11 @@ AS
 BEGIN
 	IF (SELECT Count(Login) FROM Member WHERE Login IN (@Login)) > 0
 		BEGIN
-		SELECT null;
+		SELECT -123;
+		END
+	ELSE IF (SELECT COUNT(Email_Address) FROM Member WHERE Email_Address IN (@Email_Address)) > 0
+		BEGIN
+		SELECT -456;
 		END
 	ELSE
 		BEGIN

@@ -30,12 +30,19 @@ namespace Bugtracker.API.ASP.Controllers
         public IActionResult Register([FromBody]MemberApiModel memberApiModel)
         {
             MemberDto member = _memberService.Insert(memberApiModel.ToDto());
-            if (member.IdMember == 0)
-                return BadRequest();
-            else
+            switch (member.IdMember)
             {
-                memberApiModel.IdMember = member.IdMember;
-                return Ok(memberApiModel);
+                case 0:
+                    return BadRequest();
+                case -123:
+                    // Login duplicate
+                    return BadRequest(-123);
+                case -456:
+                    // Email duplicate
+                    return BadRequest(-456);
+                default:
+                    memberApiModel.IdMember = member.IdMember;
+                    return Ok(memberApiModel);
             }
         }
     }

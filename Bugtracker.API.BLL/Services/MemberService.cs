@@ -1,6 +1,7 @@
 ﻿using Bugtracker.API.BLL.DataTransferObjects;
 using Bugtracker.API.BLL.Interfaces;
 using Bugtracker.API.BLL.Mappers;
+using Bugtracker.API.DAL.Entities;
 using Bugtracker.API.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,8 @@ namespace Bugtracker.API.BLL.Services
 
         public IEnumerable<MemberDto> GetAll()
         {
-            return _memberRepository.GetAll().Select(member => member.ToDto());
+            IEnumerable<MemberEntity> all = _memberRepository.GetAll();
+            return (all is null) ? null : all.Select(member => member.ToDto());
         }
         public MemberDto GetByLogin(string login)
         {

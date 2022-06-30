@@ -20,8 +20,8 @@ namespace Bugtracker.API.ASP.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            IEnumerable<MemberApiModel> allMembers = _memberService.GetAll().Select(dto => dto.ToApiModel());
-            return (allMembers is null) ? BadRequest() : Ok(allMembers);
+            IEnumerable<MemberDto> all = _memberService.GetAll();
+            return (all is null) ? NotFound() : Ok(all.Select(dto => dto.ToApiModel()));
         }
         [HttpPost]
         public IActionResult Register([FromBody]MemberApiModel memberApiModel)

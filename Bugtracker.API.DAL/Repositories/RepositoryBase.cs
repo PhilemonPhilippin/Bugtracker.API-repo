@@ -29,7 +29,8 @@ namespace Bugtracker.API.DAL.Repositories
         {
 
             Command cmd = new Command($"SELECT * FROM {TableName};");
-            return _Connection.ExecuteReader(cmd, MapRecordToEntity);
+            IEnumerable<TEntity> all = _Connection.ExecuteReader(cmd, MapRecordToEntity);
+            return all;
 
         }
 

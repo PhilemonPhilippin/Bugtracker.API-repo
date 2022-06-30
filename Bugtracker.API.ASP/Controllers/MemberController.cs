@@ -21,6 +21,9 @@ namespace Bugtracker.API.ASP.Controllers
         public IActionResult GetAll()
         {
             IEnumerable<MemberDto> all = _memberService.GetAll();
+            // all can not be null
+            // worst case scenario all is a IEnumerable of one single item that has DBNull values and null values
+            // so maybe erase the ternary
             return (all is null) ? NotFound() : Ok(all.Select(dto => dto.ToApiModel()));
         }
         [HttpPost]

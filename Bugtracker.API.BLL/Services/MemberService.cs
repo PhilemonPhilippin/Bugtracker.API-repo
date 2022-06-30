@@ -23,7 +23,7 @@ namespace Bugtracker.API.BLL.Services
         public IEnumerable<MemberDto> GetAll()
         {
             IEnumerable<MemberEntity> all = _memberRepository.GetAll();
-            return (all is DBNull) ? null : all.Select(member => member.ToDto());
+            return all.Select(member => member.ToDto());
         }
         public MemberDto GetByLogin(string login)
         {

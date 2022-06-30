@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Bugtracker.API.DAL.Repositories
 {
-    public class MemberRepository : RepositoryBase<int, MemberEntity>, IMemberRepository
+    public class MemberRepository : RepositoryBase<int?, MemberEntity>, IMemberRepository
     {
         public MemberRepository(Connection connection) : base(connection, "Member", "Id_Member")
         {
@@ -29,7 +29,7 @@ namespace Bugtracker.API.DAL.Repositories
                 Lastname = record["Lastname"] is DBNull ? null : (string)record["Lastname"]
             };
         }
-        public override int Insert(MemberEntity entity)
+        public override int? Insert(MemberEntity entity)
         {
             Command cmd = new Command($"INSERT INTO {TableName} (Login, Password_Hash, Email_Address, Firstname, Lastname) OUTPUT inserted.{TableId} VALUES (@Login, @Password_Hash, @Email_Address, @Firstname, @Lastname);");
 
@@ -39,8 +39,8 @@ namespace Bugtracker.API.DAL.Repositories
             cmd.AddParameter("Firstname", entity.Firstname);
             cmd.AddParameter("Lastname", entity.Lastname);
 
-            return (int)_Connection.ExecuteScalar(cmd);
-
+            object? idInserted = _Connection.ExecuteScalar(cmd);
+            return (idInserted is null) ? null : (int)idInserted;
         }
 
         public MemberEntity GetByLogin(string login)

@@ -44,7 +44,7 @@ namespace Bugtracker.API.ADO
                 {
                     sqlConnection.Open();
                     object? scalarResult = sqlCmd.ExecuteScalar();
-                    return scalarResult is DBNull ? null : scalarResult;
+                    return (scalarResult is DBNull) ? null : scalarResult;
                 }
             }
         }

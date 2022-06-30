@@ -23,7 +23,7 @@ namespace Bugtracker.API.BLL.Services
         public IEnumerable<MemberDto> GetAll()
         {
             IEnumerable<MemberEntity> all = _memberRepository.GetAll();
-            return (all is null) ? null : all.Select(member => member.ToDto());
+            return (all is DBNull) ? null : all.Select(member => member.ToDto());
         }
         public MemberDto GetByLogin(string login)
         {
@@ -32,8 +32,8 @@ namespace Bugtracker.API.BLL.Services
         }
         public MemberDto Insert(MemberDto member)
         {
-            int idMember = _memberRepository.Insert(member.ToEntity());
-            member.IdMember = idMember;
+            int? idMember = _memberRepository.Insert(member.ToEntity());
+            member.IdMember = (idMember is null) ? 0 : (int)idMember;
             return member;
         }
 

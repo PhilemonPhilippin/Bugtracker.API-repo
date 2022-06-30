@@ -27,7 +27,7 @@ namespace Bugtracker.API.ASP.Controllers
         public IActionResult Register([FromBody]MemberApiModel memberApiModel)
         {
             MemberDto member = _memberService.Insert(memberApiModel.ToDto());
-            return (member is null) ? BadRequest() : Ok(memberApiModel);
+            return (member.IdMember == 0) ? BadRequest() : Ok(memberApiModel);
         }
     }
 }

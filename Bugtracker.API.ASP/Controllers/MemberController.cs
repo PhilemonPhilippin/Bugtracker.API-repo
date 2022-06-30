@@ -40,6 +40,9 @@ namespace Bugtracker.API.ASP.Controllers
                 case -456:
                     // Email duplicate
                     return BadRequest(-456);
+                case -789:
+                    // Login AND Email duplicates
+                    return BadRequest(-789);
                 default:
                     memberApiModel.IdMember = member.IdMember;
                     return Ok(memberApiModel);

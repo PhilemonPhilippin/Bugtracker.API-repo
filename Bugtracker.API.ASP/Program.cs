@@ -5,13 +5,13 @@ using Bugtracker.API.DAL.Interfaces;
 using Bugtracker.API.DAL.Repositories;
 
 // Create bugtrackerapi variable for my cors
-var BugtrackerWasm = "_BugtrackerWasm";
+var BugtrackerWasmCorsPolicy = "_BugtrackerWasmCorsPolicy";
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: BugtrackerWasm,
+    options.AddPolicy(name: BugtrackerWasmCorsPolicy,
                       policy =>
                       {
                           policy.WithOrigins("https://localhost:7036")
@@ -49,7 +49,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 // Use the cors policy - after routing but before authorization
-app.UseCors(BugtrackerWasm);
+app.UseCors(BugtrackerWasmCorsPolicy);
 
 app.UseAuthorization();
 

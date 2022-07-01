@@ -7,15 +7,20 @@
 	@Lastname NVARCHAR(50)
 AS
 BEGIN
-	IF (SELECT Count(Login) FROM Member WHERE Login IN (@Login)) > 0 AND (SELECT COUNT(Email_Address) FROM Member WHERE Email_Address IN (@Email_Address)) > 0
+	IF (SELECT COUNT(Login) FROM Member WHERE Login IN (@Login)) > 0 
+	AND (SELECT COUNT(Email_Address) FROM Member WHERE Email_Address IN (@Email_Address)) > 0
+	AND (SELECT Id_Member FROM Member WHERE Email_Address IN (@Email_Address)) != @Id_Member
+	AND (SELECT Id_Member FROM Member WHERE Login IN (@Login)) != @Id_Member
 		BEGIN
 			SELECT -789;
 		END
-	ELSE IF (SELECT COUNT(Email_Address) FROM Member WHERE Email_Address IN (@Email_Address)) > 0
+	ELSE IF (SELECT COUNT(Email_Address) FROM Member WHERE Email_Address IN (@Email_Address)) > 0 
+	AND (SELECT Id_Member FROM Member WHERE Email_Address IN (@Email_Address)) != @Id_Member
 		BEGIN
 			SELECT -456;
 		END
-	ELSE IF (SELECT Count(Login) FROM Member WHERE Login IN (@Login)) > 0
+	ELSE IF (SELECT Count(Login) FROM Member WHERE Login IN (@Login)) > 0 
+	AND (SELECT Id_Member FROM Member WHERE Login IN (@Login)) != @Id_Member
 		BEGIN
 			SELECT -123;
 		END

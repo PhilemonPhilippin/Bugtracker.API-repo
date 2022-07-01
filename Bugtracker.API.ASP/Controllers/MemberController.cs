@@ -34,50 +34,30 @@ namespace Bugtracker.API.ASP.Controllers
         {
             MemberDto member = _memberService.Insert(dto);
             return new CreatedResult("/api/Member", dto);
+            // If insert didnt work : return new BadRequestObjectResult(dto);
         }
-
-        //[HttpPost]
-        //public IActionResult Register([FromBody]MemberApiModel memberApiModel)
-        //{
-        //    MemberDto member = _memberService.Insert(memberApiModel.ToDto());
-        //    switch (member.IdMember)
-        //    {
-        //        case -123:
-        //            // Login duplicate
-        //            return BadRequest(-123);
-        //        case -456:
-        //            // Email duplicate
-        //            return BadRequest(-456);
-        //        case -789:
-        //            // Login AND Email duplicates
-        //            return BadRequest(-789);
-        //        default:
-        //            memberApiModel.IdMember = member.IdMember;
-        //            // TODO : renvoyer un CreatedResult
-        //            return Ok(memberApiModel);
-        //    }
-        //}
+        // TODO : Vérifier si j'ai vraiment besoin de récupérer l'id depuis la route
         [HttpDelete]
         [Route("{id:int}")]
         public IActionResult Delete([FromRoute]int id)
         {
             bool isMemberDeleted = _memberService.Delete(id);
-            if (isMemberDeleted)
-                return NoContent();
-            else
+            if (!isMemberDeleted)
                 return BadRequest();
+            else
+                return NoContent();
         }
-        //[HttpDelete]
-        //[Route("/api/Member/{id:int}")]
-        //public IActionResult Delete([FromRoute]int id)
-        //{
-        //    bool isMemberDeleted = _memberService.Delete(id);
-        //    if (!isMemberDeleted)
-        //        return BadRequest();
-        //    else
-        //        return Ok();
-        //}
-        //// TODO : Vérifier si j'ai vraiment besoin de récupérer l'id depuis la route
+        [HttpPut]
+        [Route("{id:int}")]
+        public IActionResult Update([FromRoute] int id, MemberDto dto)
+        {
+            bool isMemberUpdated = _memberService.Update(id, dto);
+            if (!isMemberUpdated)
+                return new BadRequestObjectResult(dto);
+            else
+                return NoContent();
+        }
+
         //[HttpPut]
         //[Route("/api/Member/{id:int}")]
         //public IActionResult Edit([FromRoute] int id, MemberApiModel memberApiModel)

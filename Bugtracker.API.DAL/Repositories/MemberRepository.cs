@@ -95,5 +95,16 @@ namespace Bugtracker.API.DAL.Repositories
             cmd.AddParameter("Id_Member", id);
             return _Connection.ExecuteNonQuery(cmd) == 1;
         }
+        public bool Update(int id, MemberEntity entity)
+        {
+            Command cmd = new Command("PPSP_UpdateMember", true);
+            cmd.AddParameter("Id_Member", id);
+            cmd.AddParameter("Pseudo", entity.Pseudo);
+            cmd.AddParameter("Email", entity.Email);
+            cmd.AddParameter("Pswd_Hash", entity.PswdHash);
+            cmd.AddParameter("Firstname", entity.Firstname);
+            cmd.AddParameter("Lastname", entity.Lastname);
+            return _Connection.ExecuteNonQuery(cmd) == 1;
+        }
     }
 }

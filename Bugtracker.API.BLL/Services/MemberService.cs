@@ -44,10 +44,10 @@ namespace Bugtracker.API.BLL.Services
             return _memberRepository.Delete(id);
         }
 
-        //public int Update(int id, MemberDto dto)
-        //{
-        //    return _memberRepository.Update(id, dto.ToEntity());
-        //}
+        public bool Update(int id, MemberDto dto)
+        {
+            return _memberRepository.Update(id, dto.ToEntity());
+        }
 
     }
 }

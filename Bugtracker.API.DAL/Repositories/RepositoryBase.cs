@@ -24,7 +24,7 @@ namespace Bugtracker.API.DAL.Repositories
 
         protected abstract TEntity MapRecordToEntity(IDataRecord record);
         public abstract TKey Insert(TEntity entity);
-
+        public abstract int Update(TKey id, TEntity entity);
         public virtual IEnumerable<TEntity> GetAll()
         {
 

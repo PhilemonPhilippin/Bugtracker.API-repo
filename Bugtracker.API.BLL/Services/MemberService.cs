@@ -32,14 +32,19 @@ namespace Bugtracker.API.BLL.Services
         }
         public MemberDto Insert(MemberDto member)
         {
-            int? idMember = _memberRepository.Insert(member.ToEntity());
-            member.IdMember = (idMember is null) ? 0 : (int)idMember;
+            int idMember = _memberRepository.Insert(member.ToEntity());
+            member.IdMember = idMember;
             return member;
         }
 
         public bool Delete(int id)
         {
             return _memberRepository.Delete(id);
+        }
+
+        public int Update(int id, MemberDto dto)
+        {
+            return _memberRepository.Update(id, dto.ToEntity());
         }
 
     }

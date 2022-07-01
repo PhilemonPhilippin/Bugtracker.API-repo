@@ -10,6 +10,7 @@ namespace Bugtracker.API.DAL.Interfaces
     {
         TKey Insert(TEntity entity);
         IEnumerable<TEntity> GetAll();
+        int Update(TKey id, TEntity entity);
         bool Delete(TKey id);
     }
 }

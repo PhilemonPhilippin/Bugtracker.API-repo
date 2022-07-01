@@ -65,6 +65,7 @@
     <Build Include="Tables\Member.sql" />
     <Build Include="StoredProcedures\InsertMember.sql" />
     <Build Include="Views\MemberView.sql" />
+    <Build Include="StoredProcedures\UpdateMember.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Seed.sql" />

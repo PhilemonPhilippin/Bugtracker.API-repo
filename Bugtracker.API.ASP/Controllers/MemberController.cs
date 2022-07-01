@@ -49,13 +49,14 @@ namespace Bugtracker.API.ASP.Controllers
             }
         }
         [HttpDelete]
-        public IActionResult Delete([FromBody]int id)
+        [Route("/api/Member/{id}")]
+        public IActionResult Delete([FromRoute]int id)
         {
             bool isMemberDeleted = _memberService.Delete(id);
             if (!isMemberDeleted)
                 return BadRequest();
             else
-                return Ok(isMemberDeleted);
+                return Ok();
         }
     }
 }

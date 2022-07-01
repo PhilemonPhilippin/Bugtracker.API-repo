@@ -10,24 +10,30 @@ using System.Threading.Tasks;
 
 namespace Bugtracker.API.DAL.Repositories
 {
-    public class MemberRepository : RepositoryBase<int, MemberEntity>, IMemberRepository
+    public class MemberRepository : IMemberRepository
     {
-        public MemberRepository(Connection connection) : base(connection, "Member", "Id_Member")
+        private Connection _Connection { get; set; }
+        public MemberRepository(Connection connection)
         {
-
+            _Connection = connection;
         }
 
-        protected override MemberEntity MapRecordToEntity(IDataRecord record)
+        private MemberEntity MapRecordToEntity(IDataRecord record)
         {
             return new MemberEntity()
             {
-                IdMember = (int)record[TableId],
+                IdMember = (int)record["Id_Member"],
                 Pseudo = (string)record["Pseudo"],
                 Email = (string)record["Email"],
                 PswdHash = (string)record["Pswd_Hash"],
                 Firstname = record["Firstname"] is DBNull ? null : (string)record["Firstname"],
                 Lastname = record["Lastname"] is DBNull ? null : (string)record["Lastname"]
             };
+        }
+        public IEnumerable<MemberEntity> GetAll()
+        {
+            Command cmd = new Command("PPSP_ReadAllMembers", true);
+            return _Connection.ExecuteReader(cmd, MapRecordToEntity);
         }
         //public override int Insert(MemberEntity entity)
         //{
@@ -66,5 +72,12 @@ namespace Bugtracker.API.DAL.Repositories
         //    cmd.AddParameter("Login", login);
         //    return _Connection.ExecuteReader(cmd, MapRecordToEntity).SingleOrDefault();
         //}
+        public MemberEntity GetById(int id)
+        {
+            Command cmd = new Command("PPSP_ReadMember", true);
+            cmd.AddParameter("Id_Member", id);
+            return _Connection.ExecuteReader(cmd, MapRecordToEntity).SingleOrDefault();
+
+        }
     }
 }

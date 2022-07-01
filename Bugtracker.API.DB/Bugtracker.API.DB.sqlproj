@@ -65,6 +65,10 @@
   <ItemGroup>
     <Build Include="Tables\Member.sql" />
     <Build Include="StoredProcedures\MemberProcedures\PPSP_ReadAllMembers.sql" />
+    <Build Include="StoredProcedures\MemberProcedures\PPSP_ReadMember.sql" />
+    <Build Include="StoredProcedures\MemberProcedures\PPSP_CreateMember.sql" />
+    <Build Include="StoredProcedures\MemberProcedures\PPSP_DeleteMember.sql" />
+    <Build Include="StoredProcedures\MemberProcedures\PPSP_UpdateMember.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Seed.sql" />

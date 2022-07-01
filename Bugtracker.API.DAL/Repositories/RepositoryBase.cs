@@ -7,29 +7,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bugtracker.API.DAL.Repositories
-{
-    public abstract class RepositoryBase<TKey, TEntity> : IRepository<TKey, TEntity>
-    {
-        protected Connection _Connection { get; set; }
-        protected string TableName { get; set; }
-        protected string TableId { get; set; }
+//namespace Bugtracker.API.DAL.Repositories
+//{
+//    public abstract class RepositoryBase<TKey, TEntity> : IRepository<TKey, TEntity>
+//    {
+//        protected Connection _Connection { get; set; }
+//        protected string TableName { get; set; }
+//        protected string TableId { get; set; }
 
-        public RepositoryBase(Connection connection, string tableName, string tableId)
-        {
-            _Connection = connection;
-            TableName = tableName;
-            TableId = tableId;
-        }
+//        public RepositoryBase(Connection connection, string tableName, string tableId)
+//        {
+//            _Connection = connection;
+//            TableName = tableName;
+//            TableId = tableId;
+//        }
 
-        protected abstract TEntity MapRecordToEntity(IDataRecord record);
+//        protected abstract TEntity MapRecordToEntity(IDataRecord record);
         //public abstract TKey Insert(TEntity entity);
         //public abstract int Update(TKey id, TEntity entity);
-        public virtual IEnumerable<TEntity> GetAll()
-        {
-            Command cmd = new Command("PPSP_ReadAllMembers", true);
-            return _Connection.ExecuteReader(cmd, MapRecordToEntity);
-        }
+        //public virtual IEnumerable<TEntity> GetAll()
+        //{
+        //    Command cmd = new Command("PPSP_ReadAllMembers", true);
+        //    return _Connection.ExecuteReader(cmd, MapRecordToEntity);
+        //}
 
         //public virtual bool Delete(TKey id)
         //{
@@ -39,5 +39,5 @@ namespace Bugtracker.API.DAL.Repositories
         //    return _Connection.ExecuteNonQuery(cmd) == 1;
         //}
 
-    }
-}
+//    }
+//}

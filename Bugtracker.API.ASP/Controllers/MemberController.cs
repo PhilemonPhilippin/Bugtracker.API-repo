@@ -23,6 +23,12 @@ namespace Bugtracker.API.ASP.Controllers
         {
             return Ok(_memberService.GetAll());
         }
+        [HttpGet]
+        [Route("{id:int}")]
+        public IActionResult GetById([FromRoute]int id)
+        {
+            return Ok(_memberService.GetById(id));
+        }
         //[HttpPost]
         //public IActionResult Register([FromBody]MemberApiModel memberApiModel)
         //{

@@ -24,6 +24,10 @@ namespace Bugtracker.API.BLL.Services
         {
             return _memberRepository.GetAll().Select(member => member.ToDto());
         }
+        public MemberDto GetById(int id)
+        {
+            return _memberRepository.GetById(id).ToDto();
+        }
         //public MemberDto GetByLogin(string login)
         //{
         //    MemberDto member = _memberRepository.GetByLogin(login).ToDto();

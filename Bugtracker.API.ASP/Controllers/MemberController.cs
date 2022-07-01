@@ -48,5 +48,14 @@ namespace Bugtracker.API.ASP.Controllers
                     return Ok(memberApiModel);
             }
         }
+        [HttpDelete]
+        public IActionResult Delete([FromBody]int id)
+        {
+            bool isMemberDeleted = _memberService.Delete(id);
+            if (!isMemberDeleted)
+                return BadRequest();
+            else
+                return Ok(isMemberDeleted);
+        }
     }
 }

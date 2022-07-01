@@ -39,10 +39,10 @@ namespace Bugtracker.API.BLL.Services
             member.IdMember = idMember;
             return member;
         }
-        //public bool Delete(int id)
-        //{
-        //    return _memberRepository.Delete(id);
-        //}
+        public bool Delete(int id)
+        {
+            return _memberRepository.Delete(id);
+        }
 
         //public int Update(int id, MemberDto dto)
         //{

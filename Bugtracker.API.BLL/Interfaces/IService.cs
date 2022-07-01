@@ -11,7 +11,7 @@ namespace Bugtracker.API.BLL.Interfaces
         IEnumerable<TDto> GetAll();
         TDto GetById(TKey id);
         TDto Insert(TDto dto);
+        bool Delete(TKey id);
         //public int Update(TKey id, TDto dto);
-        //public bool Delete(TKey id);
     }
 }

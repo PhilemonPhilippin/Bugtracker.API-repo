@@ -12,6 +12,6 @@ namespace Bugtracker.API.DAL.Interfaces
         IEnumerable<TEntity> GetAll();
         TEntity GetById(TKey id);
         //int Update(TKey id, TEntity entity);
-        //bool Delete(TKey id);
+        bool Delete(TKey id);
     }
 }

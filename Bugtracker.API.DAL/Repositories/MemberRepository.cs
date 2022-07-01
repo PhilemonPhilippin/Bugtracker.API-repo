@@ -88,6 +88,12 @@ namespace Bugtracker.API.DAL.Repositories
             Command cmd = new Command("PPSP_ReadMember", true);
             cmd.AddParameter("Id_Member", id);
             return _Connection.ExecuteReader(cmd, MapRecordToEntity).SingleOrDefault();
-        } 
+        }
+        public bool Delete(int id)
+        {
+            Command cmd = new Command("PPSP_DeleteMember", true);
+            cmd.AddParameter("Id_Member", id);
+            return _Connection.ExecuteNonQuery(cmd) == 1;
+        }
     }
 }

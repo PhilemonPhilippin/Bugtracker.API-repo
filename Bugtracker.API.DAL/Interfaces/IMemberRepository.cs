@@ -9,6 +9,6 @@ namespace Bugtracker.API.DAL.Interfaces
 {
     public interface IMemberRepository : IRepository<int, MemberEntity>
     {
-        MemberEntity GetByLogin(string login);
+        //MemberEntity GetByLogin(string login);
     }
 }

@@ -22,30 +22,29 @@ namespace Bugtracker.API.BLL.Services
 
         public IEnumerable<MemberDto> GetAll()
         {
-            IEnumerable<MemberEntity> all = _memberRepository.GetAll();
-            return all.Select(member => member.ToDto());
+            return _memberRepository.GetAll().Select(member => member.ToDto());
         }
-        public MemberDto GetByLogin(string login)
-        {
-            MemberDto member = _memberRepository.GetByLogin(login).ToDto();
-            return member;
-        }
-        public MemberDto Insert(MemberDto member)
-        {
-            int idMember = _memberRepository.Insert(member.ToEntity());
-            member.IdMember = idMember;
-            return member;
-        }
+        //public MemberDto GetByLogin(string login)
+        //{
+        //    MemberDto member = _memberRepository.GetByLogin(login).ToDto();
+        //    return member;
+        //}
+        //public MemberDto Insert(MemberDto member)
+        //{
+        //    int idMember = _memberRepository.Insert(member.ToEntity());
+        //    member.IdMember = idMember;
+        //    return member;
+        //}
 
-        public bool Delete(int id)
-        {
-            return _memberRepository.Delete(id);
-        }
+        //public bool Delete(int id)
+        //{
+        //    return _memberRepository.Delete(id);
+        //}
 
-        public int Update(int id, MemberDto dto)
-        {
-            return _memberRepository.Update(id, dto.ToEntity());
-        }
+        //public int Update(int id, MemberDto dto)
+        //{
+        //    return _memberRepository.Update(id, dto.ToEntity());
+        //}
 
     }
 }

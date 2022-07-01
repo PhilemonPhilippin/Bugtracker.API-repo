@@ -15,9 +15,9 @@ namespace Bugtracker.API.BLL.Mappers
             return new MemberDto()
             {
                 IdMember = entity.IdMember,
-                Login = entity.Login,
-                PasswordHash = entity.PasswordHash,
-                EmailAddress = entity.EmailAddress,
+                Pseudo = entity.Pseudo,
+                PswdHash = entity.PswdHash,
+                Email = entity.Email,
                 Firstname = entity.Firstname,
                 Lastname = entity.Lastname
             };
@@ -28,9 +28,9 @@ namespace Bugtracker.API.BLL.Mappers
             return new MemberEntity()
             {
                 IdMember = dto.IdMember,
-                Login = dto.Login,
-                PasswordHash = dto.PasswordHash,
-                EmailAddress = dto.EmailAddress,
+                Pseudo = dto.Pseudo,
+                PswdHash = dto.PswdHash,
+                Email = dto.Email,
                 Firstname = dto.Firstname,
                 Lastname = dto.Lastname
             };

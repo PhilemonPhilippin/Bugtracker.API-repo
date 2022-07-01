@@ -23,24 +23,21 @@ namespace Bugtracker.API.DAL.Repositories
         }
 
         protected abstract TEntity MapRecordToEntity(IDataRecord record);
-        public abstract TKey Insert(TEntity entity);
-        public abstract int Update(TKey id, TEntity entity);
+        //public abstract TKey Insert(TEntity entity);
+        //public abstract int Update(TKey id, TEntity entity);
         public virtual IEnumerable<TEntity> GetAll()
         {
-
-            Command cmd = new Command($"SELECT * FROM {TableName};");
-            IEnumerable<TEntity> all = _Connection.ExecuteReader(cmd, MapRecordToEntity);
-            return all;
-
+            Command cmd = new Command("PPSP_ReadAllMembers", true);
+            return _Connection.ExecuteReader(cmd, MapRecordToEntity);
         }
 
-        public virtual bool Delete(TKey id)
-        {
-            Command cmd = new Command($"DELETE FROM {TableName} WHERE {TableId} = @Id");
-            cmd.AddParameter("Id", id);
+        //public virtual bool Delete(TKey id)
+        //{
+        //    Command cmd = new Command($"DELETE FROM {TableName} WHERE {TableId} = @Id");
+        //    cmd.AddParameter("Id", id);
 
-            return _Connection.ExecuteNonQuery(cmd) == 1;
-        }
+        //    return _Connection.ExecuteNonQuery(cmd) == 1;
+        //}
 
     }
 }

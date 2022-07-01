@@ -9,6 +9,6 @@ namespace Bugtracker.API.BLL.Interfaces
 {
     public interface IMemberService : IService<int, MemberDto>
     {
-        MemberDto GetByLogin(string login);
+        //MemberDto GetByLogin(string login);
     }
 }

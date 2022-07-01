@@ -60,14 +60,16 @@
     <Folder Include="StoredProcedures" />
     <Folder Include="Tables" />
     <Folder Include="Views" />
+    <Folder Include="StoredProcedures\MemberProcedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Member.sql" />
-    <Build Include="StoredProcedures\InsertMember.sql" />
-    <Build Include="Views\MemberView.sql" />
-    <Build Include="StoredProcedures\UpdateMember.sql" />
+    <Build Include="StoredProcedures\MemberProcedures\PPSP_ReadAllMembers.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Seed.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="Bugtracker.API.DB.refactorlog" />
   </ItemGroup>
 </Project>

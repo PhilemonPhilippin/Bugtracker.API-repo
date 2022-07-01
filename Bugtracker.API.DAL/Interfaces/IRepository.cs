@@ -8,7 +8,7 @@ namespace Bugtracker.API.DAL.Interfaces
 {
     public interface IRepository<TKey, TEntity>
     {
-        //TKey Insert(TEntity entity);
+        TKey Insert(TEntity entity);
         IEnumerable<TEntity> GetAll();
         TEntity GetById(TKey id);
         //int Update(TKey id, TEntity entity);

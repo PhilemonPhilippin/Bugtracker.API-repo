@@ -33,13 +33,12 @@ namespace Bugtracker.API.BLL.Services
         //    MemberDto member = _memberRepository.GetByLogin(login).ToDto();
         //    return member;
         //}
-        //public MemberDto Insert(MemberDto member)
-        //{
-        //    int idMember = _memberRepository.Insert(member.ToEntity());
-        //    member.IdMember = idMember;
-        //    return member;
-        //}
-
+        public MemberDto Insert(MemberDto member)
+        {
+            int idMember = _memberRepository.Insert(member.ToEntity());
+            member.IdMember = idMember;
+            return member;
+        }
         //public bool Delete(int id)
         //{
         //    return _memberRepository.Delete(id);

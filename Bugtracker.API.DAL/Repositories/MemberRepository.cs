@@ -35,6 +35,17 @@ namespace Bugtracker.API.DAL.Repositories
             Command cmd = new Command("PPSP_ReadAllMembers", true);
             return _Connection.ExecuteReader(cmd, MapRecordToEntity);
         }
+        public int Insert(MemberEntity entity)
+        {
+            Command cmd = new Command("PPSP_CreateMember", true);
+            cmd.AddParameter("Pseudo", entity.Pseudo);
+            cmd.AddParameter("Email", entity.Email);
+            cmd.AddParameter("Pswd_Hash", entity.PswdHash);
+            cmd.AddParameter("Firstname", entity.Firstname);
+            cmd.AddParameter("Lastname", entity.Lastname);
+            return (int)_Connection.ExecuteScalar(cmd);
+        }
+
         //public override int Insert(MemberEntity entity)
         //{
         //    Command cmd = new Command("PPSP_InsertMember", true);
@@ -77,7 +88,6 @@ namespace Bugtracker.API.DAL.Repositories
             Command cmd = new Command("PPSP_ReadMember", true);
             cmd.AddParameter("Id_Member", id);
             return _Connection.ExecuteReader(cmd, MapRecordToEntity).SingleOrDefault();
-
-        }
+        } 
     }
 }

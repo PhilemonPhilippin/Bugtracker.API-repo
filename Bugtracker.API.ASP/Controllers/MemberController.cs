@@ -29,6 +29,13 @@ namespace Bugtracker.API.ASP.Controllers
         {
             return Ok(_memberService.GetById(id));
         }
+        [HttpPost]
+        public IActionResult Insert(MemberDto dto)
+        {
+            MemberDto member = _memberService.Insert(dto);
+            return new CreatedResult("/api/Member", dto);
+        }
+
         //[HttpPost]
         //public IActionResult Register([FromBody]MemberApiModel memberApiModel)
         //{

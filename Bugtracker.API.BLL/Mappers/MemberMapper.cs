@@ -16,8 +16,8 @@ namespace Bugtracker.API.BLL.Mappers
             {
                 IdMember = entity.IdMember,
                 Pseudo = entity.Pseudo,
-                PswdHash = entity.PswdHash,
                 Email = entity.Email,
+                PswdHash = entity.PswdHash,
                 Firstname = entity.Firstname,
                 Lastname = entity.Lastname
             };
@@ -29,8 +29,8 @@ namespace Bugtracker.API.BLL.Mappers
             {
                 IdMember = dto.IdMember,
                 Pseudo = dto.Pseudo,
-                PswdHash = dto.PswdHash,
                 Email = dto.Email,
+                PswdHash = dto.PswdHash,
                 Firstname = dto.Firstname,
                 Lastname = dto.Lastname
             };

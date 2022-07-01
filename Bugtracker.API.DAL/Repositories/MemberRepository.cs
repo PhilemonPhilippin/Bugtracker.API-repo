@@ -45,38 +45,6 @@ namespace Bugtracker.API.DAL.Repositories
             cmd.AddParameter("Lastname", entity.Lastname);
             return (int)_Connection.ExecuteScalar(cmd);
         }
-
-        //public override int Insert(MemberEntity entity)
-        //{
-        //    Command cmd = new Command("PPSP_InsertMember", true);
-
-        //    cmd.AddParameter("Login", entity.Login);
-        //    cmd.AddParameter("Password_Hash", entity.PasswordHash);
-        //    cmd.AddParameter("Email_Address", entity.EmailAddress);
-        //    cmd.AddParameter("Firstname", entity.Firstname);
-        //    cmd.AddParameter("Lastname", entity.Lastname);
-        //    object? returnCode = _Connection.ExecuteScalar(cmd);
-        //    if (returnCode is null)
-        //        throw new DataException("Null return from execute scalar on Insert Member");
-        //    else
-        //        return (int)returnCode;
-        //}
-        //public override int Update(int id, MemberEntity entity)
-        //{
-        //    // TODO: Faire la stored procedure UpdateMember
-        //    Command cmd = new Command("PPSP_UpdateMember", true);
-        //    cmd.AddParameter("Id_Member", id);
-        //    cmd.AddParameter("Login", entity.Login);
-        //    cmd.AddParameter("Password_Hash", entity.PasswordHash);
-        //    cmd.AddParameter("Email_Address", entity.EmailAddress);
-        //    cmd.AddParameter("Firstname", entity.Firstname);
-        //    cmd.AddParameter("Lastname", entity.Lastname);
-        //    object? returnCode = _Connection.ExecuteScalar(cmd);
-        //    if (returnCode is null)
-        //        throw new DataException("Null return from execute scalar on Update Member");
-        //    else
-        //        return (int)returnCode;
-        //}
         //public MemberEntity GetByLogin(string login)
         //{
         //    Command cmd = new Command($"SELECT Id_Member, Login, Password_Hash, Email_Address, Firstname, Lastname FROM {TableName} WHERE Login = @Login;");

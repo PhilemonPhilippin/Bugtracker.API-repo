@@ -57,29 +57,5 @@ namespace Bugtracker.API.ASP.Controllers
             else
                 return NoContent();
         }
-
-        //[HttpPut]
-        //[Route("/api/Member/{id:int}")]
-        //public IActionResult Edit([FromRoute] int id, MemberApiModel memberApiModel)
-        //{
-        //    int returnCode = _memberService.Update(id, memberApiModel.ToDto());
-        //    switch (returnCode)
-        //    {
-        //        case -123:
-        //            // Login duplicate
-        //            return BadRequest(-123);
-        //        case -456:
-        //            // Email duplicate
-        //            return BadRequest(-456);
-        //        case -789:
-        //            // Login AND Email duplicates
-        //            return BadRequest(-789);
-        //        case 42:
-        //            // Member edited successfully
-        //            return NoContent();
-        //        default:
-        //            return BadRequest();
-        //    }
-        //}
     }
 }

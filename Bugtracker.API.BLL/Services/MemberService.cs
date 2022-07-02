@@ -48,7 +48,7 @@ namespace Bugtracker.API.BLL.Services
             return _memberRepository.Remove(id);
         }
 
-        public bool Update(int id, MemberDto dto)
+        public bool Edit(int id, MemberDto dto)
         {
             try
             {

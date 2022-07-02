@@ -62,10 +62,8 @@ namespace Bugtracker.API.ASP.Controllers
         {
             try
             {
-                if (_memberService.Edit(id, dto))
-                    return NoContent();
-                else
-                    return new BadRequestObjectResult(dto);
+                _memberService.Edit(id, dto);
+                return NoContent();
             }
             catch (Exception ex)
             {

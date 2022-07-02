@@ -43,16 +43,14 @@ namespace Bugtracker.API.DAL.Repositories
             cmd.AddParameter("Pswd_Hash", entity.PswdHash);
             cmd.AddParameter("Firstname", entity.Firstname);
             cmd.AddParameter("Lastname", entity.Lastname);
-            int idInserted;
             try
             {
-                idInserted = (int)_Connection.ExecuteScalar(cmd);
+                return (int)_Connection.ExecuteScalar(cmd);
             }
             catch
             {
                 throw;
             }
-            return idInserted;
         }
         //public MemberEntity GetByLogin(string login)
         //{
@@ -81,16 +79,14 @@ namespace Bugtracker.API.DAL.Repositories
             cmd.AddParameter("Pswd_Hash", entity.PswdHash);
             cmd.AddParameter("Firstname", entity.Firstname);
             cmd.AddParameter("Lastname", entity.Lastname);
-            bool isUpdated;
             try
             {
-                isUpdated = _Connection.ExecuteNonQuery(cmd) == 1;
+                return _Connection.ExecuteNonQuery(cmd) == 1;
             }
             catch
             {
                 throw;
             }
-            return isUpdated;
         }
     }
 }

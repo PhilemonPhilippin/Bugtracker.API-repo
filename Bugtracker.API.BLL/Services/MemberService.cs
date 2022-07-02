@@ -51,17 +51,14 @@ namespace Bugtracker.API.BLL.Services
 
         public bool Update(int id, MemberDto dto)
         {
-            //return _memberRepository.Update(id, dto.ToEntity());
-            bool isUpdated = false;
             try
             {
-                isUpdated = _memberRepository.Update(id, dto.ToEntity());
+                return _memberRepository.Update(id, dto.ToEntity());
             }
             catch
             {
                 throw;
             }
-            return isUpdated;
         }
 
     }

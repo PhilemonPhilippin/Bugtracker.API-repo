@@ -38,8 +38,7 @@ namespace Bugtracker.API.ASP.Controllers
             }
             catch (Exception ex) 
             {
-                string exMessage = ex.Message;
-                return BadRequest(exMessage);
+                return BadRequest(ex.Message);
             }
         }
         // TODO : Vérifier si j'ai vraiment besoin de récupérer l'id depuis la route
@@ -57,11 +56,17 @@ namespace Bugtracker.API.ASP.Controllers
         [Route("{id:int}")]
         public IActionResult Update([FromRoute] int id, MemberDto dto)
         {
-            bool isMemberUpdated = _memberService.Update(id, dto);
-            if (!isMemberUpdated)
-                return new BadRequestObjectResult(dto);
-            else
-                return NoContent();
+            try
+            {
+                if (_memberService.Update(id, dto))
+                    return NoContent();
+                else
+                    return new BadRequestObjectResult(dto);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

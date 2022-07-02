@@ -52,17 +52,13 @@ namespace Bugtracker.API.DAL.Repositories
                 throw;
             }
         }
-        //public MemberEntity GetByLogin(string login)
-        //{
-        //    Command cmd = new Command($"SELECT Id_Member, Login, Password_Hash, Email_Address, Firstname, Lastname FROM {TableName} WHERE Login = @Login;");
-        //    cmd.AddParameter("Login", login);
-        //    return _Connection.ExecuteReader(cmd, MapRecordToEntity).SingleOrDefault();
-        //}
         public MemberEntity GetById(int id)
         {
             Command cmd = new Command("PPSP_ReadMember", true);
             cmd.AddParameter("Id_Member", id);
             return _Connection.ExecuteReader(cmd, MapRecordToEntity).SingleOrDefault();
+
+
         }
         public bool Delete(int id)
         {

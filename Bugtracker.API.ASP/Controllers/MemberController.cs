@@ -25,7 +25,11 @@ namespace Bugtracker.API.ASP.Controllers
         [Route("{id:int}")]
         public IActionResult GetById([FromRoute]int id)
         {
-            return Ok(_memberService.GetById(id));
+            MemberDto dto = _memberService.GetById(id);
+            if (dto is null)
+                return NotFound();
+            else
+                return Ok(_memberService.GetById(id));
         }
         [HttpPost]
         public IActionResult Insert(MemberDto dto)

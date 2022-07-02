@@ -35,7 +35,24 @@ namespace Bugtracker.API.BLL.Services
         //}
         public MemberDto Insert(MemberDto member)
         {
-            int idMember = _memberRepository.Insert(member.ToEntity());
+            int idMember = 0;
+            try
+            {
+                idMember = _memberRepository.Insert(member.ToEntity());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception message: " + ex.Message);
+                string exMessage = ex.Message;
+                if (exMessage.Contains("Violation of UNIQUE KEY constraint 'UK_Member__Pseudo'."))
+                {
+                    idMember = -1;
+                }
+                else if (exMessage.Contains("Violation of UNIQUE KEY constraint 'UK_Member__Email'."))
+                {
+                    idMember = -2;
+                }
+            }
             member.IdMember = idMember;
             return member;
         }

@@ -43,7 +43,16 @@ namespace Bugtracker.API.DAL.Repositories
             cmd.AddParameter("Pswd_Hash", entity.PswdHash);
             cmd.AddParameter("Firstname", entity.Firstname);
             cmd.AddParameter("Lastname", entity.Lastname);
-            return (int)_Connection.ExecuteScalar(cmd);
+            int idInserted = 0;
+            try
+            {
+                idInserted = (int)_Connection.ExecuteScalar(cmd);
+            }
+            catch
+            {
+                throw;
+            }
+            return idInserted;
         }
         //public MemberEntity GetByLogin(string login)
         //{

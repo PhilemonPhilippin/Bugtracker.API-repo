@@ -1,6 +1,4 @@
-﻿using Bugtracker.API.ASP.ApiModels;
-using Bugtracker.API.ASP.ApiMappers;
-using Bugtracker.API.BLL.Interfaces;
+﻿using Bugtracker.API.BLL.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Bugtracker.API.BLL.DataTransferObjects;
@@ -33,8 +31,10 @@ namespace Bugtracker.API.ASP.Controllers
         public IActionResult Insert(MemberDto dto)
         {
             MemberDto member = _memberService.Insert(dto);
-            return new CreatedResult("/api/Member", dto);
-            // If insert didnt work : return new BadRequestObjectResult(dto);
+            if (member.IdMember == -1 || member.IdMember == -2)
+                return new BadRequestObjectResult(dto);
+            else
+                return new CreatedResult("/api/Member", dto);
         }
         // TODO : Vérifier si j'ai vraiment besoin de récupérer l'id depuis la route
         [HttpDelete]

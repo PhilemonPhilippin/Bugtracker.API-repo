@@ -32,11 +32,11 @@ namespace Bugtracker.API.ASP.Controllers
                 return Ok(_memberService.GetById(id));
         }
         [HttpPost]
-        public IActionResult Insert(MemberDto dto)
+        public IActionResult Add(MemberDto dto)
         {
             try
             {
-                int idMember = _memberService.Insert(dto);
+                int idMember = _memberService.Add(dto);
                 dto.IdMember = idMember;
                 return new CreatedResult("/api/Member", dto);
             }
@@ -48,21 +48,21 @@ namespace Bugtracker.API.ASP.Controllers
         // TODO : Vérifier si j'ai vraiment besoin de récupérer l'id depuis la route
         [HttpDelete]
         [Route("{id:int}")]
-        public IActionResult Delete([FromRoute]int id)
+        public IActionResult Remove([FromRoute]int id)
         {
-            bool isMemberDeleted = _memberService.Delete(id);
-            if (!isMemberDeleted)
+            bool isMemberRemoved = _memberService.Remove(id);
+            if (!isMemberRemoved)
                 return BadRequest();
             else
                 return NoContent();
         }
         [HttpPut]
         [Route("{id:int}")]
-        public IActionResult Update([FromRoute] int id, MemberDto dto)
+        public IActionResult Edit([FromRoute] int id, MemberDto dto)
         {
             try
             {
-                if (_memberService.Update(id, dto))
+                if (_memberService.Edit(id, dto))
                     return NoContent();
                 else
                     return new BadRequestObjectResult(dto);

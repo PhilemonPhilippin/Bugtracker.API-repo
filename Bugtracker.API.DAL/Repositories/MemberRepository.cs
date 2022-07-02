@@ -35,7 +35,7 @@ namespace Bugtracker.API.DAL.Repositories
             Command cmd = new Command("PPSP_ReadAllMembers", true);
             return _Connection.ExecuteReader(cmd, MapRecordToEntity);
         }
-        public int Insert(MemberEntity entity)
+        public int Add(MemberEntity entity)
         {
             Command cmd = new Command("PPSP_CreateMember", true);
             cmd.AddParameter("Pseudo", entity.Pseudo);
@@ -60,13 +60,13 @@ namespace Bugtracker.API.DAL.Repositories
 
 
         }
-        public bool Delete(int id)
+        public bool Remove(int id)
         {
             Command cmd = new Command("PPSP_DeleteMember", true);
             cmd.AddParameter("Id_Member", id);
             return _Connection.ExecuteNonQuery(cmd) == 1;
         }
-        public bool Update(int id, MemberEntity entity)
+        public bool Edit(int id, MemberEntity entity)
         {
             Command cmd = new Command("PPSP_UpdateMember", true);
             cmd.AddParameter("Id_Member", id);

@@ -10,8 +10,8 @@ namespace Bugtracker.API.BLL.Interfaces
     {
         IEnumerable<TDto> GetAll();
         TDto GetById(TKey id);
-        TKey Insert(TDto dto);
-        bool Delete(TKey id);
-        bool Update(TKey id, TDto dto);
+        TKey Add(TDto dto);
+        bool Remove(TKey id);
+        bool Edit(TKey id, TDto dto);
     }
 }

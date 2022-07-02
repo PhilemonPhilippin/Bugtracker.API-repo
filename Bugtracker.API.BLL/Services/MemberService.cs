@@ -32,27 +32,27 @@ namespace Bugtracker.API.BLL.Services
             else
                 return entity.ToDto();
         }
-        public int Insert(MemberDto member)
+        public int Add(MemberDto member)
         {
             try
             {
-                return _memberRepository.Insert(member.ToEntity());
+                return _memberRepository.Add(member.ToEntity());
             }
             catch
             {
                 throw;
             }
         }
-        public bool Delete(int id)
+        public bool Remove(int id)
         {
-            return _memberRepository.Delete(id);
+            return _memberRepository.Remove(id);
         }
 
         public bool Update(int id, MemberDto dto)
         {
             try
             {
-                return _memberRepository.Update(id, dto.ToEntity());
+                return _memberRepository.Edit(id, dto.ToEntity());
             }
             catch
             {

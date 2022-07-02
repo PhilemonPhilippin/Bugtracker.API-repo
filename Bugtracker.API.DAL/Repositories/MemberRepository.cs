@@ -43,7 +43,7 @@ namespace Bugtracker.API.DAL.Repositories
             cmd.AddParameter("Pswd_Hash", entity.PswdHash);
             cmd.AddParameter("Firstname", entity.Firstname);
             cmd.AddParameter("Lastname", entity.Lastname);
-            int idInserted = 0;
+            int idInserted;
             try
             {
                 idInserted = (int)_Connection.ExecuteScalar(cmd);
@@ -81,7 +81,16 @@ namespace Bugtracker.API.DAL.Repositories
             cmd.AddParameter("Pswd_Hash", entity.PswdHash);
             cmd.AddParameter("Firstname", entity.Firstname);
             cmd.AddParameter("Lastname", entity.Lastname);
-            return _Connection.ExecuteNonQuery(cmd) == 1;
+            bool isUpdated;
+            try
+            {
+                isUpdated = _Connection.ExecuteNonQuery(cmd) == 1;
+            }
+            catch
+            {
+                throw;
+            }
+            return isUpdated;
         }
     }
 }

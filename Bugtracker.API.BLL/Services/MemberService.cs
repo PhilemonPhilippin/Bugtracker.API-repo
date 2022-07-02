@@ -33,28 +33,16 @@ namespace Bugtracker.API.BLL.Services
         //    MemberDto member = _memberRepository.GetByLogin(login).ToDto();
         //    return member;
         //}
-        public MemberDto Insert(MemberDto member)
+        public int Insert(MemberDto member)
         {
-            int idMember = 0;
             try
             {
-                idMember = _memberRepository.Insert(member.ToEntity());
+                return _memberRepository.Insert(member.ToEntity());
             }
-            catch (Exception ex)
+            catch
             {
-                Console.WriteLine("Exception message: " + ex.Message);
-                string exMessage = ex.Message;
-                if (exMessage.Contains("Violation of UNIQUE KEY constraint 'UK_Member__Pseudo'."))
-                {
-                    idMember = -1;
-                }
-                else if (exMessage.Contains("Violation of UNIQUE KEY constraint 'UK_Member__Email'."))
-                {
-                    idMember = -2;
-                }
+                throw;
             }
-            member.IdMember = idMember;
-            return member;
         }
         public bool Delete(int id)
         {
@@ -63,7 +51,17 @@ namespace Bugtracker.API.BLL.Services
 
         public bool Update(int id, MemberDto dto)
         {
-            return _memberRepository.Update(id, dto.ToEntity());
+            //return _memberRepository.Update(id, dto.ToEntity());
+            bool isUpdated = false;
+            try
+            {
+                isUpdated = _memberRepository.Update(id, dto.ToEntity());
+            }
+            catch
+            {
+                throw;
+            }
+            return isUpdated;
         }
 
     }

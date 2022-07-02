@@ -30,11 +30,17 @@ namespace Bugtracker.API.ASP.Controllers
         [HttpPost]
         public IActionResult Insert(MemberDto dto)
         {
-            MemberDto member = _memberService.Insert(dto);
-            if (member.IdMember == -1 || member.IdMember == -2)
-                return new BadRequestObjectResult(dto);
-            else
+            try
+            {
+                int idMember = _memberService.Insert(dto);
+                dto.IdMember = idMember;
                 return new CreatedResult("/api/Member", dto);
+            }
+            catch (Exception ex) 
+            {
+                string exMessage = ex.Message;
+                return BadRequest(exMessage);
+            }
         }
         // TODO : Vérifier si j'ai vraiment besoin de récupérer l'id depuis la route
         [HttpDelete]

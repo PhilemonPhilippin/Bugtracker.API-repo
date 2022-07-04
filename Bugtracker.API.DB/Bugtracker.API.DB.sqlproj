@@ -69,6 +69,8 @@
     <Build Include="StoredProcedures\MemberProcedures\PPSP_CreateMember.sql" />
     <Build Include="StoredProcedures\MemberProcedures\PPSP_DeleteMember.sql" />
     <Build Include="StoredProcedures\MemberProcedures\PPSP_UpdateMember.sql" />
+    <Build Include="StoredProcedures\MemberProcedures\PPSP_CheckExistingMemberPseudo.sql" />
+    <Build Include="StoredProcedures\MemberProcedures\PPSP_CheckExistingMemberEmail.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Seed.sql" />

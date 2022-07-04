@@ -1,4 +1,5 @@
-﻿using Bugtracker.API.BLL.DataTransferObjects;
+﻿using Bugtracker.API.BLL.CustomExceptions;
+using Bugtracker.API.BLL.DataTransferObjects;
 using Bugtracker.API.BLL.Interfaces;
 using Bugtracker.API.BLL.Mappers;
 using Bugtracker.API.DAL.Entities;
@@ -35,16 +36,26 @@ namespace Bugtracker.API.BLL.Services
         }
         public int Add(MemberDto member)
         {
-            try
-            {
-                string memberHashedPswd = Argon2.Hash(member.PswdHash);
-                member.PswdHash = memberHashedPswd;
-                return _memberRepository.Add(member.ToEntity());
-            }
-            catch
-            {
-                throw;
-            }
+            bool pseudoExist = false;
+            bool emailExist = false;
+
+            if (_memberRepository.CheckExistingPseudo(member.Pseudo))
+                pseudoExist = true;
+
+            if (_memberRepository.CheckExistingEmail(member.Email))
+                emailExist = true;
+
+            if (pseudoExist && emailExist)
+                throw new MemberException("Pseudo and Email already exist.");
+            else if (pseudoExist)
+                throw new MemberException("Pseudo already exists.");
+            else if (emailExist)
+                throw new MemberException("Email already exists.");
+
+
+            string memberHashedPswd = Argon2.Hash(member.PswdHash);
+            member.PswdHash = memberHashedPswd;
+            return _memberRepository.Add(member.ToEntity());
         }
         public bool Remove(int id)
         {

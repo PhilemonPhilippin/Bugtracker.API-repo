@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Bugtracker.API.BLL.DataTransferObjects;
 using System.Diagnostics.Metrics;
 using Isopoh.Cryptography.Argon2;
+using Bugtracker.API.BLL.CustomExceptions;
 
 namespace Bugtracker.API.ASP.Controllers
 {
@@ -41,9 +42,9 @@ namespace Bugtracker.API.ASP.Controllers
                 dto.IdMember = idMember;
                 return new CreatedResult("/api/Member", dto);
             }
-            catch (Exception ex) 
+            catch (MemberException exception) 
             {
-                return BadRequest(ex.Message);
+                return BadRequest(exception.Message);
             }
         }
         // TODO : Vérifier si j'ai vraiment besoin de récupérer l'id depuis la route

@@ -43,14 +43,7 @@ namespace Bugtracker.API.DAL.Repositories
             cmd.AddParameter("Pswd_Hash", entity.PswdHash);
             cmd.AddParameter("Firstname", entity.Firstname);
             cmd.AddParameter("Lastname", entity.Lastname);
-            try
-            {
-                return (int)_Connection.ExecuteScalar(cmd);
-            }
-            catch
-            {
-                throw;
-            }
+            return (int)_Connection.ExecuteScalar(cmd);
         }
         public MemberEntity GetById(int id)
         {
@@ -83,6 +76,18 @@ namespace Bugtracker.API.DAL.Repositories
             {
                 throw;
             }
+        }
+        public bool CheckExistingPseudo(string pseudo)
+        {
+            Command cmd = new Command("PPSP_CheckExistingMemberPseudo", true);
+            cmd.AddParameter("Pseudo", pseudo);
+            return (int)_Connection.ExecuteScalar(cmd) > 0;
+        }
+        public bool CheckExistingEmail(string email)
+        {
+            Command cmd = new Command("PPSP_CheckExistingMemberEmail", true);
+            cmd.AddParameter("Email", email);
+            return (int)_Connection.ExecuteScalar(cmd) > 0;
         }
     }
 }

@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Bugtracker.API.DAL\Bugtracker.API.DAL.csproj" />
-    <ProjectReference Include="..\Bugtracker.API.Shared\Bugtracker.API.Shared.csproj" />
   </ItemGroup>
 
 </Project>

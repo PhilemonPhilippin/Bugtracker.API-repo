@@ -13,8 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bugtracker.API.BLL", "Bugtr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bugtracker.API.ASP", "Bugtracker.API.ASP\Bugtracker.API.ASP.csproj", "{BFCBFDD8-DD87-4E54-B8CE-003AB1522160}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bugtracker.API.Shared", "Bugtracker.API.Shared\Bugtracker.API.Shared.csproj", "{F682F47D-66A5-42A2-8CA1-172BA5E11E03}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,10 +41,6 @@ Global
 		{BFCBFDD8-DD87-4E54-B8CE-003AB1522160}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFCBFDD8-DD87-4E54-B8CE-003AB1522160}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFCBFDD8-DD87-4E54-B8CE-003AB1522160}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F682F47D-66A5-42A2-8CA1-172BA5E11E03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F682F47D-66A5-42A2-8CA1-172BA5E11E03}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F682F47D-66A5-42A2-8CA1-172BA5E11E03}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F682F47D-66A5-42A2-8CA1-172BA5E11E03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

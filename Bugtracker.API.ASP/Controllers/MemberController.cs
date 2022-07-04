@@ -37,8 +37,6 @@ namespace Bugtracker.API.ASP.Controllers
         {
             try
             {
-                string dtoHashedPswd = Argon2.Hash(dto.PswdHash);
-                dto.PswdHash = dtoHashedPswd;
                 int idMember = _memberService.Add(dto);
                 dto.IdMember = idMember;
                 return new CreatedResult("/api/Member", dto);

@@ -3,6 +3,7 @@ using Bugtracker.API.BLL.Interfaces;
 using Bugtracker.API.BLL.Mappers;
 using Bugtracker.API.DAL.Entities;
 using Bugtracker.API.DAL.Interfaces;
+using Isopoh.Cryptography.Argon2;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,8 @@ namespace Bugtracker.API.BLL.Services
         {
             try
             {
+                string memberHashedPswd = Argon2.Hash(member.PswdHash);
+                member.PswdHash = memberHashedPswd;
                 return _memberRepository.Add(member.ToEntity());
             }
             catch

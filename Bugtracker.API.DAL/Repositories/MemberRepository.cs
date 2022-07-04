@@ -68,26 +68,35 @@ namespace Bugtracker.API.DAL.Repositories
             cmd.AddParameter("Pswd_Hash", entity.PswdHash);
             cmd.AddParameter("Firstname", entity.Firstname);
             cmd.AddParameter("Lastname", entity.Lastname);
-            try
-            {
-                return _Connection.ExecuteNonQuery(cmd) == 1;
-            }
-            catch
-            {
-                throw;
-            }
+            return _Connection.ExecuteNonQuery(cmd) == 1;
         }
-        public bool CheckExistingPseudo(string pseudo)
+
+        public bool MemberPseudoExist(string pseudo)
         {
-            Command cmd = new Command("PPSP_CheckExistingMemberPseudo", true);
+            Command cmd = new Command("PPSP_MemberPseudoExist", true);
             cmd.AddParameter("Pseudo", pseudo);
             return (int)_Connection.ExecuteScalar(cmd) > 0;
         }
-        public bool CheckExistingEmail(string email)
+        public bool MemberPseudoExistWithId(string pseudo, int memberId)
         {
-            Command cmd = new Command("PPSP_CheckExistingMemberEmail", true);
+            Command cmd = new Command("PPSP_MemberPseudoExistWithId", true);
+            cmd.AddParameter("Pseudo", pseudo);
+            cmd.AddParameter("Id_Member", memberId);
+            return (int)_Connection.ExecuteScalar(cmd) > 0;
+        }
+        public bool MemberEmailExist(string email)
+        {
+            Command cmd = new Command("PPSP_MemberEmailExist", true);
             cmd.AddParameter("Email", email);
             return (int)_Connection.ExecuteScalar(cmd) > 0;
         }
+        public bool MemberEmailExistWithId(string email, int memberId)
+        {
+            Command cmd = new Command("PPSP_MemberEmailExistWithId", true);
+            cmd.AddParameter("Email", email);
+            cmd.AddParameter("Id_Member", memberId);
+            return (int)_Connection.ExecuteScalar(cmd) > 0;
+        }
+
     }
 }

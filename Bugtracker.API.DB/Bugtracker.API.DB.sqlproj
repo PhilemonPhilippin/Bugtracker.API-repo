@@ -69,8 +69,10 @@
     <Build Include="StoredProcedures\MemberProcedures\PPSP_CreateMember.sql" />
     <Build Include="StoredProcedures\MemberProcedures\PPSP_DeleteMember.sql" />
     <Build Include="StoredProcedures\MemberProcedures\PPSP_UpdateMember.sql" />
-    <Build Include="StoredProcedures\MemberProcedures\PPSP_CheckExistingMemberPseudo.sql" />
-    <Build Include="StoredProcedures\MemberProcedures\PPSP_CheckExistingMemberEmail.sql" />
+    <Build Include="StoredProcedures\MemberProcedures\PPSP_MemberEmailExist.sql" />
+    <Build Include="StoredProcedures\MemberProcedures\PPSP_MemberPseudoExist.sql" />
+    <Build Include="StoredProcedures\MemberProcedures\PPSP_MemberPseudoExistWithId.sql" />
+    <Build Include="StoredProcedures\MemberProcedures\PPSP_MemberEmailExistWithId.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Seed.sql" />

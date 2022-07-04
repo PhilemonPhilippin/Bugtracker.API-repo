@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[PPSP_CheckExistingMemberEmail]
+﻿CREATE PROCEDURE [dbo].[PPSP_MemberEmailExist]
 	@Email NVARCHAR(250)
 AS
 	SELECT COUNT([Email]) FROM [Member] WHERE [Email] = @Email;

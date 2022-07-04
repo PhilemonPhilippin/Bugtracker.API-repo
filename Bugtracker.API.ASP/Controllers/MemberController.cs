@@ -67,9 +67,9 @@ namespace Bugtracker.API.ASP.Controllers
                 _memberService.Edit(id, dto);
                 return NoContent();
             }
-            catch (Exception ex)
+            catch (MemberException exception)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(exception.Message);
             }
         }
     }

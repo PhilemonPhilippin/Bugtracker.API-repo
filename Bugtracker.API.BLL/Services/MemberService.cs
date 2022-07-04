@@ -7,6 +7,7 @@ using Bugtracker.API.DAL.Interfaces;
 using Isopoh.Cryptography.Argon2;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,16 +63,27 @@ namespace Bugtracker.API.BLL.Services
             return _memberRepository.Remove(id);
         }
 
-        public bool Edit(int id, MemberDto dto)
+        public bool Edit(int id, MemberDto member)
         {
-            try
-            {
-                return _memberRepository.Edit(id, dto.ToEntity());
-            }
-            catch
-            {
-                throw;
-            }
+            bool pseudoExist = false;
+            bool emailExist = false;
+
+            if (_memberRepository.CheckExistingPseudo(member.Pseudo))
+                pseudoExist = true;
+
+            if (_memberRepository.CheckExistingEmail(member.Email))
+                emailExist = true;
+
+            if (pseudoExist && emailExist)
+                throw new MemberException("Pseudo and Email already exist.");
+            else if (pseudoExist)
+                throw new MemberException("Pseudo already exists.");
+            else if (emailExist)
+                throw new MemberException("Email already exists.");
+
+
+            return _memberRepository.Edit(id, member.ToEntity());
+           
         }
 
     }

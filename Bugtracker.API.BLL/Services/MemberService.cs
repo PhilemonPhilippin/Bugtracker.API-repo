@@ -31,7 +31,7 @@ namespace Bugtracker.API.BLL.Services
         {
             MemberEntity memberEntity = _memberRepository.GetById(id);
             if (memberEntity is null)
-                throw new MemberException("Member id not found.");
+                return null;
             else
                 return memberEntity.ToDto();
         }

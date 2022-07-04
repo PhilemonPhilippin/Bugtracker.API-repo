@@ -5,6 +5,7 @@ using Bugtracker.API.BLL.DataTransferObjects;
 using System.Diagnostics.Metrics;
 using Isopoh.Cryptography.Argon2;
 using Bugtracker.API.BLL.CustomExceptions;
+using System;
 
 namespace Bugtracker.API.ASP.Controllers
 {
@@ -27,16 +28,11 @@ namespace Bugtracker.API.ASP.Controllers
         [Route("{id:int}")]
         public IActionResult GetById([FromRoute]int id)
         {
-            try
-            {
-                MemberDto memberDto = _memberService.GetById(id);
+            MemberDto memberDto = _memberService.GetById(id);
+            if (memberDto is null)
+                return NotFound("Member id not found.");
+            else
                 return Ok(memberDto);
-            }
-            catch(MemberException exception)
-            {
-                return NotFound(exception.Message);
-            }
-                
         }
         [HttpPost]
         public IActionResult Add(MemberDto memberDto)
@@ -59,7 +55,7 @@ namespace Bugtracker.API.ASP.Controllers
         {
             bool isMemberRemoved = _memberService.Remove(id);
             if (!isMemberRemoved)
-                return BadRequest();
+                return BadRequest("Member id not found.");
             else
                 return NoContent();
         }

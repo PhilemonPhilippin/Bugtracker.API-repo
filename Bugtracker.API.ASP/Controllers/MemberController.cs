@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Bugtracker.API.BLL.DataTransferObjects;
 using System.Diagnostics.Metrics;
+using Isopoh.Cryptography.Argon2;
 
 namespace Bugtracker.API.ASP.Controllers
 {
@@ -36,6 +37,8 @@ namespace Bugtracker.API.ASP.Controllers
         {
             try
             {
+                string dtoHashedPswd = Argon2.Hash(dto.PswdHash);
+                dto.PswdHash = dtoHashedPswd;
                 int idMember = _memberService.Add(dto);
                 dto.IdMember = idMember;
                 return new CreatedResult("/api/Member", dto);

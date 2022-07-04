@@ -31,7 +31,7 @@ namespace Bugtracker.API.BLL.Services
         {
             MemberEntity memberEntity = _memberRepository.GetById(id);
             if (memberEntity is null)
-                return null;
+                throw new MemberException("Member id not found.");
             else
                 return memberEntity.ToDto();
         }
@@ -76,6 +76,7 @@ namespace Bugtracker.API.BLL.Services
                 if (_memberRepository.MemberEmailExist(memberDto.Email))
                     emailExist = true;
             }
+
             if (pseudoExist && emailExist)
                 throw new MemberException("Pseudo and Email already exist.");
 

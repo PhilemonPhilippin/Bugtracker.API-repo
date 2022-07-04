@@ -27,20 +27,25 @@ namespace Bugtracker.API.ASP.Controllers
         [Route("{id:int}")]
         public IActionResult GetById([FromRoute]int id)
         {
-            MemberDto dto = _memberService.GetById(id);
-            if (dto is null)
-                return NotFound();
-            else
-                return Ok(_memberService.GetById(id));
+            try
+            {
+                MemberDto memberDto = _memberService.GetById(id);
+                return Ok(memberDto);
+            }
+            catch(MemberException exception)
+            {
+                return NotFound(exception.Message);
+            }
+                
         }
         [HttpPost]
-        public IActionResult Add(MemberDto dto)
+        public IActionResult Add(MemberDto memberDto)
         {
             try
             {
-                int idMember = _memberService.Add(dto);
-                dto.IdMember = idMember;
-                return new CreatedResult("/api/Member", dto);
+                int idMember = _memberService.Add(memberDto);
+                memberDto.IdMember = idMember;
+                return new CreatedResult("/api/Member", memberDto);
             }
             catch (MemberException exception) 
             {
@@ -60,11 +65,11 @@ namespace Bugtracker.API.ASP.Controllers
         }
         [HttpPut]
         [Route("{id:int}")]
-        public IActionResult Edit([FromRoute] int id, MemberDto dto)
+        public IActionResult Edit([FromRoute] int id, MemberDto memberDto)
         {
             try
             {
-                _memberService.Edit(id, dto);
+                _memberService.Edit(id, memberDto);
                 return NoContent();
             }
             catch (MemberException exception)

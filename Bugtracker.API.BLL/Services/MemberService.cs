@@ -35,6 +35,25 @@ namespace Bugtracker.API.BLL.Services
             else
                 return memberEntity.ToDto();
         }
+        private MemberEntity GetByPseudo(string pseudo)
+        {
+            MemberEntity memberEntity = _memberRepository.GetByPseudo(pseudo);
+            if (memberEntity is null)
+                throw new MemberException("Pseudo not found.");
+            else
+                return memberEntity;
+        }
+        public MemberDto TryToLogin(MemberLoginDto memberLoginDto)
+        {
+            MemberEntity memberEntity = GetByPseudo(memberLoginDto.Pseudo);
+  
+            bool isPasswordCorrect = Argon2.Verify(memberEntity.PswdHash, memberLoginDto.Password);
+            if (!isPasswordCorrect)
+                throw new MemberException("Password incorrect.");
+            else
+                return memberEntity.ToDto();
+        }
+
         public int Add(MemberDto memberDto)
         {
             IfExistThrowException(memberDto);

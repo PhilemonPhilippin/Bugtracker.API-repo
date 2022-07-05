@@ -13,5 +13,7 @@ namespace Bugtracker.API.DAL.Interfaces
         bool MemberPseudoExistWithId(string pseudo, int memberId);
         bool MemberEmailExist(string email);
         bool MemberEmailExistWithId(string email, int memberId);
+
+        MemberEntity GetByPseudo(string pseudo);
     }
 }

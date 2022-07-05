@@ -53,6 +53,12 @@ namespace Bugtracker.API.DAL.Repositories
 
 
         }
+        public MemberEntity GetByPseudo(string pseudo)
+        {
+            Command cmd = new Command("PPSP_ReadMemberByPseudo", true);
+            cmd.AddParameter("Pseudo", pseudo);
+            return _Connection.ExecuteReader(cmd, MapRecordToEntity).SingleOrDefault();
+        }
         public bool Remove(int id)
         {
             Command cmd = new Command("PPSP_DeleteMember", true);

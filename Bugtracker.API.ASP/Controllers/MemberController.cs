@@ -6,6 +6,8 @@ using System.Diagnostics.Metrics;
 using Isopoh.Cryptography.Argon2;
 using Bugtracker.API.BLL.CustomExceptions;
 using System;
+using Bugtracker.API.ASP.ApiModels.MemberApiModels;
+using Bugtracker.API.ASP.ApiMappers.MemberApiMappers;
 
 namespace Bugtracker.API.ASP.Controllers
 {
@@ -76,5 +78,23 @@ namespace Bugtracker.API.ASP.Controllers
                 return BadRequest(exception.Message);
             }
         }
+        [HttpPost]
+        [Route("login")]
+        public IActionResult TryToLogin(MemberLoginModel memberLoginModel)
+        {
+            try
+            {
+                MemberDto memberDto = _memberService.TryToLogin(memberLoginModel.ToLoginDto());
+                return Ok(memberDto);
+            }
+            catch (MemberException exception) 
+            {
+                return BadRequest(exception.Message);
+            }
+            
+        }
+        
+        
     }
+    
 }

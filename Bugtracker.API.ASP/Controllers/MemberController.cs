@@ -65,8 +65,11 @@ namespace Bugtracker.API.ASP.Controllers
         {
             try
             {
-                _memberService.Edit(id, memberDto);
-                return NoContent();
+                bool isEdited = _memberService.Edit(id, memberDto);
+                if (!isEdited)
+                    return BadRequest("Member id not found.");
+                else
+                    return NoContent();
             }
             catch (MemberException exception)
             {

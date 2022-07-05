@@ -27,10 +27,11 @@ namespace Bugtracker.API.BLL.Tools
         {
             SymmetricSecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secret));
             SigningCredentials credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha512);
+
             Claim[] myClaims = new Claim[]
             {
                 new Claim(ClaimTypes.Sid, memberDto.IdMember.ToString()),
-                new Claim(ClaimTypes.Name, memberDto.Pseudo.ToString())
+                new Claim(ClaimTypes.Name, memberDto.Pseudo)
             };
 
             SecurityTokenDescriptor descriptor = new SecurityTokenDescriptor

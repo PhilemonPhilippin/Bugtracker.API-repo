@@ -8,6 +8,8 @@ using Bugtracker.API.BLL.CustomExceptions;
 using System;
 using Bugtracker.API.ASP.ApiModels.MemberApiModels;
 using Bugtracker.API.ASP.ApiMappers.MemberApiMappers;
+using Bugtracker.API.BLL.Tools;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Bugtracker.API.ASP.Controllers
 {
@@ -16,6 +18,7 @@ namespace Bugtracker.API.ASP.Controllers
     public class MemberController : ControllerBase
     {
         private IMemberService _memberService;
+        
 
         public MemberController(IMemberService memberService)
         {
@@ -78,14 +81,15 @@ namespace Bugtracker.API.ASP.Controllers
                 return BadRequest(exception.Message);
             }
         }
+        [AllowAnonymous]
         [HttpPost]
         [Route("login")]
         public IActionResult TryToLogin(MemberLoginModel memberLoginModel)
         {
             try
             {
-                MemberDto memberDto = _memberService.TryToLogin(memberLoginModel.ToLoginDto());
-                return Ok(memberDto);
+                ConnectedMemberDto connectedMember = _memberService.TryToLogin(memberLoginModel.ToLoginDto());
+                return Ok(connectedMember);
             }
             catch (MemberException exception) 
             {

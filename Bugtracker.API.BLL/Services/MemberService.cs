@@ -2,6 +2,7 @@
 using Bugtracker.API.BLL.DataTransferObjects;
 using Bugtracker.API.BLL.Interfaces;
 using Bugtracker.API.BLL.Mappers;
+using Bugtracker.API.BLL.Tools;
 using Bugtracker.API.DAL.Entities;
 using Bugtracker.API.DAL.Interfaces;
 using Isopoh.Cryptography.Argon2;
@@ -17,10 +18,12 @@ namespace Bugtracker.API.BLL.Services
     public class MemberService : IMemberService
     {
         private IMemberRepository _memberRepository;
+        private JwtManager _jwtManager;
 
-        public MemberService(IMemberRepository memberRepository)
+        public MemberService(JwtManager jwtManager, IMemberRepository memberRepository)
         {
             _memberRepository = memberRepository;
+            _jwtManager = jwtManager;
         }
 
         public IEnumerable<MemberDto> GetAll()
@@ -43,15 +46,20 @@ namespace Bugtracker.API.BLL.Services
             else
                 return memberEntity;
         }
-        public MemberDto TryToLogin(MemberLoginDto memberLoginDto)
+        public ConnectedMemberDto TryToLogin(MemberLoginDto loginDto)
         {
-            MemberEntity memberEntity = GetByPseudo(memberLoginDto.Pseudo);
+            MemberEntity memberEntity = GetByPseudo(loginDto.Pseudo);
   
-            bool isPasswordCorrect = Argon2.Verify(memberEntity.PswdHash, memberLoginDto.Password);
+            bool isPasswordCorrect = Argon2.Verify(memberEntity.PswdHash, loginDto.Password);
             if (!isPasswordCorrect)
                 throw new MemberException("Password incorrect.");
             else
-                return memberEntity.ToDto();
+            {
+                MemberDto memberDto = memberEntity.ToDto();
+                string token = _jwtManager.GenerateToken(memberDto);
+                ConnectedMemberDto connectedMember = memberDto.ToConnectedDto(token);
+                return connectedMember;
+            }
         }
 
         public int Add(MemberDto memberDto)

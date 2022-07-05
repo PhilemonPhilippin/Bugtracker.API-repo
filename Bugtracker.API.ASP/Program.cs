@@ -1,6 +1,7 @@
 using Bugtracker.API.ADO;
 using Bugtracker.API.BLL.Interfaces;
 using Bugtracker.API.BLL.Services;
+using Bugtracker.API.BLL.Tools;
 using Bugtracker.API.DAL.Interfaces;
 using Bugtracker.API.DAL.Repositories;
 
@@ -8,6 +9,9 @@ using Bugtracker.API.DAL.Repositories;
 var BugtrackerWasmCorsPolicy = "_BugtrackerWasmCorsPolicy";
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Services.AddSingleton<JwtManager>();
 
 builder.Services.AddCors(options =>
 {
@@ -29,7 +33,7 @@ builder.Services.AddSwaggerGen();
 // Config injection
 builder.Services.AddTransient<Connection>((service) =>
 {
-    return new Connection(builder.Configuration.GetConnectionString("CockxConnectionString"));
+    return new Connection(builder.Configuration.GetConnectionString("HerseConnectionString"));
 });
 
 // DAL

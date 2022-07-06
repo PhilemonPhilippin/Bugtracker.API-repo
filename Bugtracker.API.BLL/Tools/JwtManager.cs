@@ -31,12 +31,13 @@ namespace Bugtracker.API.BLL.Tools
             Claim[] myClaims = new Claim[]
             {
                 new Claim(ClaimTypes.Sid, memberDto.IdMember.ToString()),
-                new Claim(ClaimTypes.Name, memberDto.Pseudo)
+                new Claim(ClaimTypes.Email, memberDto.Email)
             };
 
             SecurityTokenDescriptor descriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(myClaims),
+                Expires = DateTime.UtcNow.AddDays(7),
                 Issuer = _issuer,
                 Audience = _audience,
                 SigningCredentials = credentials

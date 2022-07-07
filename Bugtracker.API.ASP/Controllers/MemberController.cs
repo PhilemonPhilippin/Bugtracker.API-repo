@@ -30,6 +30,7 @@ namespace Bugtracker.API.ASP.Controllers
         {
             return Ok(_memberService.GetAll());
         }
+        [Authorize("isConnected")]
         [HttpGet]
         [Route("{id:int}")]
         public IActionResult GetById([FromRoute]int id)
@@ -40,6 +41,7 @@ namespace Bugtracker.API.ASP.Controllers
             else
                 return Ok(memberDto);
         }
+        [AllowAnonymous]
         [HttpPost]
         public IActionResult Add(MemberDto memberDto)
         {
@@ -55,6 +57,7 @@ namespace Bugtracker.API.ASP.Controllers
             }
         }
         // TODO : Vérifier si j'ai vraiment besoin de récupérer l'id depuis la route
+        [Authorize("isConnected")]
         [HttpDelete]
         [Route("{id:int}")]
         public IActionResult Remove([FromRoute]int id)
@@ -65,6 +68,7 @@ namespace Bugtracker.API.ASP.Controllers
             else
                 return NoContent();
         }
+        [Authorize("isConnected")]
         [HttpPut]
         [Route("{id:int}")]
         public IActionResult Edit([FromRoute] int id, MemberDto memberDto)

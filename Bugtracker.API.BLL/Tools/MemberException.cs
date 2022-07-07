@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bugtracker.API.BLL.CustomExceptions
+namespace Bugtracker.API.BLL.Tools
 {
     public class MemberException : Exception
     {
@@ -13,6 +13,5 @@ namespace Bugtracker.API.BLL.CustomExceptions
         {
 
         }
-
     }
 }

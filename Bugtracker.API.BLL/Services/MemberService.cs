@@ -1,5 +1,4 @@
-﻿using Bugtracker.API.BLL.CustomExceptions;
-using Bugtracker.API.BLL.DataTransferObjects;
+﻿using Bugtracker.API.BLL.DataTransferObjects;
 using Bugtracker.API.BLL.Interfaces;
 using Bugtracker.API.BLL.Mappers;
 using Bugtracker.API.BLL.Tools;

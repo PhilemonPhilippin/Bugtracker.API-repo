@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Bugtracker.API.BLL.DataTransferObjects;
 using System.Diagnostics.Metrics;
 using Isopoh.Cryptography.Argon2;
-using Bugtracker.API.BLL.CustomExceptions;
 using System;
 using Bugtracker.API.ASP.ApiModels.MemberApiModels;
 using Bugtracker.API.ASP.ApiMappers.MemberApiMappers;
@@ -29,7 +28,11 @@ namespace Bugtracker.API.ASP.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok(_memberService.GetAll());
+            IEnumerable<MemberDto> allMembers = _memberService.GetAll();
+            if (allMembers.Count() == 0)
+                return BadRequest("Members list empty or not found.");
+            else
+                return Ok(allMembers);
         }
 
         [Authorize("isConnected")]

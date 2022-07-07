@@ -15,4 +15,8 @@
     <ProjectReference Include="..\Bugtracker.API.BLL\Bugtracker.API.BLL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ApiMappers\MemberApiMappers\" />
+  </ItemGroup>
+
 </Project>

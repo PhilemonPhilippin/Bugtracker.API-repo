@@ -6,9 +6,9 @@ using System.Diagnostics.Metrics;
 using Isopoh.Cryptography.Argon2;
 using System;
 using Bugtracker.API.ASP.ApiModels.MemberApiModels;
-using Bugtracker.API.ASP.ApiMappers.MemberApiMappers;
 using Bugtracker.API.BLL.Tools;
 using Microsoft.AspNetCore.Authorization;
+using Bugtracker.API.ASP.ApiMappers;
 
 namespace Bugtracker.API.ASP.Controllers
 {
@@ -23,14 +23,13 @@ namespace Bugtracker.API.ASP.Controllers
             _memberService = memberService;
         }
 
-        // TODO : Renvoyer un NotFound() ou autre si la liste de membres est vide.
         [Authorize("isConnected")]
         [HttpGet]
         public IActionResult GetAll()
         {
             IEnumerable<MemberDto> allMembers = _memberService.GetAll();
             if (allMembers.Count() == 0)
-                return BadRequest("Members list empty or not found.");
+                return NotFound("Members list empty or not found.");
             else
                 return Ok(allMembers);
         }
@@ -61,6 +60,7 @@ namespace Bugtracker.API.ASP.Controllers
                 return NoContent();
         }
 
+        // TODO : éventuellement retirer l'ID from route
         [Authorize("isConnected")]
         [HttpPut]
         [Route("{id:int}")]

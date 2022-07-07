@@ -1,10 +1,18 @@
 ﻿using Bugtracker.API.ASP.ApiModels.MemberApiModels;
 using Bugtracker.API.BLL.DataTransferObjects;
 
-namespace Bugtracker.API.ASP.ApiMappers.MemberApiMappers
+namespace Bugtracker.API.ASP.ApiMappers
 {
-    internal static class MemberEditMapper
+    internal static class MemberApiMapper
     {
+        public static MemberLoginDto ToDto(this MemberLoginModel loginModel)
+        {
+            return new MemberLoginDto()
+            {
+                Pseudo = loginModel.Pseudo,
+                Password = loginModel.Password
+            };
+        }
         public static MemberEditDto ToEditDto(this MemberEditModel editModel)
         {
             return new MemberEditDto()

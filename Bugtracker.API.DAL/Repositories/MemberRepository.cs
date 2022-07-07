@@ -83,11 +83,11 @@ namespace Bugtracker.API.DAL.Repositories
             cmd.AddParameter("Pseudo", pseudo);
             return (int)_Connection.ExecuteScalar(cmd) > 0;
         }
-        public bool MemberPseudoExistWithId(string pseudo, int memberId)
+        public bool MemberPseudoExistWithId(string pseudo, int id)
         {
             Command cmd = new Command("PPSP_MemberPseudoExistWithId", true);
             cmd.AddParameter("Pseudo", pseudo);
-            cmd.AddParameter("Id_Member", memberId);
+            cmd.AddParameter("Id_Member", id);
             return (int)_Connection.ExecuteScalar(cmd) > 0;
         }
         public bool MemberEmailExist(string email)
@@ -96,11 +96,11 @@ namespace Bugtracker.API.DAL.Repositories
             cmd.AddParameter("Email", email);
             return (int)_Connection.ExecuteScalar(cmd) > 0;
         }
-        public bool MemberEmailExistWithId(string email, int memberId)
+        public bool MemberEmailExistWithId(string email, int id)
         {
             Command cmd = new Command("PPSP_MemberEmailExistWithId", true);
             cmd.AddParameter("Email", email);
-            cmd.AddParameter("Id_Member", memberId);
+            cmd.AddParameter("Id_Member", id);
             return (int)_Connection.ExecuteScalar(cmd) > 0;
         }
 

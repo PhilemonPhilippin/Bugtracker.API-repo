@@ -32,32 +32,32 @@ namespace Bugtracker.API.BLL.Services
         }
         public MemberDto GetById(int id)
         {
-            MemberEntity memberEntity = _memberRepository.GetById(id);
-            if (memberEntity is null)
+            MemberEntity entity = _memberRepository.GetById(id);
+            if (entity is null)
                 return null;
             else
-                return memberEntity.ToDto();
+                return entity.ToDto();
         }
         private MemberEntity GetByPseudo(string pseudo)
         {
-            MemberEntity memberEntity = _memberRepository.GetByPseudo(pseudo);
-            if (memberEntity is null)
+            MemberEntity entity = _memberRepository.GetByPseudo(pseudo);
+            if (entity is null)
                 throw new MemberException("Pseudo not found.");
             else
-                return memberEntity;
+                return entity;
         }
         public ConnectedMemberDto TryToLogin(MemberLoginDto loginDto)
         {
-            MemberEntity memberEntity = GetByPseudo(loginDto.Pseudo);
+            MemberEntity entity = GetByPseudo(loginDto.Pseudo);
   
-            bool isPasswordCorrect = Argon2.Verify(memberEntity.PswdHash, loginDto.Password);
+            bool isPasswordCorrect = Argon2.Verify(entity.PswdHash, loginDto.Password);
             if (!isPasswordCorrect)
                 throw new MemberException("Password incorrect.");
             else
             {
-                MemberDto memberDto = memberEntity.ToDto();
+                MemberDto memberDto = entity.ToDto();
                 string token = _jwtManager.GenerateToken(memberDto);
-                ConnectedMemberDto connectedMember = memberDto.ToConnectedDto(token);
+                ConnectedMemberDto connectedMember = memberDto.ToConnectedMember(token);
                 return connectedMember;
             }
         }

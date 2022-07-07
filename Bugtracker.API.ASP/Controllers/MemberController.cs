@@ -18,18 +18,20 @@ namespace Bugtracker.API.ASP.Controllers
     public class MemberController : ControllerBase
     {
         private IMemberService _memberService;
-        
-
+   
         public MemberController(IMemberService memberService)
         {
             _memberService = memberService;
         }
+
+        // TODO : Renvoyer un NotFound() ou autre si la liste de membres est vide.
         [Authorize("isConnected")]
         [HttpGet]
         public IActionResult GetAll()
         {
             return Ok(_memberService.GetAll());
         }
+
         [Authorize("isConnected")]
         [HttpGet]
         [Route("{id:int}")]
@@ -41,21 +43,8 @@ namespace Bugtracker.API.ASP.Controllers
             else
                 return Ok(memberDto);
         }
-        [AllowAnonymous]
-        [HttpPost]
-        public IActionResult Add(MemberDto memberDto)
-        {
-            try
-            {
-                int idMember = _memberService.Add(memberDto);
-                memberDto.IdMember = idMember;
-                return new CreatedResult("/api/Member", memberDto);
-            }
-            catch (MemberException exception) 
-            {
-                return BadRequest(exception.Message);
-            }
-        }
+
+
         // TODO : Vérifier si j'ai vraiment besoin de récupérer l'id depuis la route
         [Authorize("isConnected")]
         [HttpDelete]
@@ -68,6 +57,7 @@ namespace Bugtracker.API.ASP.Controllers
             else
                 return NoContent();
         }
+
         [Authorize("isConnected")]
         [HttpPut]
         [Route("{id:int}")]
@@ -86,14 +76,31 @@ namespace Bugtracker.API.ASP.Controllers
                 return BadRequest(exception.Message);
             }
         }
+
         [AllowAnonymous]
         [HttpPost]
-        [Route("login")]
-        public IActionResult TryToLogin(MemberLoginModel memberLoginModel)
+        public IActionResult Add(MemberDto memberDto)
         {
             try
             {
-                ConnectedMemberDto connectedMember = _memberService.TryToLogin(memberLoginModel.ToLoginDto());
+                int idMember = _memberService.Add(memberDto);
+                memberDto.IdMember = idMember;
+                return new CreatedResult("/api/Member", memberDto);
+            }
+            catch (MemberException exception)
+            {
+                return BadRequest(exception.Message);
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("login")]
+        public IActionResult TryToLogin(MemberLoginModel loginModel)
+        {
+            try
+            {
+                ConnectedMemberDto connectedMember = _memberService.TryToLogin(loginModel.ToDto());
                 return Ok(connectedMember);
             }
             catch (MemberException exception) 

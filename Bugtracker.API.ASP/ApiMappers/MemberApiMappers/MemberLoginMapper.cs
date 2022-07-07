@@ -5,21 +5,22 @@ namespace Bugtracker.API.ASP.ApiMappers.MemberApiMappers
 {
     internal static class MemberLoginMapper
     {
-        public static MemberLoginModel ToLoginModel(this MemberLoginDto memberLoginDto)
-        {
-            return new MemberLoginModel()
-            {
-                Pseudo = memberLoginDto.Pseudo,
-                Password = memberLoginDto.Password
-            };
-        }
+        // Inutilisé pour l'instant
+        //public static MemberLoginModel ToModel(this MemberLoginDto loginDto)
+        //{
+        //    return new MemberLoginModel()
+        //    {
+        //        Pseudo = loginDto.Pseudo,
+        //        Password = loginDto.Password
+        //    };
+        //}
 
-        public static MemberLoginDto ToLoginDto(this MemberLoginModel memberLoginModel)
+        public static MemberLoginDto ToDto(this MemberLoginModel loginModel)
         {
             return new MemberLoginDto()
             {
-                Pseudo = memberLoginModel.Pseudo,
-                Password = memberLoginModel.Password
+                Pseudo = loginModel.Pseudo,
+                Password = loginModel.Password
             };
         }
 

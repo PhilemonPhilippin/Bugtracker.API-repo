@@ -10,9 +10,9 @@ namespace Bugtracker.API.DAL.Interfaces
     public interface IMemberRepository : IRepository<int, MemberEntity>
     {
         bool MemberPseudoExist(string pseudo);
-        bool MemberPseudoExistWithId(string pseudo, int memberId);
+        bool MemberPseudoExistWithId(string pseudo, int id);
         bool MemberEmailExist(string email);
-        bool MemberEmailExistWithId(string email, int memberId);
+        bool MemberEmailExistWithId(string email, int id);
 
         MemberEntity GetByPseudo(string pseudo);
     }

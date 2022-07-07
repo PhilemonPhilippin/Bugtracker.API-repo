@@ -64,11 +64,11 @@ namespace Bugtracker.API.ASP.Controllers
         [Authorize("isConnected")]
         [HttpPut]
         [Route("{id:int}")]
-        public IActionResult Edit([FromRoute] int id, MemberDto memberDto)
+        public IActionResult Edit([FromRoute] int id, MemberEditModel memberEdit)
         {
             try
             {
-                bool isEdited = _memberService.Edit(id, memberDto);
+                bool isEdited = _memberService.Edit(memberEdit.ToEditDto());
                 if (!isEdited)
                     return BadRequest("Member id not found.");
                 else

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bugtracker.API.BLL.DataTransferObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,5 @@ namespace Bugtracker.API.BLL.Interfaces
         TDto GetById(TKey id);
         TKey Add(TDto dto);
         bool Remove(TKey id);
-        bool Edit(TKey id, TDto dto);
     }
 }

@@ -74,11 +74,25 @@ namespace Bugtracker.API.BLL.Services
             return _memberRepository.Remove(id);
         }
 
-        public bool Edit(int id, MemberDto memberDto)
+        public bool Edit(MemberEditDto memberEdited)
         {
+            // Getting the dto of the member i want to edit.
+            MemberEntity entity = _memberRepository.GetById(memberEdited.IdMember);
+            MemberDto memberDto;
+            if (entity is null)
+                throw new MemberException("Id not found.");
+            else
+                memberDto = entity.ToDto();
+
+            // Changing the dto i got back with edited infos.
+            memberDto.Pseudo = memberEdited.Pseudo;
+            memberDto.Email = memberEdited.Email;
+            memberDto.Firstname = memberEdited.Firstname;
+            memberDto.Lastname = memberEdited.Lastname;
+
             IfExistThrowException(memberDto, true);
 
-            return _memberRepository.Edit(id, memberDto.ToEntity());
+            return _memberRepository.Edit(memberDto.ToEntity());
            
         }
         private void IfExistThrowException(MemberDto memberDto, bool checkWithId = false)

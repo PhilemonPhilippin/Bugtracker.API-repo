@@ -4,6 +4,9 @@ using Bugtracker.API.BLL.Services;
 using Bugtracker.API.BLL.Tools;
 using Bugtracker.API.DAL.Interfaces;
 using Bugtracker.API.DAL.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 // Create bugtrackerapi variable for my cors
 var BugtrackerWasmCorsPolicy = "_BugtrackerWasmCorsPolicy";
@@ -23,6 +26,26 @@ builder.Services.AddCors(options =>
                           .AllowAnyMethod();
                       });
 });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("isConnected", policy => policy.RequireAuthenticatedUser());
+});
+
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetSection("JwtToken").GetSection("secret").ToString())),
+            ValidateIssuer = false,
+            ValidIssuer = builder.Configuration.GetSection("JwtToken").GetSection("issuer").Value,
+            ValidateAudience = false,
+            ValidAudience = builder.Configuration.GetSection("JwtToken").GetSection("audience").Value
+        };
+    });
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -55,6 +78,7 @@ app.UseHttpsRedirection();
 // Use the cors policy - after routing but before authorization
 app.UseCors(BugtrackerWasmCorsPolicy);
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

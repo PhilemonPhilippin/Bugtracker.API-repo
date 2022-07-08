@@ -12,6 +12,7 @@ using Bugtracker.API.ASP.ApiMappers;
 
 namespace Bugtracker.API.ASP.Controllers
 {
+    [Authorize("isConnected")]
     [Route("api/[controller]")]
     [ApiController]
     public class MemberController : ControllerBase
@@ -23,7 +24,6 @@ namespace Bugtracker.API.ASP.Controllers
             _memberService = memberService;
         }
 
-        [Authorize("isConnected")]
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -34,7 +34,6 @@ namespace Bugtracker.API.ASP.Controllers
                 return Ok(allMembers);
         }
 
-        [Authorize("isConnected")]
         [HttpGet]
         [Route("{id:int}")]
         public IActionResult GetById([FromRoute]int id)
@@ -48,7 +47,6 @@ namespace Bugtracker.API.ASP.Controllers
 
 
         // TODO : Vérifier si j'ai vraiment besoin de récupérer l'id depuis la route
-        [Authorize("isConnected")]
         [HttpDelete]
         [Route("{id:int}")]
         public IActionResult Remove([FromRoute]int id)
@@ -60,8 +58,6 @@ namespace Bugtracker.API.ASP.Controllers
                 return NoContent();
         }
 
-        // TODO : éventuellement retirer l'ID from route
-        [Authorize("isConnected")]
         [HttpPut]
         [Route("{id:int}")]
         public IActionResult Edit([FromRoute] int id, MemberEditModel memberEdit)
@@ -70,7 +66,7 @@ namespace Bugtracker.API.ASP.Controllers
             {
                 bool isEdited = _memberService.Edit(memberEdit.ToEditDto());
                 if (!isEdited)
-                    return BadRequest("Member id not found.");
+                    return NotFound("Member id not found.");
                 else
                     return NoContent();
             }
@@ -78,6 +74,16 @@ namespace Bugtracker.API.ASP.Controllers
             {
                 return BadRequest(exception.Message);
             }
+        }
+
+        [HttpPost]
+        [Route("token")]
+        public IActionResult TokenValidation(string token)
+        {
+            if (token is null)
+                return NotFound("Token not found.");
+            else
+                return Ok();
         }
 
         [AllowAnonymous]
@@ -108,9 +114,11 @@ namespace Bugtracker.API.ASP.Controllers
             }
             catch (MemberException exception) 
             {
-                return BadRequest(exception.Message);
+                if (exception.Message.Contains("Member pseudo not found."))
+                    return NotFound(exception.Message);
+                else
+                    return BadRequest(exception.Message);
             }
-            
         }
         
         

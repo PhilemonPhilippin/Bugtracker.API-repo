@@ -41,7 +41,7 @@ namespace Bugtracker.API.BLL.Services
         {
             MemberEntity entity = _memberRepository.GetByPseudo(pseudo);
             if (entity is null)
-                throw new MemberException("Pseudo not found.");
+                throw new MemberException("Member pseudo not found.");
             else
                 return entity;
         }

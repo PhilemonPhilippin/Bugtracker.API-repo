@@ -56,25 +56,26 @@ namespace Bugtracker.API.BLL.Services
             else
             {
                 MemberDto memberDto = entity.ToDto();
-                string token = _jwtManager.GenerateToken(new DataToken
+                TokenData tokenData = new TokenData()
                 {
-                    IdMember= memberDto.IdMember,
+                    IdMember = memberDto.IdMember,
                     Email = memberDto.Email
-                });
-
+                };
+                string token = _jwtManager.GenerateToken(tokenData);
                 ConnectedMemberDto connectedMember = memberDto.ToConnectedMember(token);
                 return connectedMember;
             }
         }
 
-        public ConnectedMemberDto RefreshToken(string token)
-        {
-            DataToken data = _jwtManager.GetDataFromToken(token);
-            string newToken = _jwtManager.GenerateToken(data);
-            var memberDto = GetById(data.IdMember);
-            ConnectedMemberDto connectedMember = memberDto.ToConnectedMember(newToken);
-            return connectedMember;
-        }
+        // TODO : Si je veux refresh les tokens.
+        //public ConnectedMemberDto RefreshToken(string token)
+        //{
+        //    DataToken data = _jwtManager.GetDataFromToken(token);
+        //    string newToken = _jwtManager.GenerateToken(data);
+        //    var memberDto = GetById(data.IdMember);
+        //    ConnectedMemberDto connectedMember = memberDto.ToConnectedMember(newToken);
+        //    return connectedMember;
+        //}
 
         public int Add(MemberDto memberDto)
         {

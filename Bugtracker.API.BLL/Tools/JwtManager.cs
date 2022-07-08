@@ -15,7 +15,7 @@ namespace Bugtracker.API.BLL.Tools
 {
     public class JwtManager
     {
-        public class DataToken
+        public class TokenData
         {
             public int IdMember { get; set; }
             public string Email { get; set; }
@@ -30,7 +30,7 @@ namespace Bugtracker.API.BLL.Tools
             _audience = config.GetSection("JwtToken").GetSection("audience").ToString();
             _secret = config.GetSection("JwtToken").GetSection("secret").ToString();
         }
-        public string GenerateToken(DataToken data)
+        public string GenerateToken(TokenData data)
         {
             SymmetricSecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secret));
             SigningCredentials credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha512);
@@ -55,11 +55,12 @@ namespace Bugtracker.API.BLL.Tools
             return handler.WriteToken(token);
         }
 
-        public DataToken GetDataFromToken(string token)
-        {
-            // TODO : faire cette methode
-            throw new NotImplementedException();
+        // TODO : Si je veux refresh les tokens.
+        //public DataToken GetDataFromToken(string token)
+        //{
+        //    // TODO : faire cette methode si je veux refresh les tokens
+        //    throw new NotImplementedException();
 
-        }
+        //}
     }
 }

@@ -78,17 +78,18 @@ namespace Bugtracker.API.ASP.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("token")]
-        public IActionResult RefreshToken()
-        {
-            // TODO : peut être changer ici aussi comment récupérer le token...
-            string token = HttpContext.GetTokenAsync("access_token").Result;
+        // TODO : Si je veux refresh les tokens.
+        //[HttpGet]
+        //[Route("token")]
+        //public IActionResult RefreshToken()
+        //{
+        //    // TODO : peut être changer ici aussi comment récupérer le token...
+        //    string token = HttpContext.GetTokenAsync("access_token").Result;
 
-            // TODO Change this
-            ConnectedMemberDto connectedMember = _memberService.RefreshToken(token);
-            return Ok(connectedMember);
-        }
+        //    // TODO Change this
+        //    ConnectedMemberDto connectedMember = _memberService.RefreshToken(token);
+        //    return Ok(connectedMember);
+        //}
 
         [AllowAnonymous]
         [HttpPost]

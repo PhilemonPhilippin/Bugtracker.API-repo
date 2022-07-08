@@ -14,6 +14,12 @@ namespace Bugtracker.API.BLL.Tools
 {
     public class JwtManager
     {
+        public class DataToken
+        {
+            public int IdMember { get; set; }
+            public string Email { get; set; }
+        }
+
         private string _issuer;
         private string _audience; 
         private string _secret;
@@ -23,15 +29,15 @@ namespace Bugtracker.API.BLL.Tools
             _audience = config.GetSection("JwtToken").GetSection("audience").ToString();
             _secret = config.GetSection("JwtToken").GetSection("secret").ToString();
         }
-        public string GenerateToken(MemberDto memberDto)
+        public string GenerateToken(DataToken data)
         {
             SymmetricSecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secret));
             SigningCredentials credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha512);
 
             Claim[] myClaims = new Claim[]
             {
-                new Claim(ClaimTypes.Sid, memberDto.IdMember.ToString()),
-                new Claim(ClaimTypes.Email, memberDto.Email)
+                new Claim(ClaimTypes.NameIdentifier, data.IdMember.ToString()),
+                new Claim(ClaimTypes.Email, data.Email)
             };
 
             SecurityTokenDescriptor descriptor = new SecurityTokenDescriptor
@@ -46,6 +52,11 @@ namespace Bugtracker.API.BLL.Tools
             JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
             SecurityToken token = handler.CreateToken(descriptor);
             return handler.WriteToken(token);
+        }
+
+        public DataToken GetDataFromToken(string token)
+        {
+            throw new NotImplementedException();
         }
     }
 }

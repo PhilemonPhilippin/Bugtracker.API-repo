@@ -11,6 +11,7 @@ using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Bugtracker.API.BLL.Tools.JwtManager;
 
 namespace Bugtracker.API.BLL.Services
 {
@@ -55,10 +56,24 @@ namespace Bugtracker.API.BLL.Services
             else
             {
                 MemberDto memberDto = entity.ToDto();
-                string token = _jwtManager.GenerateToken(memberDto);
+                string token = _jwtManager.GenerateToken(new JwtManager.DataToken
+                {
+                    IdMember= memberDto.IdMember,
+                    Email = memberDto.Email
+                });
+
                 ConnectedMemberDto connectedMember = memberDto.ToConnectedMember(token);
                 return connectedMember;
             }
+        }
+
+        public ConnectedMemberDto RenewToken(string token)
+        {
+            DataToken data = _jwtManager.GetDataFromToken(token);
+            string newToken = _jwtManager.GenerateToken(data);
+
+            // Return soit ConnectedMemberDto / Token / A toi de voir ;)
+            throw new NotImplementedException();
         }
 
         public int Add(MemberDto memberDto)

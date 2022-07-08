@@ -10,6 +10,7 @@ namespace Bugtracker.API.BLL.Interfaces
     public interface IMemberService : IService<int, MemberDto>
     {
         ConnectedMemberDto TryToLogin(MemberLoginDto loginDto);
+        ConnectedMemberDto RenewToken(string token);
         bool Edit(MemberEditDto memberEdited);
     }
 }

@@ -9,6 +9,8 @@ using Bugtracker.API.ASP.ApiModels.MemberApiModels;
 using Bugtracker.API.BLL.Tools;
 using Microsoft.AspNetCore.Authorization;
 using Bugtracker.API.ASP.ApiMappers;
+using Microsoft.AspNetCore.Authentication;
+using static Bugtracker.API.BLL.Tools.JwtManager;
 
 namespace Bugtracker.API.ASP.Controllers
 {
@@ -76,14 +78,15 @@ namespace Bugtracker.API.ASP.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("token")]
-        public IActionResult TokenValidation(string token)
+        public IActionResult RefresfToken()
         {
-            if (token is null)
-                return NotFound("Token not found.");
-            else
-                return Ok();
+            string? token = HttpContext.GetTokenAsync("access_token").Result;
+
+            // TODO Change this :o
+            var desTrucs = _memberService.RenewToken(token);
+            return Ok(desTrucs);
         }
 
         [AllowAnonymous]

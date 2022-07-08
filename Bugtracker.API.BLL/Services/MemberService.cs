@@ -56,7 +56,7 @@ namespace Bugtracker.API.BLL.Services
             else
             {
                 MemberDto memberDto = entity.ToDto();
-                string token = _jwtManager.GenerateToken(new JwtManager.DataToken
+                string token = _jwtManager.GenerateToken(new DataToken
                 {
                     IdMember= memberDto.IdMember,
                     Email = memberDto.Email
@@ -67,13 +67,13 @@ namespace Bugtracker.API.BLL.Services
             }
         }
 
-        public ConnectedMemberDto RenewToken(string token)
+        public ConnectedMemberDto RefreshToken(string token)
         {
             DataToken data = _jwtManager.GetDataFromToken(token);
             string newToken = _jwtManager.GenerateToken(data);
-
-            // Return soit ConnectedMemberDto / Token / A toi de voir ;)
-            throw new NotImplementedException();
+            var memberDto = GetById(data.IdMember);
+            ConnectedMemberDto connectedMember = memberDto.ToConnectedMember(newToken);
+            return connectedMember;
         }
 
         public int Add(MemberDto memberDto)

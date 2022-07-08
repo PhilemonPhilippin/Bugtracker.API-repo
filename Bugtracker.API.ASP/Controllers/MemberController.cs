@@ -80,13 +80,14 @@ namespace Bugtracker.API.ASP.Controllers
 
         [HttpGet]
         [Route("token")]
-        public IActionResult RefresfToken()
+        public IActionResult RefreshToken()
         {
-            string? token = HttpContext.GetTokenAsync("access_token").Result;
+            // TODO : peut être changer ici aussi comment récupérer le token...
+            string token = HttpContext.GetTokenAsync("access_token").Result;
 
-            // TODO Change this :o
-            var desTrucs = _memberService.RenewToken(token);
-            return Ok(desTrucs);
+            // TODO Change this
+            ConnectedMemberDto connectedMember = _memberService.RefreshToken(token);
+            return Ok(connectedMember);
         }
 
         [AllowAnonymous]

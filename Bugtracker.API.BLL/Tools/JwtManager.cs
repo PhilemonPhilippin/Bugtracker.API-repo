@@ -1,5 +1,6 @@
 ﻿using Bugtracker.API.BLL.DataTransferObjects;
 using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -56,7 +57,9 @@ namespace Bugtracker.API.BLL.Tools
 
         public DataToken GetDataFromToken(string token)
         {
+            // TODO : faire cette methode
             throw new NotImplementedException();
+
         }
     }
 }

@@ -92,7 +92,6 @@ namespace Bugtracker.API.BLL.Services
 
         public bool Edit(MemberEditDto memberEdited)
         {
-            // Getting the dto of the member i want to edit.
             MemberEntity entity = _memberRepository.GetById(memberEdited.IdMember);
             MemberDto memberDto;
             if (entity is null)
@@ -100,7 +99,7 @@ namespace Bugtracker.API.BLL.Services
             else
                 memberDto = entity.ToDto();
 
-            // Changing the dto i got back with edited infos.
+            // Changing the member dto with edited infos.
             memberDto.Pseudo = memberEdited.Pseudo;
             memberDto.Email = memberEdited.Email;
             memberDto.Firstname = memberEdited.Firstname;

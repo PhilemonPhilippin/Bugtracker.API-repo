@@ -74,6 +74,9 @@
     <Build Include="StoredProcedures\MemberProcedures\PPSP_MemberPseudoExistWithId.sql" />
     <Build Include="StoredProcedures\MemberProcedures\PPSP_MemberEmailExistWithId.sql" />
     <Build Include="StoredProcedures\MemberProcedures\PPSP_ReadMemberByPseudo.sql" />
+    <Build Include="Tables\Project.sql" />
+    <Build Include="Tables\Assign.sql" />
+    <Build Include="Tables\Ticket.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Seed.sql" />

@@ -13,6 +13,7 @@ namespace Bugtracker.API.ASP.ApiMappers
                 IdMember = memberModel.IdMember,
                 Pseudo = memberModel.Pseudo,
                 Email = memberModel.Email,
+                PswdHash = memberModel.PswdHash,
                 Firstname = memberModel.Firstname,
                 Lastname = memberModel.Lastname
             };
@@ -24,6 +25,7 @@ namespace Bugtracker.API.ASP.ApiMappers
                 IdMember = memberDto.IdMember,
                 Pseudo = memberDto.Pseudo,
                 Email = memberDto.Email,
+                PswdHash = memberDto.PswdHash,
                 Firstname = memberDto.Firstname,
                 Lastname = memberDto.Lastname
             };
@@ -35,8 +37,10 @@ namespace Bugtracker.API.ASP.ApiMappers
                 IdMember = connectedDto.IdMember,
                 Pseudo = connectedDto.Pseudo,
                 Email = connectedDto.Email,
+                PswdHash = connectedDto.PswdHash,
                 Firstname = connectedDto.Firstname,
-                Lastname = connectedDto.Lastname
+                Lastname = connectedDto.Lastname,
+                Token = connectedDto.Token
             };
         }
         public static MemberLoginDto ToLoginDto(this MemberLoginModel loginModel)

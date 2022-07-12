@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[PPSP_UpdateMember]
-	@Id_Member int,
+	@Id_Member INT,
 	@Pseudo NVARCHAR(50),
 	@Email NVARCHAR(250),
 	@Pswd_Hash NVARCHAR(100),

@@ -61,6 +61,8 @@
     <Folder Include="Tables" />
     <Folder Include="Views" />
     <Folder Include="StoredProcedures\MemberProcedures" />
+    <Folder Include="StoredProcedures\TicketProcedures" />
+    <Folder Include="StoredProcedures\ProjectProcedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Member.sql" />
@@ -77,6 +79,16 @@
     <Build Include="Tables\Project.sql" />
     <Build Include="Tables\Assign.sql" />
     <Build Include="Tables\Ticket.sql" />
+    <Build Include="StoredProcedures\ProjectProcedures\PPSP_ReadAllProjects.sql" />
+    <Build Include="StoredProcedures\ProjectProcedures\PPSP_ReadProject.sql" />
+    <Build Include="StoredProcedures\ProjectProcedures\PPSP_CreateProject.sql" />
+    <Build Include="StoredProcedures\ProjectProcedures\PPSP_DeleteProject.sql" />
+    <Build Include="StoredProcedures\ProjectProcedures\PPSP_UpdateProject.sql" />
+    <Build Include="StoredProcedures\TicketProcedures\PPSP_CreateTicket.sql" />
+    <Build Include="StoredProcedures\TicketProcedures\PPSP_DeleteTicket.sql" />
+    <Build Include="StoredProcedures\TicketProcedures\PPSP_ReadAllTickets.sql" />
+    <Build Include="StoredProcedures\TicketProcedures\PPSP_ReadTicket.sql" />
+    <Build Include="StoredProcedures\TicketProcedures\PPSP_UpdateTicket.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Seed.sql" />

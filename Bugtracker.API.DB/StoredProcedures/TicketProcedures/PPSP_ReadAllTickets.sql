@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[PPSP_ReadAllTickets]
-	@param1 int = 0,
-	@param2 int
 AS
-	SELECT @param1, @param2
+	BEGIN
+		SELECT [Id_Ticket], [Title], [Status], [Priority], [Type], [Description], [Submit_Time], [Submit_Member], [Assigned_Member], [Project] FROM [Ticket];
+	END
 RETURN 0

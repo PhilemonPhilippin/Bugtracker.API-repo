@@ -10,16 +10,14 @@ namespace Bugtracker.API.BLL.DataTransferObjects
     public class MemberDto
     {
         public int IdMember { get; set; }
-        [MaxLength(50)]
         public string Pseudo { get; set; }
-        [MaxLength(250)]
-        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
-        [DataType(DataType.Password)]
         public string PswdHash { get; set; }
-        [MaxLength(50)]
         public string? Firstname { get; set; }
-        [MaxLength(50)]
         public string? Lastname { get; set; }
+    }
+    public class ConnectedMemberDto : MemberDto
+    {
+        public string Token { get; set; }
     }
 }

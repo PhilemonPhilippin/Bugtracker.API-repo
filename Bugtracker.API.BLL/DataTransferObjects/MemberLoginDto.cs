@@ -9,9 +9,7 @@ namespace Bugtracker.API.BLL.DataTransferObjects
 {
     public class MemberLoginDto
     {
-        [MaxLength(50)]
         public string Pseudo { get; set; }
-        [DataType(DataType.Password)]
         public string Password { get; set; }
     }
 }

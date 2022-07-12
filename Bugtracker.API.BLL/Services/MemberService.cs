@@ -62,12 +62,11 @@ namespace Bugtracker.API.BLL.Services
                     Email = memberDto.Email
                 };
                 string token = _jwtManager.GenerateToken(tokenData);
-                ConnectedMemberDto connectedMember = memberDto.ToConnectedMember(token);
-                return connectedMember;
+                return memberDto.ToConnectedDto(token);
             }
         }
 
-        // TODO : Si je veux refresh les tokens.
+        // Si je veux refresh les tokens.
         //public ConnectedMemberDto RefreshToken(string token)
         //{
         //    DataToken data = _jwtManager.GetDataFromToken(token);
@@ -99,7 +98,7 @@ namespace Bugtracker.API.BLL.Services
             else
                 memberDto = entity.ToDto();
 
-            // Changing the member dto with edited infos.
+            // Changing the member dto with edited info.
             memberDto.Pseudo = memberEdited.Pseudo;
             memberDto.Email = memberEdited.Email;
             memberDto.Firstname = memberEdited.Firstname;

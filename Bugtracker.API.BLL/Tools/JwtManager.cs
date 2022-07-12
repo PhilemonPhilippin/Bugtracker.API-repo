@@ -55,10 +55,10 @@ namespace Bugtracker.API.BLL.Tools
             return handler.WriteToken(token);
         }
 
-        // TODO : Si je veux refresh les tokens.
+        // Si je veux refresh les tokens.
         //public DataToken GetDataFromToken(string token)
         //{
-        //    // TODO : faire cette methode si je veux refresh les tokens
+        // 
         //    throw new NotImplementedException();
 
         //}

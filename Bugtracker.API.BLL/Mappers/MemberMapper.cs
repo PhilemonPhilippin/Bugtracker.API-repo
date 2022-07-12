@@ -35,7 +35,7 @@ namespace Bugtracker.API.BLL.Mappers
                 Lastname = dto.Lastname
             };
         }
-        public static ConnectedMemberDto ToConnectedMember(this MemberDto dto, string token)
+        public static ConnectedMemberDto ToConnectedDto(this MemberDto dto, string token)
         {
             return new ConnectedMemberDto()
             {

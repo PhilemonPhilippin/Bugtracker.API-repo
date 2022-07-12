@@ -12,10 +12,10 @@ namespace Bugtracker.API.DAL.Repositories
 {
     public class MemberRepository : IMemberRepository
     {
-        private Connection _Connection { get; set; }
+        private Connection Connection { get; set; }
         public MemberRepository(Connection connection)
         {
-            _Connection = connection;
+            Connection = connection;
         }
 
         private MemberEntity MapRecordToEntity(IDataRecord record)
@@ -33,7 +33,7 @@ namespace Bugtracker.API.DAL.Repositories
         public IEnumerable<MemberEntity> GetAll()
         {
             Command cmd = new Command("PPSP_ReadAllMembers", true);
-            return _Connection.ExecuteReader(cmd, MapRecordToEntity);
+            return Connection.ExecuteReader(cmd, MapRecordToEntity);
         }
         public int Add(MemberEntity entity)
         {
@@ -43,13 +43,13 @@ namespace Bugtracker.API.DAL.Repositories
             cmd.AddParameter("Pswd_Hash", entity.PswdHash);
             cmd.AddParameter("Firstname", entity.Firstname);
             cmd.AddParameter("Lastname", entity.Lastname);
-            return (int)_Connection.ExecuteScalar(cmd);
+            return (int)Connection.ExecuteScalar(cmd);
         }
         public MemberEntity GetById(int id)
         {
             Command cmd = new Command("PPSP_ReadMember", true);
             cmd.AddParameter("Id_Member", id);
-            return _Connection.ExecuteReader(cmd, MapRecordToEntity).SingleOrDefault();
+            return Connection.ExecuteReader(cmd, MapRecordToEntity).SingleOrDefault();
 
 
         }
@@ -57,13 +57,13 @@ namespace Bugtracker.API.DAL.Repositories
         {
             Command cmd = new Command("PPSP_ReadMemberByPseudo", true);
             cmd.AddParameter("Pseudo", pseudo);
-            return _Connection.ExecuteReader(cmd, MapRecordToEntity).SingleOrDefault();
+            return Connection.ExecuteReader(cmd, MapRecordToEntity).SingleOrDefault();
         }
         public bool Remove(int id)
         {
             Command cmd = new Command("PPSP_DeleteMember", true);
             cmd.AddParameter("Id_Member", id);
-            return _Connection.ExecuteNonQuery(cmd) == 1;
+            return Connection.ExecuteNonQuery(cmd) == 1;
         }
         public bool Edit(MemberEntity entity)
         {
@@ -74,34 +74,34 @@ namespace Bugtracker.API.DAL.Repositories
             cmd.AddParameter("Pswd_Hash", entity.PswdHash);
             cmd.AddParameter("Firstname", entity.Firstname);
             cmd.AddParameter("Lastname", entity.Lastname);
-            return _Connection.ExecuteNonQuery(cmd) == 1;
+            return Connection.ExecuteNonQuery(cmd) == 1;
         }
 
         public bool MemberPseudoExist(string pseudo)
         {
             Command cmd = new Command("PPSP_MemberPseudoExist", true);
             cmd.AddParameter("Pseudo", pseudo);
-            return (int)_Connection.ExecuteScalar(cmd) > 0;
+            return (int)Connection.ExecuteScalar(cmd) > 0;
         }
         public bool MemberPseudoExistWithId(string pseudo, int id)
         {
             Command cmd = new Command("PPSP_MemberPseudoExistWithId", true);
             cmd.AddParameter("Pseudo", pseudo);
             cmd.AddParameter("Id_Member", id);
-            return (int)_Connection.ExecuteScalar(cmd) > 0;
+            return (int)Connection.ExecuteScalar(cmd) > 0;
         }
         public bool MemberEmailExist(string email)
         {
             Command cmd = new Command("PPSP_MemberEmailExist", true);
             cmd.AddParameter("Email", email);
-            return (int)_Connection.ExecuteScalar(cmd) > 0;
+            return (int)Connection.ExecuteScalar(cmd) > 0;
         }
         public bool MemberEmailExistWithId(string email, int id)
         {
             Command cmd = new Command("PPSP_MemberEmailExistWithId", true);
             cmd.AddParameter("Email", email);
             cmd.AddParameter("Id_Member", id);
-            return (int)_Connection.ExecuteScalar(cmd) > 0;
+            return (int)Connection.ExecuteScalar(cmd) > 0;
         }
 
     }

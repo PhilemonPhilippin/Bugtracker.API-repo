@@ -15,7 +15,7 @@ using static Bugtracker.API.BLL.Tools.JwtManager;
 
 namespace Bugtracker.API.BLL.Services
 {
-    public class MemberService : IMemberService
+    public class MemberService : IMemberService, IService<int, MemberDto>
     {
         private IMemberRepository _memberRepository;
         private JwtManager _jwtManager;

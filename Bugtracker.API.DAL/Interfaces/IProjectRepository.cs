@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Bugtracker.API.DAL.Interfaces
 {
-    public class IProjectRepository : IRepository<int, ProjectEntity>
+    public interface IProjectRepository : IRepository<int, ProjectEntity>
     {
 
     }

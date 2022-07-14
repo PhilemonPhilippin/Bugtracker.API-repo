@@ -64,5 +64,11 @@ namespace Bugtracker.API.DAL.Repositories
             return Connection.ExecuteNonQuery(cmd) == 1;
 
         }
+        public bool ProjectNameExist(string name)
+        {
+            Command cmd = new Command("PPSP_ProjectNameExist", true);
+            cmd.AddParameter("Name", name);
+            return (int)Connection.ExecuteScalar(cmd) > 0;
+        }
     }
 }

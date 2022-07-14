@@ -1,6 +1,7 @@
 ﻿using Bugtracker.API.BLL.DataTransferObjects;
 using Bugtracker.API.BLL.Interfaces;
 using Bugtracker.API.BLL.Mappers;
+using Bugtracker.API.BLL.Tools;
 using Bugtracker.API.DAL.Entities;
 using Bugtracker.API.DAL.Interfaces;
 using Bugtracker.API.DAL.Repositories;
@@ -34,8 +35,11 @@ namespace Bugtracker.API.BLL.Services
         }
         public int Add(ProjectDto projectDto)
         {
-            // TODO : projectDto name exist ? Do SP
-            return _projectRepository.Add(projectDto.ToEntity());
+            bool projectNameExist = _projectRepository.ProjectNameExist(projectDto.Name);
+            if (projectNameExist)
+                throw new ProjectException("Name already exists.");
+            else
+                return _projectRepository.Add(projectDto.ToEntity());
         }
 
         public bool Remove(int id)
@@ -44,8 +48,11 @@ namespace Bugtracker.API.BLL.Services
         }
         public bool Edit(ProjectDto projectDto)
         {
-            // TODO : projectDto name exist ?
-            return _projectRepository.Edit(projectDto.ToEntity());
+            bool projectNameExist = _projectRepository.ProjectNameExist(projectDto.Name);
+            if (projectNameExist)
+                throw new ProjectException("Name already exists.");
+            else
+                return _projectRepository.Edit(projectDto.ToEntity());
         }
     }
 }

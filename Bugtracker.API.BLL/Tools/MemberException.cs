@@ -14,4 +14,11 @@ namespace Bugtracker.API.BLL.Tools
 
         }
     }
+    public class ProjectException : Exception
+    {
+        public ProjectException(string message) : base(message)
+        {
+
+        }
+    }
 }

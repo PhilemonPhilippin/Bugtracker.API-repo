@@ -9,6 +9,7 @@ namespace Bugtracker.API.DAL.Interfaces
 {
     public interface IProjectRepository : IRepository<int, ProjectEntity>
     {
+        bool ProjectNameExist(string name);
 
     }
 }

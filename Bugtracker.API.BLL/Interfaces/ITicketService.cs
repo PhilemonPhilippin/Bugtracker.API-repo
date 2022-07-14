@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Bugtracker.API.BLL.Interfaces
 {
-    public interface IProjectService : IService<int, ProjectDto>
+    public interface ITicketService : IService<int, TicketDto>
     {
-        bool Edit(ProjectDto projectDto);
+        bool Edit(TicketDto dto);
     }
 }

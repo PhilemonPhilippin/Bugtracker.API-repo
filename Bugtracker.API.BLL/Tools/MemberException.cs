@@ -21,4 +21,11 @@ namespace Bugtracker.API.BLL.Tools
 
         }
     }
+    public class TicketException : Exception
+    {
+        public TicketException(string message) : base(message)
+        {
+
+        }
+    }
 }

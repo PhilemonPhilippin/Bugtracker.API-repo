@@ -50,8 +50,6 @@ namespace Bugtracker.API.DAL.Repositories
             Command cmd = new Command("PPSP_ReadMember", true);
             cmd.AddParameter("Id_Member", id);
             return Connection.ExecuteReader(cmd, MapRecordToEntity).SingleOrDefault();
-
-
         }
         public MemberEntity GetByPseudo(string pseudo)
         {

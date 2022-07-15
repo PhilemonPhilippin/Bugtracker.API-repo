@@ -57,7 +57,7 @@ namespace Bugtracker.API.ASP.Controllers
             bool isMemberRemoved = _memberService.Remove(id);
             return isMemberRemoved ? NoContent() : BadRequest("Member id not found.");
         }
-
+        // TODO : Vérifier si j'ai vraiment besoin de récupérer l'id depuis la route
         [HttpPut]
         [Route("{id:int}")]
         public IActionResult Edit([FromRoute] int id, MemberEditModel memberEdit)

@@ -61,8 +61,14 @@ builder.Services.AddTransient<Connection>((service) =>
 
 // DAL
 builder.Services.AddTransient<IMemberRepository, MemberRepository>();
+builder.Services.AddTransient<IProjectRepository, ProjectRepository>();
+builder.Services.AddTransient<ITicketRepository, TicketRepository>();
+builder.Services.AddTransient<IAssignRepository, AssignRepository>();
 // BLL
 builder.Services.AddTransient<IMemberService, MemberService>();
+builder.Services.AddTransient<IProjectService, ProjectService>();
+builder.Services.AddTransient<ITicketService, TicketService>();
+builder.Services.AddTransient<IAssignService, AssignService>();
 
 var app = builder.Build();
 

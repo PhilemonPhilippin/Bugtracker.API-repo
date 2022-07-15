@@ -42,10 +42,7 @@ namespace Bugtracker.API.ASP.Controllers
         public IActionResult GetById([FromRoute]int id)
         {
             MemberDto memberDto = _memberService.GetById(id);
-            if (memberDto is null)
-                return NotFound("Member id not found.");
-            else
-                return Ok(memberDto.ToModel());
+            return (memberDto is null) ? NotFound("Member id not found.") : Ok(memberDto.ToModel());
         }
 
 
@@ -55,7 +52,7 @@ namespace Bugtracker.API.ASP.Controllers
         public IActionResult Remove([FromRoute]int id)
         {
             bool isMemberRemoved = _memberService.Remove(id);
-            return isMemberRemoved ? NoContent() : BadRequest("Member id not found.");
+            return isMemberRemoved ? NoContent() : NotFound("Member id not found.");
         }
         // TODO : Vérifier si j'ai vraiment besoin de récupérer l'id depuis la route
         [HttpPut]

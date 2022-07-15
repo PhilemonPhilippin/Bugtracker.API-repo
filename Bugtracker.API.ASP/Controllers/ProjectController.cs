@@ -31,17 +31,14 @@ namespace Bugtracker.API.ASP.Controllers
         public IActionResult GetById([FromRoute]int id)
         {
             ProjectDto projectDto = _projectService.GetById(id);
-            if (projectDto is null)
-                return NotFound("Project id not found.");
-            else
-                return Ok(projectDto.ToModel());
+            return (projectDto is null) ? NotFound("Project id not found.") : Ok(projectDto.ToModel());
         }
         [HttpDelete]
         [Route("{id:int}")]
         public IActionResult Remove([FromRoute] int id)
         {
             bool isProjectRemoved = _projectService.Remove(id);
-            return isProjectRemoved ? NoContent() : BadRequest("Project id not found.");
+            return isProjectRemoved ? NoContent() : NotFound("Project id not found.");
         }
         [HttpPut]
         public IActionResult Edit(ProjectModel projectModel)

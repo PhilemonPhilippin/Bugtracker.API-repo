@@ -26,7 +26,7 @@ namespace Bugtracker.API.BLL.Mappers
             {
                 IdProject = dto.IdProject,
                 Name = dto.Name,
-                Description = dto.Name,
+                Description = dto.Description,
                 Manager = dto.Manager
             };
         }

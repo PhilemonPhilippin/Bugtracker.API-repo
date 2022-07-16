@@ -89,5 +89,12 @@ namespace Bugtracker.API.DAL.Repositories
             cmd.AddParameter("Title", title);
             return (int)Connection.ExecuteScalar(cmd) > 0;
         }
+        public bool TicketTitleExistWithId(string title, int id)
+        {
+            Command cmd = new Command("PPSP_TicketTitleExistWithId", true);
+            cmd.AddParameter("Title", title);
+            cmd.AddParameter("Id_Ticket", id);
+            return (int)Connection.ExecuteScalar(cmd) > 0;
+        }
     }
 }

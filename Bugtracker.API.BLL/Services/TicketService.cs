@@ -48,7 +48,7 @@ namespace Bugtracker.API.BLL.Services
         }
         public bool Edit(TicketDto ticketDto)
         {
-            bool titleExist = _ticketRepository.TicketTitleExist(ticketDto.Title);
+            bool titleExist = _ticketRepository.TicketTitleExistWithId(ticketDto.Title, ticketDto.IdTicket);
             if (titleExist)
                 throw new TicketException("Title already exists.");
             else

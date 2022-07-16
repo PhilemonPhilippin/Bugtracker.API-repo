@@ -10,5 +10,6 @@ namespace Bugtracker.API.DAL.Interfaces
     public interface ITicketRepository : IRepository<int, TicketEntity>
     {
         bool TicketTitleExist(string title);
+        bool TicketTitleExistWithId(string title, int id);
     }
 }

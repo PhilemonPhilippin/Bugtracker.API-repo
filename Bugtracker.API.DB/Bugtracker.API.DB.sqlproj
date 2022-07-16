@@ -94,6 +94,7 @@
     <Build Include="StoredProcedures\AssignProcedures\PPSP_DeleteAssign.sql" />
     <Build Include="StoredProcedures\ProjectProcedures\PPSP_ProjectNameExist.sql" />
     <Build Include="StoredProcedures\TicketProcedures\PPSP_TicketTitleExist.sql" />
+    <Build Include="StoredProcedures\ProjectProcedures\PPSP_ProjectNameExistWithId.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Seed.sql" />

@@ -48,8 +48,8 @@ namespace Bugtracker.API.BLL.Services
         }
         public bool Edit(ProjectDto projectDto)
         {
-            bool projectNameExist = _projectRepository.ProjectNameExist(projectDto.Name);
-            if (projectNameExist)
+            bool projectNameExistWithId = _projectRepository.ProjectNameExistWithId(projectDto.Name, projectDto.IdProject);
+            if (projectNameExistWithId)
                 throw new ProjectException("Name already exists.");
             else
                 return _projectRepository.Edit(projectDto.ToEntity());

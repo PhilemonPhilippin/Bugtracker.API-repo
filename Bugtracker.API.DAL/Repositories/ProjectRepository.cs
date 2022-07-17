@@ -23,7 +23,7 @@ namespace Bugtracker.API.DAL.Repositories
             return new ProjectEntity()
             {
                 IdProject = (int)record["Id_Project"],
-                Name = (string)record["Name"] ,
+                Name = (string)record["Name"],
                 Description = (string)record["Description"],
                 Manager = (int)record["Manager"],
             };

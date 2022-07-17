@@ -19,7 +19,7 @@ namespace Bugtracker.API.ASP.ApiMappers
         public static ProjectModel ToModel(this ProjectDto dto)
         {
             return new ProjectModel()
-{
+            {
                 IdProject = dto.IdProject,
                 Name = dto.Name,
                 Description = dto.Description,

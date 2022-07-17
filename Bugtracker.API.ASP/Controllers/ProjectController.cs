@@ -30,7 +30,7 @@ namespace Bugtracker.API.ASP.Controllers
         }
         [HttpGet]
         [Route("{id:int}")]
-        public IActionResult GetById([FromRoute]int id)
+        public IActionResult GetById([FromRoute] int id)
         {
             ProjectDto projectDto = _projectService.GetById(id);
             return (projectDto is null) ? NotFound("Project id not found.") : Ok(projectDto.ToModel());

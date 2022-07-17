@@ -25,7 +25,6 @@ namespace Bugtracker.API.BLL.Services
             _memberRepository = memberRepository;
             _jwtManager = jwtManager;
         }
-
         public IEnumerable<MemberDto> GetAll()
         {
             return _memberRepository.GetAll().Select(member => member.ToDto());
@@ -49,7 +48,7 @@ namespace Bugtracker.API.BLL.Services
         public ConnectedMemberDto TryToLogin(MemberLoginDto loginDto)
         {
             MemberEntity entity = GetByPseudo(loginDto.Pseudo);
-  
+
             bool isPasswordCorrect = Argon2.Verify(entity.PswdHash, loginDto.Password);
             if (!isPasswordCorrect)
                 throw new MemberException("Password incorrect.");
@@ -65,7 +64,6 @@ namespace Bugtracker.API.BLL.Services
                 return memberDto.ToConnectedDto(token);
             }
         }
-
         // Si je veux refresh les tokens.
         //public ConnectedMemberDto RefreshToken(string token)
         //{
@@ -91,7 +89,6 @@ namespace Bugtracker.API.BLL.Services
         {
             return _memberRepository.Remove(id);
         }
-
         public bool Edit(MemberEditDto memberEdited)
         {
             MemberEntity entity = _memberRepository.GetById(memberEdited.IdMember);
@@ -110,7 +107,6 @@ namespace Bugtracker.API.BLL.Services
             IfExistThrowException(memberDto, true);
 
             return _memberRepository.Edit(memberDto.ToEntity());
-           
         }
         private void IfExistThrowException(MemberDto memberDto, bool checkWithId = false)
         {

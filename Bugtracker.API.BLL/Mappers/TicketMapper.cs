@@ -42,6 +42,5 @@ namespace Bugtracker.API.BLL.Mappers
                 Project = dto.Project,
             };
         }
-
     }
 }

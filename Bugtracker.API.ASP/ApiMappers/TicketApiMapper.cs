@@ -25,7 +25,7 @@ namespace Bugtracker.API.ASP.ApiMappers
         public static TicketModel ToModel(this TicketDto dto)
         {
             return new TicketModel()
-{
+            {
                 IdTicket = dto.IdTicket,
                 Title = dto.Title,
                 Status = dto.Status,
@@ -38,6 +38,5 @@ namespace Bugtracker.API.ASP.ApiMappers
                 Project = dto.Project,
             };
         }
-
     }
 }

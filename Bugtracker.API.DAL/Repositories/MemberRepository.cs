@@ -101,6 +101,5 @@ namespace Bugtracker.API.DAL.Repositories
             cmd.AddParameter("Id_Member", id);
             return (int)Connection.ExecuteScalar(cmd) > 0;
         }
-
     }
 }

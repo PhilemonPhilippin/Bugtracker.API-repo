@@ -13,12 +13,10 @@ namespace Bugtracker.API.ASP.Controllers
     public class TicketController : ControllerBase
     {
         private ITicketService _ticketService;
-
         public TicketController(ITicketService ticketService)
         {
             _ticketService = ticketService;
         }
-
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -30,7 +28,7 @@ namespace Bugtracker.API.ASP.Controllers
         }
         [HttpGet]
         [Route("{id:int}")]
-        public IActionResult GetById([FromRoute]int id)
+        public IActionResult GetById([FromRoute] int id)
         {
             TicketDto ticketDto = _ticketService.GetById(id);
             return (ticketDto is null) ? NotFound("Ticket id not found.") : Ok(ticketDto.ToModel());

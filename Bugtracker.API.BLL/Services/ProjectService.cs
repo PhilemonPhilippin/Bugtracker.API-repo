@@ -41,7 +41,6 @@ namespace Bugtracker.API.BLL.Services
             else
                 return _projectRepository.Add(projectDto.ToEntity());
         }
-
         public bool Remove(int id)
         {
             return _projectRepository.Remove(id);

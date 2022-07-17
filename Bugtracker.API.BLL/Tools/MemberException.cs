@@ -11,21 +11,18 @@ namespace Bugtracker.API.BLL.Tools
         public MemberException(string message)
             : base(message)
         {
-
         }
     }
     public class ProjectException : Exception
     {
         public ProjectException(string message) : base(message)
         {
-
         }
     }
     public class TicketException : Exception
     {
         public TicketException(string message) : base(message)
         {
-
         }
     }
 }

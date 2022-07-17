@@ -18,6 +18,5 @@ namespace Bugtracker.API.BLL.DataTransferObjects
         public int SubmitMember { get; set; }
         public int? AssignedMember { get; set; }
         public int Project { get; set; }
-
     }
 }

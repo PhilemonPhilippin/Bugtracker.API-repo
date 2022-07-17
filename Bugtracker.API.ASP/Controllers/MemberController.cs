@@ -20,12 +20,11 @@ namespace Bugtracker.API.ASP.Controllers
     public class MemberController : ControllerBase
     {
         private IMemberService _memberService;
-   
+
         public MemberController(IMemberService memberService)
         {
             _memberService = memberService;
         }
-
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -34,27 +33,23 @@ namespace Bugtracker.API.ASP.Controllers
                 return NotFound("Members list empty or not found.");
             else
                 return Ok(allMembers.Select(dto => dto.ToModel()));
-            
-        }
 
+        }
         [HttpGet]
         [Route("{id:int}")]
-        public IActionResult GetById([FromRoute]int id)
+        public IActionResult GetById([FromRoute] int id)
         {
             MemberDto memberDto = _memberService.GetById(id);
             return (memberDto is null) ? NotFound("Member id not found.") : Ok(memberDto.ToModel());
         }
-
-
         // TODO : Vérifier si j'ai vraiment besoin de récupérer l'id depuis la route
         [HttpDelete]
         [Route("{id:int}")]
-        public IActionResult Remove([FromRoute]int id)
+        public IActionResult Remove([FromRoute] int id)
         {
             bool isMemberRemoved = _memberService.Remove(id);
             return isMemberRemoved ? NoContent() : NotFound("Member id not found.");
         }
-        // TODO : Vérifier si j'ai vraiment besoin de récupérer l'id depuis la route
         [HttpPut]
         [Route("{id:int}")]
         public IActionResult Edit([FromRoute] int id, MemberEditModel memberEdit)
@@ -69,7 +64,6 @@ namespace Bugtracker.API.ASP.Controllers
                 return BadRequest(exception.Message);
             }
         }
-
         // Si je veux refresh les tokens.
         //[HttpGet]
         //[Route("token")]
@@ -82,7 +76,6 @@ namespace Bugtracker.API.ASP.Controllers
         //    ConnectedMemberDto connectedMember = _memberService.RefreshToken(token);
         //    return Ok(connectedMember);
         //}
-
         [HttpGet]
         [Route("idfromjwt")]
         public IActionResult GetIdFromJwt()
@@ -92,8 +85,6 @@ namespace Bugtracker.API.ASP.Controllers
             int idMember = data.IdMember;
             return Ok(idMember);
         }
-
-
         [AllowAnonymous]
         [HttpPost]
         public IActionResult Add(MemberModel memberModel)
@@ -109,7 +100,6 @@ namespace Bugtracker.API.ASP.Controllers
                 return BadRequest(exception.Message);
             }
         }
-
         [AllowAnonymous]
         [HttpPost]
         [Route("login")]
@@ -120,13 +110,10 @@ namespace Bugtracker.API.ASP.Controllers
                 ConnectedMemberDto connectedMemberDto = _memberService.TryToLogin(loginModel.ToLoginDto());
                 return Ok(connectedMemberDto.ToConnectedModel());
             }
-            catch (MemberException exception) 
+            catch (MemberException exception)
             {
-                return (exception.Message.Contains("Member pseudo not found.")) ? NotFound(exception.Message): BadRequest(exception.Message);
+                return (exception.Message.Contains("Member pseudo not found.")) ? NotFound(exception.Message) : BadRequest(exception.Message);
             }
         }
-        
-        
     }
-    
 }

@@ -15,7 +15,6 @@ namespace Bugtracker.API.ADO
         {
             _connectionString = connectionString;
         }
-
         public IEnumerable<TEntity> ExecuteReader<TEntity>(Command command, Func<IDataRecord, TEntity> converterToEntity)
         {
             using (SqlConnection sqlConnection = new SqlConnection())
@@ -34,7 +33,6 @@ namespace Bugtracker.API.ADO
                 }
             }
         }
-
         public object? ExecuteScalar(Command command)
         {
             using (SqlConnection sqlConnection = new SqlConnection())
@@ -48,7 +46,6 @@ namespace Bugtracker.API.ADO
                 }
             }
         }
-
         public int ExecuteNonQuery(Command command)
         {
             using (SqlConnection sqlConnection = new SqlConnection())
@@ -62,7 +59,6 @@ namespace Bugtracker.API.ADO
             }
 
         }
-
         private SqlCommand CreateCommand(SqlConnection connection, Command command)
         {
             SqlCommand sqlCmd = connection.CreateCommand();
@@ -79,6 +75,5 @@ namespace Bugtracker.API.ADO
             }
             return sqlCmd;
         }
-
     }
 }

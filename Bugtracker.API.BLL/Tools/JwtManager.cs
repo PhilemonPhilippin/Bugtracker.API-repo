@@ -22,7 +22,7 @@ namespace Bugtracker.API.BLL.Tools
         }
 
         private string _issuer;
-        private string _audience; 
+        private string _audience;
         private string _secret;
         public JwtManager(IConfiguration config)
         {
@@ -37,8 +37,8 @@ namespace Bugtracker.API.BLL.Tools
 
             Claim[] myClaims = new Claim[]
             {
-                new Claim(ClaimTypes.NameIdentifier, data.IdMember.ToString()),
-                new Claim(ClaimTypes.Email, data.Email)
+            new Claim(ClaimTypes.NameIdentifier, data.IdMember.ToString()),
+            new Claim(ClaimTypes.Email, data.Email)
             };
 
             SecurityTokenDescriptor descriptor = new SecurityTokenDescriptor
@@ -67,7 +67,5 @@ namespace Bugtracker.API.BLL.Tools
                 Email = email
             };
         }
-
-
     }
 }

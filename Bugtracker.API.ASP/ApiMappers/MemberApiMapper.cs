@@ -5,7 +5,7 @@ namespace Bugtracker.API.ASP.ApiMappers
 {
     internal static class MemberApiMapper
     {
-        
+
         public static MemberDto ToDto(this MemberModel memberModel)
         {
             return new MemberDto()

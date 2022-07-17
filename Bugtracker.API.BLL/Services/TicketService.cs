@@ -14,14 +14,13 @@ using System.Threading.Tasks;
 namespace Bugtracker.API.BLL.Services
 {
     public class TicketService : ITicketService, IService<int, TicketDto>
-{
+    {
         private ITicketRepository _ticketRepository;
 
-        public TicketService (ITicketRepository ticketRepository)
+        public TicketService(ITicketRepository ticketRepository)
         {
             _ticketRepository = ticketRepository;
         }
-
         public IEnumerable<TicketDto> GetAll()
         {
             return _ticketRepository.GetAll().Select(ticket => ticket.ToDto());

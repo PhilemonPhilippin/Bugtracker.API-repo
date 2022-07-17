@@ -11,6 +11,5 @@ namespace Bugtracker.API.DAL.Interfaces
     {
         bool ProjectNameExist(string name);
         bool ProjectNameExistWithId(string name, int id);
-
     }
 }

@@ -55,12 +55,19 @@ namespace Bugtracker.API.BLL.Tools
             return handler.WriteToken(token);
         }
 
-        // Si je veux refresh les tokens.
-        //public DataToken GetDataFromToken(string token)
-        //{
-        // 
-        //    throw new NotImplementedException();
+        public TokenData GetDataFromToken(string token)
+        {
+            var handler = new JwtSecurityTokenHandler();
+            var jwtSecurityToken = handler.ReadJwtToken(token);
+            var id = jwtSecurityToken.Claims.Where(claim => claim.Type == "nameid").FirstOrDefault().Value;
+            var email = jwtSecurityToken.Claims.Where(claim => claim.Type == "email").FirstOrDefault().Value;
+            return new TokenData()
+            {
+                IdMember = int.Parse(id),
+                Email = email
+            };
+        }
 
-        //}
+
     }
 }

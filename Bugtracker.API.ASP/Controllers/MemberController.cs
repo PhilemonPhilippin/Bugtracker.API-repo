@@ -83,6 +83,17 @@ namespace Bugtracker.API.ASP.Controllers
         //    return Ok(connectedMember);
         //}
 
+        [HttpGet]
+        [Route("idfromjwt")]
+        public IActionResult GetIdFromJwt()
+        {
+            string token = HttpContext.GetTokenAsync("access_token").Result;
+            TokenData data = _memberService.GetTokenData(token);
+            int idMember = data.IdMember;
+            return Ok(idMember);
+        }
+
+
         [AllowAnonymous]
         [HttpPost]
         public IActionResult Add(MemberModel memberModel)

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Bugtracker.API.BLL.Tools.JwtManager;
 
 namespace Bugtracker.API.BLL.Interfaces
 {
@@ -12,6 +13,7 @@ namespace Bugtracker.API.BLL.Interfaces
         ConnectedMemberDto TryToLogin(MemberLoginDto loginDto);
         // Si je veux refresh les tokens.
         //ConnectedMemberDto RefreshToken(string token);
+        TokenData GetTokenData(string token);
         bool Edit(MemberEditDto memberEdited);
     }
 }

@@ -75,7 +75,10 @@ namespace Bugtracker.API.BLL.Services
         //    ConnectedMemberDto connectedMember = memberDto.ToConnectedMember(newToken);
         //    return connectedMember;
         //}
-
+        public TokenData GetTokenData(string token)
+        {
+            return _jwtManager.GetDataFromToken(token);
+        }
         public int Add(MemberDto memberDto)
         {
             IfExistThrowException(memberDto);

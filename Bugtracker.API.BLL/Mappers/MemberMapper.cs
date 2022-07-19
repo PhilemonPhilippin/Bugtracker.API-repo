@@ -48,5 +48,14 @@ namespace Bugtracker.API.BLL.Mappers
                 Token = token
             };
         }
+        public static MemberPostEntity ToPostEntity(this MemberPostDto postDto)
+        {
+            return new MemberPostEntity()
+            {
+                Pseudo = postDto.Pseudo,
+                Email = postDto.Email,
+                PswdHash = postDto.Password
+            };
+        }
     }
 }

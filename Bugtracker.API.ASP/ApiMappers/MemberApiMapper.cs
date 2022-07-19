@@ -62,5 +62,14 @@ namespace Bugtracker.API.ASP.ApiMappers
                 Lastname = editModel.Lastname
             };
         }
+        public static MemberPostDto ToPostDto(this MemberPostModel postModel)
+        {
+            return new MemberPostDto()
+            {
+                Pseudo = postModel.Pseudo,
+                Email = postModel.Email,
+                Password = postModel.Password
+            };
+        }
     }
 }

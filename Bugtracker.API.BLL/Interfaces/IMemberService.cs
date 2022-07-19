@@ -15,5 +15,6 @@ namespace Bugtracker.API.BLL.Interfaces
         //ConnectedMemberDto RefreshToken(string token);
         TokenData GetTokenData(string token);
         bool Edit(MemberEditDto memberEdited);
+        int Register(MemberPostDto postDto);
     }
 }

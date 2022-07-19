@@ -85,6 +85,15 @@ namespace Bugtracker.API.BLL.Services
             memberDto.PswdHash = memberHashedPswd;
             return _memberRepository.Add(memberDto.ToEntity());
         }
+
+        public int Register(MemberPostDto postDto)
+        {
+            // TODO : Vérifier que le pseudo ou email n'existent pas
+
+            string hashedPswd = Argon2.Hash(postDto.Password);
+            postDto.Password = hashedPswd;
+            return _memberRepository.Register(postDto.ToPostEntity());
+        }
         public bool Remove(int id)
         {
             return _memberRepository.Remove(id);

@@ -87,19 +87,33 @@ namespace Bugtracker.API.ASP.Controllers
         }
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult Add(MemberModel memberModel)
+        public IActionResult Register(MemberPostModel postModel)
         {
             try
             {
-                int idMember = _memberService.Add(memberModel.ToDto());
-                memberModel.IdMember = idMember;
-                return new CreatedResult("/api/Member", memberModel);
+                int idMember = _memberService.Register(postModel.ToPostDto());
+                return Ok();
             }
             catch (MemberException exception)
             {
                 return BadRequest(exception.Message);
             }
         }
+        //[AllowAnonymous]
+        //[HttpPost]
+        //public IActionResult Add(MemberModel memberModel)
+        //{
+        //    try
+        //    {
+        //        int idMember = _memberService.Add(memberModel.ToDto());
+        //        memberModel.IdMember = idMember;
+        //        return new CreatedResult("/api/Member", memberModel);
+        //    }
+        //    catch (MemberException exception)
+        //    {
+        //        return BadRequest(exception.Message);
+        //    }
+        //}
         [AllowAnonymous]
         [HttpPost]
         [Route("login")]

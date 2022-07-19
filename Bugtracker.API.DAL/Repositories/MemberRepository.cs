@@ -45,6 +45,16 @@ namespace Bugtracker.API.DAL.Repositories
             cmd.AddParameter("Lastname", entity.Lastname);
             return (int)Connection.ExecuteScalar(cmd);
         }
+
+        public int Register(MemberPostEntity postEntity)
+        {
+            Command cmd = new Command("PPSP_RegisterMember", true);
+            cmd.AddParameter("Pseudo", postEntity.Pseudo);
+            cmd.AddParameter("Email", postEntity.Email);
+            cmd.AddParameter("Pswd_Hash", postEntity.PswdHash);
+            return (int)Connection.ExecuteScalar(cmd);
+        }
+
         public MemberEntity GetById(int id)
         {
             Command cmd = new Command("PPSP_ReadMember", true);

@@ -20,4 +20,10 @@ namespace Bugtracker.API.BLL.DataTransferObjects
     {
         public string Token { get; set; }
     }
+    public class MemberPostDto
+    {
+        public string Pseudo { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
 }

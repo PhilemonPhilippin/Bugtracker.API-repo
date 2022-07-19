@@ -79,7 +79,8 @@ namespace Bugtracker.API.BLL.Services
         }
         public int Add(MemberDto memberDto)
         {
-            IfExistThrowException(memberDto);
+            // I Changed the method that throws exception
+            //IfExistThrowException(memberDto);
 
             string memberHashedPswd = Argon2.Hash(memberDto.PswdHash);
             memberDto.PswdHash = memberHashedPswd;
@@ -89,6 +90,7 @@ namespace Bugtracker.API.BLL.Services
         public int Register(MemberPostDto postDto)
         {
             // TODO : Vérifier que le pseudo ou email n'existent pas
+            IfExistThrowException(postDto);
 
             string hashedPswd = Argon2.Hash(postDto.Password);
             postDto.Password = hashedPswd;
@@ -113,31 +115,74 @@ namespace Bugtracker.API.BLL.Services
             memberDto.Firstname = memberEdited.Firstname;
             memberDto.Lastname = memberEdited.Lastname;
 
-            IfExistThrowException(memberDto, true);
+            IfExistWithIdThrowException(memberDto);
 
             return _memberRepository.Edit(memberDto.ToEntity());
         }
-        private void IfExistThrowException(MemberDto memberDto, bool checkWithId = false)
+        //private void IfExistThrowException(MemberDto memberDto, bool checkWithId = false)
+        //{
+        //    bool pseudoExist = false;
+        //    bool emailExist = false;
+
+        //    if (checkWithId)
+        //    {
+        //        if (_memberRepository.MemberPseudoExistWithId(memberDto.Pseudo, memberDto.IdMember))
+        //            pseudoExist = true;
+
+        //        if (_memberRepository.MemberEmailExistWithId(memberDto.Email, memberDto.IdMember))
+        //            emailExist = true;
+        //    }
+        //    else
+        //    {
+        //        if (_memberRepository.MemberPseudoExist(memberDto.Pseudo))
+        //            pseudoExist = true;
+
+        //        if (_memberRepository.MemberEmailExist(memberDto.Email))
+        //            emailExist = true;
+        //    }
+
+        //    if (pseudoExist && emailExist)
+        //        throw new MemberException("Pseudo and Email already exist.");
+
+        //    else if (pseudoExist)
+        //        throw new MemberException("Pseudo already exists.");
+
+        //    else if (emailExist)
+        //        throw new MemberException("Email already exists.");
+        //}
+
+        private void IfExistWithIdThrowException(MemberDto memberDto)
         {
             bool pseudoExist = false;
             bool emailExist = false;
 
-            if (checkWithId)
-            {
-                if (_memberRepository.MemberPseudoExistWithId(memberDto.Pseudo, memberDto.IdMember))
-                    pseudoExist = true;
 
-                if (_memberRepository.MemberEmailExistWithId(memberDto.Email, memberDto.IdMember))
-                    emailExist = true;
-            }
-            else
-            {
-                if (_memberRepository.MemberPseudoExist(memberDto.Pseudo))
-                    pseudoExist = true;
+            if (_memberRepository.MemberPseudoExistWithId(memberDto.Pseudo, memberDto.IdMember))
+                pseudoExist = true;
 
-                if (_memberRepository.MemberEmailExist(memberDto.Email))
-                    emailExist = true;
-            }
+            if (_memberRepository.MemberEmailExistWithId(memberDto.Email, memberDto.IdMember))
+                emailExist = true;
+
+            if (pseudoExist && emailExist)
+                throw new MemberException("Pseudo and Email already exist.");
+
+            else if (pseudoExist)
+                throw new MemberException("Pseudo already exists.");
+
+            else if (emailExist)
+                throw new MemberException("Email already exists.");
+        }
+
+        private void IfExistThrowException(MemberPostDto postDto)
+        {
+            bool pseudoExist = false;
+            bool emailExist = false;
+
+            if (_memberRepository.MemberPseudoExist(postDto.Pseudo))
+                pseudoExist = true;
+
+            if (_memberRepository.MemberEmailExist(postDto.Email))
+                emailExist = true;
 
             if (pseudoExist && emailExist)
                 throw new MemberException("Pseudo and Email already exist.");

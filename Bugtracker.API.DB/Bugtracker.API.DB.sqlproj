@@ -96,7 +96,6 @@
     <Build Include="StoredProcedures\TicketProcedures\PPSP_TicketTitleExist.sql" />
     <Build Include="StoredProcedures\ProjectProcedures\PPSP_ProjectNameExistWithId.sql" />
     <Build Include="StoredProcedures\TicketProcedures\PPSP_TicketTitleExistWithId.sql" />
-    <Build Include="StoredProcedures\MemberProcedures\PPSP_RegisterMember.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Seed.sql" />

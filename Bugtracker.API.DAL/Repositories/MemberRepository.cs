@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Bugtracker.API.DAL.Repositories
 {
-    public class MemberRepository : IMemberRepository, IRepository<int, MemberEntity>
+    public class MemberRepository : IMemberRepository
     {
         private Connection Connection { get; set; }
         public MemberRepository(Connection connection)
@@ -35,10 +35,7 @@ namespace Bugtracker.API.DAL.Repositories
             Command cmd = new Command("PPSP_ReadAllMembers", true);
             return Connection.ExecuteReader(cmd, MapRecordToEntity);
         }
-        public int Add(MemberEntity entity)
-        {
-            throw new NotImplementedException();
-        }
+        
         public int Register(MemberPostEntity postEntity)
         {
             Command cmd = new Command("PPSP_CreateMember", true);

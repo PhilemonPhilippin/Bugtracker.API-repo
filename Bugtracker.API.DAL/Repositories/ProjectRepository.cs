@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Bugtracker.API.DAL.Repositories
 {
-    public class ProjectRepository : IProjectRepository, IRepository<int, ProjectEntity>
+    public class ProjectRepository : IProjectRepository
     {
         private Connection Connection { get; set; }
 

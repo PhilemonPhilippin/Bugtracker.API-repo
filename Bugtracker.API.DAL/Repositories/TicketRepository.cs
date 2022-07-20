@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Bugtracker.API.DAL.Repositories
 {
-    public class TicketRepository : ITicketRepository, IRepository<int, TicketEntity>
+    public class TicketRepository : ITicketRepository
     {
         public Connection Connection { get; set; }
 

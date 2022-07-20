@@ -37,18 +37,11 @@ namespace Bugtracker.API.DAL.Repositories
         }
         public int Add(MemberEntity entity)
         {
-            Command cmd = new Command("PPSP_CreateMember", true);
-            cmd.AddParameter("Pseudo", entity.Pseudo);
-            cmd.AddParameter("Email", entity.Email);
-            cmd.AddParameter("Pswd_Hash", entity.PswdHash);
-            cmd.AddParameter("Firstname", entity.Firstname);
-            cmd.AddParameter("Lastname", entity.Lastname);
-            return (int)Connection.ExecuteScalar(cmd);
+            throw new NotImplementedException();
         }
-
         public int Register(MemberPostEntity postEntity)
         {
-            Command cmd = new Command("PPSP_RegisterMember", true);
+            Command cmd = new Command("PPSP_CreateMember", true);
             cmd.AddParameter("Pseudo", postEntity.Pseudo);
             cmd.AddParameter("Email", postEntity.Email);
             cmd.AddParameter("Pswd_Hash", postEntity.PswdHash);

@@ -32,8 +32,7 @@ namespace Bugtracker.API.ASP.Controllers
             if (allMembers.Count() == 0)
                 return NotFound("Members list empty or not found.");
             else
-                return Ok(allMembers.Select(dto => dto.ToModel()));
-
+                return Ok(allMembers.Select(dto => dto.ToNoPswdModel()));
         }
         [HttpGet]
         [Route("{id:int}")]

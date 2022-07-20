@@ -30,19 +30,19 @@ namespace Bugtracker.API.ASP.ApiMappers
                 Lastname = memberDto.Lastname
             };
         }
-        public static ConnectedMemberModel ToConnectedModel(this ConnectedMemberDto connectedDto)
-        {
-            return new ConnectedMemberModel()
-            {
-                IdMember = connectedDto.IdMember,
-                Pseudo = connectedDto.Pseudo,
-                Email = connectedDto.Email,
-                PswdHash = connectedDto.PswdHash,
-                Firstname = connectedDto.Firstname,
-                Lastname = connectedDto.Lastname,
-                Token = connectedDto.Token
-            };
-        }
+        //public static ConnectedMemberModel ToConnectedModel(this ConnectedMemberDto connectedDto)
+        //{
+        //    return new ConnectedMemberModel()
+        //    {
+        //        IdMember = connectedDto.IdMember,
+        //        Pseudo = connectedDto.Pseudo,
+        //        Email = connectedDto.Email,
+        //        PswdHash = connectedDto.PswdHash,
+        //        Firstname = connectedDto.Firstname,
+        //        Lastname = connectedDto.Lastname,
+        //        Token = connectedDto.Token
+        //    };
+        //}
         public static MemberLoginDto ToLoginDto(this MemberLoginModel loginModel)
         {
             return new MemberLoginDto()
@@ -69,6 +69,17 @@ namespace Bugtracker.API.ASP.ApiMappers
                 Pseudo = postModel.Pseudo,
                 Email = postModel.Email,
                 Password = postModel.Password
+            };
+        }
+        public static MemberNoPswdModel ToNoPswdModel(this MemberDto dto)
+        {
+            return new MemberNoPswdModel()
+            {
+                IdMember = dto.IdMember,
+                Pseudo = dto.Pseudo,
+                Email = dto.Email,
+                Firstname = dto.Firstname,
+                Lastname = dto.Lastname
             };
         }
     }

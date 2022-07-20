@@ -17,8 +17,22 @@ namespace Bugtracker.API.ASP.ApiModels.MemberApiModels
         [MaxLength(50)]
         public string? Lastname { get; set; }
     }
-    public class ConnectedMemberModel : MemberModel
+    //public class ConnectedMemberModel : MemberModel
+    //{
+    //    public string Token { get; set; }
+    //}
+
+    public class MemberNoPswdModel
     {
-        public string Token { get; set; }
+        public int IdMember { get; set; }
+        [MaxLength(50)]
+        public string Pseudo { get; set; }
+        [MaxLength(250)]
+        [DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
+        [MaxLength(50)]
+        public string? Firstname { get; set; }
+        [MaxLength(50)]
+        public string? Lastname { get; set; }
     }
 }

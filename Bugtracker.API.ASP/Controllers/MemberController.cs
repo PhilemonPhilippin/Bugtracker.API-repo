@@ -114,6 +114,21 @@ namespace Bugtracker.API.ASP.Controllers
         //        return BadRequest(exception.Message);
         //    }
         //}
+        //[AllowAnonymous]
+        //[HttpPost]
+        //[Route("login")]
+        //public IActionResult TryToLogin(MemberLoginModel loginModel)
+        //{
+        //    try
+        //    {
+        //        ConnectedMemberDto connectedMemberDto = _memberService.TryToLogin(loginModel.ToLoginDto());
+        //        return Ok(connectedMemberDto.ToConnectedModel());
+        //    }
+        //    catch (MemberException exception)
+        //    {
+        //        return (exception.Message.Contains("Member pseudo not found.")) ? NotFound(exception.Message) : BadRequest(exception.Message);
+        //    }
+        //}
         [AllowAnonymous]
         [HttpPost]
         [Route("login")]
@@ -121,12 +136,12 @@ namespace Bugtracker.API.ASP.Controllers
         {
             try
             {
-                ConnectedMemberDto connectedMemberDto = _memberService.TryToLogin(loginModel.ToLoginDto());
-                return Ok(connectedMemberDto.ToConnectedModel());
+                string token = _memberService.TryToLogin(loginModel.ToLoginDto());
+                return Ok(token);
             }
             catch (MemberException exception)
             {
-                return (exception.Message.Contains("Member pseudo not found.")) ? NotFound(exception.Message) : BadRequest(exception.Message);
+                return exception.Message.Contains("Member pseudo not found.") ? NotFound(exception.Message) : BadRequest(exception.Message);
             }
         }
     }

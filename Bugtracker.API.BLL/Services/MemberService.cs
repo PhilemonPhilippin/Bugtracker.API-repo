@@ -45,7 +45,26 @@ namespace Bugtracker.API.BLL.Services
             else
                 return entity;
         }
-        public ConnectedMemberDto TryToLogin(MemberLoginDto loginDto)
+        //public ConnectedMemberDto TryToLogin(MemberLoginDto loginDto)
+        //{
+        //    MemberEntity entity = GetByPseudo(loginDto.Pseudo);
+
+        //    bool isPasswordCorrect = Argon2.Verify(entity.PswdHash, loginDto.Password);
+        //    if (!isPasswordCorrect)
+        //        throw new MemberException("Password incorrect.");
+        //    else
+        //    {
+        //        MemberDto memberDto = entity.ToDto();
+        //        TokenData tokenData = new TokenData()
+        //        {
+        //            IdMember = memberDto.IdMember,
+        //            Email = memberDto.Email
+        //        };
+        //        string token = _jwtManager.GenerateToken(tokenData);
+        //        return memberDto.ToConnectedDto(token);
+        //    }
+        //}
+        public string TryToLogin(MemberLoginDto loginDto)
         {
             MemberEntity entity = GetByPseudo(loginDto.Pseudo);
 
@@ -54,14 +73,14 @@ namespace Bugtracker.API.BLL.Services
                 throw new MemberException("Password incorrect.");
             else
             {
-                MemberDto memberDto = entity.ToDto();
+                //MemberDto memberDto = entity.ToDto();
                 TokenData tokenData = new TokenData()
                 {
-                    IdMember = memberDto.IdMember,
-                    Email = memberDto.Email
+                    IdMember = entity.IdMember,
+                    Email = entity.Email
                 };
                 string token = _jwtManager.GenerateToken(tokenData);
-                return memberDto.ToConnectedDto(token);
+                return token;
             }
         }
         // Si je veux refresh les tokens.

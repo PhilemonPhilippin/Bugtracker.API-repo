@@ -10,7 +10,7 @@ namespace Bugtracker.API.BLL.Interfaces
 {
     public interface IMemberService : IService<int, MemberDto>
     {
-        ConnectedMemberDto TryToLogin(MemberLoginDto loginDto);
+        string TryToLogin(MemberLoginDto loginDto);
         // Si je veux refresh les tokens.
         //ConnectedMemberDto RefreshToken(string token);
         TokenData GetTokenData(string token);

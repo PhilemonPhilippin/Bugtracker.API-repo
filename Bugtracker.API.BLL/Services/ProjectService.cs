@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Bugtracker.API.BLL.Services
 {
-    public class ProjectService : IProjectService, IService<int, ProjectDto>
+    public class ProjectService : IProjectService
     {
         private IProjectRepository _projectRepository;
 

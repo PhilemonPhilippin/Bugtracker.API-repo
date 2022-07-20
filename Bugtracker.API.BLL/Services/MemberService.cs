@@ -15,7 +15,7 @@ using static Bugtracker.API.BLL.Tools.JwtManager;
 
 namespace Bugtracker.API.BLL.Services
 {
-    public class MemberService : IMemberService, IService<int, MemberDto>
+    public class MemberService : IMemberService
     {
         private IMemberRepository _memberRepository;
         private JwtManager _jwtManager;
@@ -45,25 +45,6 @@ namespace Bugtracker.API.BLL.Services
             else
                 return entity;
         }
-        //public ConnectedMemberDto TryToLogin(MemberLoginDto loginDto)
-        //{
-        //    MemberEntity entity = GetByPseudo(loginDto.Pseudo);
-
-        //    bool isPasswordCorrect = Argon2.Verify(entity.PswdHash, loginDto.Password);
-        //    if (!isPasswordCorrect)
-        //        throw new MemberException("Password incorrect.");
-        //    else
-        //    {
-        //        MemberDto memberDto = entity.ToDto();
-        //        TokenData tokenData = new TokenData()
-        //        {
-        //            IdMember = memberDto.IdMember,
-        //            Email = memberDto.Email
-        //        };
-        //        string token = _jwtManager.GenerateToken(tokenData);
-        //        return memberDto.ToConnectedDto(token);
-        //    }
-        //}
         public string TryToLogin(MemberLoginDto loginDto)
         {
             MemberEntity entity = GetByPseudo(loginDto.Pseudo);
@@ -83,29 +64,10 @@ namespace Bugtracker.API.BLL.Services
                 return token;
             }
         }
-        // Si je veux refresh les tokens.
-        //public ConnectedMemberDto RefreshToken(string token)
-        //{
-        //    DataToken data = _jwtManager.GetDataFromToken(token);
-        //    string newToken = _jwtManager.GenerateToken(data);
-        //    var memberDto = GetById(data.IdMember);
-        //    ConnectedMemberDto connectedMember = memberDto.ToConnectedMember(newToken);
-        //    return connectedMember;
-        //}
         public TokenData GetTokenData(string token)
         {
             return _jwtManager.GetDataFromToken(token);
         }
-        public int Add(MemberDto memberDto)
-        {
-            // I Changed the method that throws exception
-            //IfExistThrowException(memberDto);
-
-            string memberHashedPswd = Argon2.Hash(memberDto.PswdHash);
-            memberDto.PswdHash = memberHashedPswd;
-            return _memberRepository.Add(memberDto.ToEntity());
-        }
-
         public int Register(MemberPostDto postDto)
         {
             // TODO : Vérifier que le pseudo ou email n'existent pas
@@ -119,7 +81,7 @@ namespace Bugtracker.API.BLL.Services
         {
             return _memberRepository.Remove(id);
         }
-        public bool Edit(MemberEditDto memberEdited)
+        public bool Edit(MemberNoPswdDto memberEdited)
         {
             MemberEntity entity = _memberRepository.GetById(memberEdited.IdMember);
             MemberDto memberDto;
@@ -138,38 +100,6 @@ namespace Bugtracker.API.BLL.Services
 
             return _memberRepository.Edit(memberDto.ToEntity());
         }
-        //private void IfExistThrowException(MemberDto memberDto, bool checkWithId = false)
-        //{
-        //    bool pseudoExist = false;
-        //    bool emailExist = false;
-
-        //    if (checkWithId)
-        //    {
-        //        if (_memberRepository.MemberPseudoExistWithId(memberDto.Pseudo, memberDto.IdMember))
-        //            pseudoExist = true;
-
-        //        if (_memberRepository.MemberEmailExistWithId(memberDto.Email, memberDto.IdMember))
-        //            emailExist = true;
-        //    }
-        //    else
-        //    {
-        //        if (_memberRepository.MemberPseudoExist(memberDto.Pseudo))
-        //            pseudoExist = true;
-
-        //        if (_memberRepository.MemberEmailExist(memberDto.Email))
-        //            emailExist = true;
-        //    }
-
-        //    if (pseudoExist && emailExist)
-        //        throw new MemberException("Pseudo and Email already exist.");
-
-        //    else if (pseudoExist)
-        //        throw new MemberException("Pseudo already exists.");
-
-        //    else if (emailExist)
-        //        throw new MemberException("Email already exists.");
-        //}
-
         private void IfExistWithIdThrowException(MemberDto memberDto)
         {
             bool pseudoExist = false;

@@ -7,8 +7,12 @@ using System.Threading.Tasks;
 
 namespace Bugtracker.API.BLL.Interfaces
 {
-    public interface IProjectService : IService<int, ProjectDto>
+    public interface IProjectService
     {
         bool Edit(ProjectDto projectDto);
+        IEnumerable<ProjectDto> GetAll();
+        ProjectDto GetById(int id);
+        bool Remove(int id);
+        int Add(ProjectDto projectDto);
     }
 }

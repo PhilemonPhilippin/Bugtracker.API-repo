@@ -8,13 +8,14 @@ using static Bugtracker.API.BLL.Tools.JwtManager;
 
 namespace Bugtracker.API.BLL.Interfaces
 {
-    public interface IMemberService : IService<int, MemberDto>
+    public interface IMemberService
     {
         string TryToLogin(MemberLoginDto loginDto);
-        // Si je veux refresh les tokens.
-        //ConnectedMemberDto RefreshToken(string token);
         TokenData GetTokenData(string token);
-        bool Edit(MemberEditDto memberEdited);
+        bool Edit(MemberNoPswdDto memberEdited);
         int Register(MemberPostDto postDto);
+        IEnumerable<MemberDto> GetAll();
+        MemberDto GetById(int id);
+        bool Remove(int id);
     }
 }

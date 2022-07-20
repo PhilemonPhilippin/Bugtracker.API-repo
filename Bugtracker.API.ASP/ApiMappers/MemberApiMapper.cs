@@ -30,36 +30,12 @@ namespace Bugtracker.API.ASP.ApiMappers
                 Lastname = memberDto.Lastname
             };
         }
-        //public static ConnectedMemberModel ToConnectedModel(this ConnectedMemberDto connectedDto)
-        //{
-        //    return new ConnectedMemberModel()
-        //    {
-        //        IdMember = connectedDto.IdMember,
-        //        Pseudo = connectedDto.Pseudo,
-        //        Email = connectedDto.Email,
-        //        PswdHash = connectedDto.PswdHash,
-        //        Firstname = connectedDto.Firstname,
-        //        Lastname = connectedDto.Lastname,
-        //        Token = connectedDto.Token
-        //    };
-        //}
         public static MemberLoginDto ToLoginDto(this MemberLoginModel loginModel)
         {
             return new MemberLoginDto()
             {
                 Pseudo = loginModel.Pseudo,
                 Password = loginModel.Password
-            };
-        }
-        public static MemberEditDto ToEditDto(this MemberEditModel editModel)
-        {
-            return new MemberEditDto()
-            {
-                IdMember = editModel.IdMember,
-                Pseudo = editModel.Pseudo,
-                Email = editModel.Email,
-                Firstname = editModel.Firstname,
-                Lastname = editModel.Lastname
             };
         }
         public static MemberPostDto ToPostDto(this MemberPostModel postModel)
@@ -80,6 +56,17 @@ namespace Bugtracker.API.ASP.ApiMappers
                 Email = dto.Email,
                 Firstname = dto.Firstname,
                 Lastname = dto.Lastname
+            };
+        }
+        public static MemberNoPswdDto ToEditDto(this MemberNoPswdModel model)
+        {
+            return new MemberNoPswdDto()
+            {
+                IdMember = model.IdMember,
+                Pseudo = model.Pseudo,
+                Email = model.Email,
+                Firstname = model.Firstname,
+                Lastname = model.Lastname
             };
         }
     }

@@ -35,19 +35,6 @@ namespace Bugtracker.API.BLL.Mappers
                 Lastname = dto.Lastname
             };
         }
-        //public static ConnectedMemberDto ToConnectedDto(this MemberDto dto, string token)
-        //{
-        //    return new ConnectedMemberDto()
-        //    {
-        //        IdMember = dto.IdMember,
-        //        Pseudo = dto.Pseudo,
-        //        Email = dto.Email,
-        //        PswdHash = dto.PswdHash,
-        //        Firstname = dto.Firstname,
-        //        Lastname = dto.Lastname,
-        //        Token = token
-        //    };
-        //}
         public static MemberPostEntity ToPostEntity(this MemberPostDto postDto)
         {
             return new MemberPostEntity()

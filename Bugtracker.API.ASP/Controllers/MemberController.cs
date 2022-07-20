@@ -51,7 +51,7 @@ namespace Bugtracker.API.ASP.Controllers
         }
         [HttpPut]
         [Route("{id:int}")]
-        public IActionResult Edit([FromRoute] int id, MemberEditModel memberEdit)
+        public IActionResult Edit([FromRoute] int id, MemberNoPswdModel memberEdit)
         {
             try
             {
@@ -63,18 +63,6 @@ namespace Bugtracker.API.ASP.Controllers
                 return BadRequest(exception.Message);
             }
         }
-        // Si je veux refresh les tokens.
-        //[HttpGet]
-        //[Route("token")]
-        //public IActionResult RefreshToken()
-        //{
-        //    // peut être changer ici aussi comment récupérer le token...
-        //    string token = HttpContext.GetTokenAsync("access_token").Result;
-
-        //    // Change this
-        //    ConnectedMemberDto connectedMember = _memberService.RefreshToken(token);
-        //    return Ok(connectedMember);
-        //}
         [HttpGet]
         [Route("idfromjwt")]
         public IActionResult GetIdFromJwt()
@@ -98,36 +86,6 @@ namespace Bugtracker.API.ASP.Controllers
                 return BadRequest(exception.Message);
             }
         }
-        //[AllowAnonymous]
-        //[HttpPost]
-        //public IActionResult Add(MemberModel memberModel)
-        //{
-        //    try
-        //    {
-        //        int idMember = _memberService.Add(memberModel.ToDto());
-        //        memberModel.IdMember = idMember;
-        //        return new CreatedResult("/api/Member", memberModel);
-        //    }
-        //    catch (MemberException exception)
-        //    {
-        //        return BadRequest(exception.Message);
-        //    }
-        //}
-        //[AllowAnonymous]
-        //[HttpPost]
-        //[Route("login")]
-        //public IActionResult TryToLogin(MemberLoginModel loginModel)
-        //{
-        //    try
-        //    {
-        //        ConnectedMemberDto connectedMemberDto = _memberService.TryToLogin(loginModel.ToLoginDto());
-        //        return Ok(connectedMemberDto.ToConnectedModel());
-        //    }
-        //    catch (MemberException exception)
-        //    {
-        //        return (exception.Message.Contains("Member pseudo not found.")) ? NotFound(exception.Message) : BadRequest(exception.Message);
-        //    }
-        //}
         [AllowAnonymous]
         [HttpPost]
         [Route("login")]

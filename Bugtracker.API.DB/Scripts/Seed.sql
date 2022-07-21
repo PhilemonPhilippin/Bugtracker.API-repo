@@ -5,9 +5,9 @@ SET IDENTITY_INSERT [Member] ON;
 GO
 
 INSERT INTO [Member] ([Id_Member], [Pseudo], [Email], [Pswd_Hash], [Firstname], [Lastname], [Activated])
- VALUES (1, 'Phil', 'philo@devteam.be', 'test12', 'Philomène', 'Philipov', 1),
- (2, 'Corentintin', 'corentin@gmail.com', 'test34', 'Corentin', 'De Conninck', 1),
- (3, 'Dom', 'dom@gmail.com', 'test56', 'Dominique', 'Lafitte', 1);
+ VALUES (1, 'Phil', 'philo@devteam.be', '$argon2id$v=19$m=65536,t=3,p=1$rKUgopRwzGsKcA5HQsMIog$FDH6HYrHkQUr7VLuIWoDGL7xxwKrma3kOoSC4m43lAY', 'Philomène', 'Philipov', 1),
+ (2, 'Corentintin', 'corentin@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$VXXJDG1IozK6m1XnHeovGg$orS9JdKlVUsWHtk48wp8ml+hzm1h3AqpIgU/ql2wXUo', 'Corentin', 'De Conninck', 1),
+ (3, 'Dom', 'dom@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Dominique', 'Lafitte', 1);
 
 SET IDENTITY_INSERT [Member] OFF;
 GO

@@ -3,11 +3,13 @@ using Bugtracker.API.ASP.ApiModels;
 using Bugtracker.API.BLL.DataTransferObjects;
 using Bugtracker.API.BLL.Interfaces;
 using Bugtracker.API.BLL.Tools;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bugtracker.API.ASP.Controllers
 {
+    [Authorize("isConnected")]
     [Route("api/[controller]")]
     [ApiController]
     public class TicketController : ControllerBase

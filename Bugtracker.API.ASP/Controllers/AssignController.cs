@@ -1,9 +1,11 @@
 ﻿using Bugtracker.API.BLL.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bugtracker.API.ASP.Controllers
 {
+    [Authorize("isConnected")]
     [Route("api/[controller]")]
     [ApiController]
     public class AssignController : ControllerBase

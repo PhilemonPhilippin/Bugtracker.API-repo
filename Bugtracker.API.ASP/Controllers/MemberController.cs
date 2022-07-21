@@ -39,7 +39,7 @@ namespace Bugtracker.API.ASP.Controllers
         public IActionResult GetById([FromRoute] int id)
         {
             MemberDto memberDto = _memberService.GetById(id);
-            return (memberDto is null) ? NotFound("Member id not found.") : Ok(memberDto.ToModel());
+            return (memberDto is null) ? NotFound("Member id not found.") : Ok(memberDto.ToNoPswdModel());
         }
         // TODO : Vérifier si j'ai vraiment besoin de récupérer l'id depuis la route
         [HttpDelete]

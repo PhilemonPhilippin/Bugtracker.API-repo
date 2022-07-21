@@ -19,7 +19,8 @@ namespace Bugtracker.API.BLL.Mappers
                 Email = entity.Email,
                 PswdHash = entity.PswdHash,
                 Firstname = entity.Firstname,
-                Lastname = entity.Lastname
+                Lastname = entity.Lastname,
+                Activated = entity.Activated
             };
         }
 
@@ -32,7 +33,8 @@ namespace Bugtracker.API.BLL.Mappers
                 Email = dto.Email,
                 PswdHash = dto.PswdHash,
                 Firstname = dto.Firstname,
-                Lastname = dto.Lastname
+                Lastname = dto.Lastname,
+                Activated = dto.Activated
             };
         }
         public static MemberPostEntity ToPostEntity(this MemberPostDto postDto)

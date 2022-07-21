@@ -30,7 +30,7 @@ namespace Bugtracker.API.DAL.Repositories
                 Type = (string)record["Type"],
                 Description = (string)record["Description"],
                 SubmitTime = (DateTime)record["Submit_Time"],
-                SubmitMember = (int)record["Submit_Member"],
+                SubmitMember = record["Submit_Member"] is DBNull ? null : (int)record["Submit_Member"],
                 AssignedMember = record["Assigned_Member"] is DBNull ? null : (int)record["Assigned_Member"],
                 Project = (int)record["Project"]
             };

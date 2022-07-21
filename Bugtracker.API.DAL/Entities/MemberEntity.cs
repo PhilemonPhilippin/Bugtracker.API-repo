@@ -14,6 +14,7 @@ namespace Bugtracker.API.DAL.Entities
         public string PswdHash { get; set; }
         public string? Firstname { get; set; }
         public string? Lastname { get; set; }
+        public bool? Activated { get; set; }
     }
     public class MemberPostEntity
     {

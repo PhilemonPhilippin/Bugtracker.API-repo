@@ -27,7 +27,8 @@ namespace Bugtracker.API.DAL.Repositories
                 Email = (string)record["Email"],
                 PswdHash = (string)record["Pswd_Hash"],
                 Firstname = record["Firstname"] is DBNull ? null : (string)record["Firstname"],
-                Lastname = record["Lastname"] is DBNull ? null : (string)record["Lastname"]
+                Lastname = record["Lastname"] is DBNull ? null : (string)record["Lastname"],
+                Activated = record["Activated"] is DBNull ? null : (bool)record["Activated"]
             };
         }
         public IEnumerable<MemberEntity> GetAll()
@@ -61,6 +62,7 @@ namespace Bugtracker.API.DAL.Repositories
         {
             Command cmd = new Command("PPSP_DeleteMember", true);
             cmd.AddParameter("Id_Member", id);
+            // TODO : check si mon trigger renvoie bien une ligne modifiée ici
             return Connection.ExecuteNonQuery(cmd) == 1;
         }
         public bool Edit(MemberEntity entity)

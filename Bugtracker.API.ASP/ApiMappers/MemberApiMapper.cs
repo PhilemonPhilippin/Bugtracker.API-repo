@@ -15,7 +15,8 @@ namespace Bugtracker.API.ASP.ApiMappers
                 Email = memberModel.Email,
                 PswdHash = memberModel.PswdHash,
                 Firstname = memberModel.Firstname,
-                Lastname = memberModel.Lastname
+                Lastname = memberModel.Lastname,
+                Activated = memberModel.Activated
             };
         }
         public static MemberModel ToModel(this MemberDto memberDto)
@@ -27,7 +28,8 @@ namespace Bugtracker.API.ASP.ApiMappers
                 Email = memberDto.Email,
                 PswdHash = memberDto.PswdHash,
                 Firstname = memberDto.Firstname,
-                Lastname = memberDto.Lastname
+                Lastname = memberDto.Lastname,
+                Activated = memberDto.Activated
             };
         }
         public static MemberLoginDto ToLoginDto(this MemberLoginModel loginModel)
@@ -55,7 +57,8 @@ namespace Bugtracker.API.ASP.ApiMappers
                 Pseudo = dto.Pseudo,
                 Email = dto.Email,
                 Firstname = dto.Firstname,
-                Lastname = dto.Lastname
+                Lastname = dto.Lastname,
+                Activated = dto.Activated
             };
         }
         public static MemberNoPswdDto ToEditDto(this MemberNoPswdModel model)
@@ -66,7 +69,8 @@ namespace Bugtracker.API.ASP.ApiMappers
                 Pseudo = model.Pseudo,
                 Email = model.Email,
                 Firstname = model.Firstname,
-                Lastname = model.Lastname
+                Lastname = model.Lastname,
+                Activated = model.Activated
             };
         }
     }

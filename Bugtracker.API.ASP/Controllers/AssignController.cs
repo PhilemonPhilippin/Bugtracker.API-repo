@@ -1,4 +1,5 @@
 ﻿using Bugtracker.API.ASP.ApiMappers;
+using Bugtracker.API.ASP.ApiModels;
 using Bugtracker.API.BLL.DataTransferObjects;
 using Bugtracker.API.BLL.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -18,15 +19,15 @@ namespace Bugtracker.API.ASP.Controllers
             _assignService = assignService;
         }
         [HttpPost]
-        public IActionResult Add(int projectId, int memberId)
+        public IActionResult Add(AssignMinimalModel assign)
         {
-            int assignId = _assignService.Add(projectId, memberId);
+            int assignId = _assignService.Add(assign.Project, assign.Member);
             return Ok(assignId);
         }
         [HttpDelete]
-        public IActionResult Remove(int projectId, int memberId)
+        public IActionResult Remove(AssignMinimalModel assign)
         {
-            bool isRemoved = _assignService.Remove(projectId, memberId);
+            bool isRemoved = _assignService.Remove(assign.Project, assign.Member);
             return isRemoved ? NoContent() : NotFound("Assign not found.");
         }
         [HttpGet]
@@ -40,10 +41,10 @@ namespace Bugtracker.API.ASP.Controllers
         }
         [HttpGet]
         [Route("getone")]
-        public IActionResult GetOne(int projectId, int memberId)
+        public IActionResult GetOne(AssignMinimalModel assign)
         {
             // TODO : Dabord check si cet assign existe avant de tout mapper.
-            AssignDto dto = _assignService.Get(projectId, memberId);
+            AssignDto dto = _assignService.Get(assign.Project, assign.Member);
             if (dto is null)
                 return NotFound("Assign not found.");
             else

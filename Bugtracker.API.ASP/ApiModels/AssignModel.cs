@@ -7,4 +7,9 @@
         public int Project { get; set; }
         public int Member { get; set; }
     }
+    public class AssignMinimalModel
+    {
+        public int Project { get; set; }
+        public int Member { get; set; }
+    }
 }

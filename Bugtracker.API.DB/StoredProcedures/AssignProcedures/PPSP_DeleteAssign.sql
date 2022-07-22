@@ -1,8 +1,9 @@
 ﻿CREATE PROCEDURE [dbo].[PPSP_DeleteAssign]
-	@Id_Assign INT
+	@Project INT,
+	@Member INT
 AS
 	BEGIN
-		DELETE FROM [Assign] WHERE [Id_Assign] = @Id_Assign;
+		DELETE FROM [Assign] WHERE [Project] = @Project AND [Member] = @Member;
 	END
 RETURN 0
 

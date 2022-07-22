@@ -1,4 +1,6 @@
-﻿using Bugtracker.API.BLL.Interfaces;
+﻿using Bugtracker.API.BLL.DataTransferObjects;
+using Bugtracker.API.BLL.Interfaces;
+using Bugtracker.API.BLL.Mappers;
 using Bugtracker.API.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -21,9 +23,22 @@ namespace Bugtracker.API.BLL.Services
         {
             return _assignRepository.Add(projectId, memberId);
         }
-        public bool Remove(int assignId)
+        public bool Remove(int projectId, int memberId)
         {
-            return _assignRepository.Remove(assignId);
+            return _assignRepository.Remove(projectId, memberId);
+        }
+        
+        public IEnumerable<AssignDto> GetAll()
+        {
+            return _assignRepository.GetAll().Select(assign => assign.ToDto());
+        }
+        public AssignDto Get(int projectId, int memberId)
+        {
+            bool assignExist = _assignRepository.AssignExist(projectId, memberId);
+            if (assignExist)
+                return _assignRepository.Get(projectId, memberId).ToDto();
+            else
+                return null;
         }
     }
 }

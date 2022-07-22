@@ -2,6 +2,7 @@
 using Bugtracker.API.ASP.ApiModels;
 using Bugtracker.API.BLL.DataTransferObjects;
 using Bugtracker.API.BLL.Interfaces;
+using Bugtracker.API.BLL.Tools;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -21,8 +22,15 @@ namespace Bugtracker.API.ASP.Controllers
         [HttpPost]
         public IActionResult Add(AssignMinimalModel assign)
         {
-            int assignId = _assignService.Add(assign.Project, assign.Member);
-            return Ok(assignId);
+            try
+            {
+                int assignId = _assignService.Add(assign.Project, assign.Member);
+                return Ok(assignId);
+            }
+            catch (AssignException exception)
+            {
+                return Ok(exception.Message);
+            }
         }
         [HttpDelete]
         public IActionResult Remove(AssignMinimalModel assign)

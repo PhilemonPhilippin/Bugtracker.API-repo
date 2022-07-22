@@ -1,6 +1,7 @@
 ﻿using Bugtracker.API.BLL.DataTransferObjects;
 using Bugtracker.API.BLL.Interfaces;
 using Bugtracker.API.BLL.Mappers;
+using Bugtracker.API.BLL.Tools;
 using Bugtracker.API.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,11 @@ namespace Bugtracker.API.BLL.Services
 
         public int Add(int projectId, int memberId)
         {
-            return _assignRepository.Add(projectId, memberId);
+            bool assignExist = _assignRepository.AssignExist(projectId, memberId);
+            if (!assignExist)
+                return _assignRepository.Add(projectId, memberId);
+            else
+                throw new AssignException("Assign already exists.");
         }
         public bool Remove(int projectId, int memberId)
         {

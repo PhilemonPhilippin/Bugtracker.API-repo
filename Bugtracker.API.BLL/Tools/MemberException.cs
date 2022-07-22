@@ -25,4 +25,11 @@ namespace Bugtracker.API.BLL.Tools
         {
         }
     }
+    public class AssignException : Exception
+    {
+        public AssignException(string message) : base(message)
+        {
+
+        }
+    }
 }

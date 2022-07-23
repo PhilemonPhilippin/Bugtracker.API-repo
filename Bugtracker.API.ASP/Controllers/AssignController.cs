@@ -33,9 +33,10 @@ namespace Bugtracker.API.ASP.Controllers
             }
         }
         [HttpDelete]
-        public IActionResult Remove(AssignMinimalModel assign)
+        [Route("{idProject:int}/{idMember:int}")]
+        public IActionResult Remove([FromRoute]int idProject, [FromRoute]int idMember)
         {
-            bool isRemoved = _assignService.Remove(assign.Project, assign.Member);
+            bool isRemoved = _assignService.Remove(idProject, idMember);
             return isRemoved ? NoContent() : NotFound("Assign not found.");
         }
         [HttpGet]

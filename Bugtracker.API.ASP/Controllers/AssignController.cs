@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Bugtracker.API.ASP.Controllers
 {
-    //[Authorize("isConnected")]
+    [Authorize("isConnected")]
     [Route("api/[controller]")]
     [ApiController]
     public class AssignController : ControllerBase

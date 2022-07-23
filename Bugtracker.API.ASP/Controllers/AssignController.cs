@@ -48,11 +48,11 @@ namespace Bugtracker.API.ASP.Controllers
             else
                 return Ok(assigns.Select(assign => assign.ToModel()));
         }
-        [HttpPost]
-        [Route("getone")]
-        public IActionResult GetOne(AssignMinimalModel assign)
+        [HttpGet]
+        [Route("{idProject:int}/{idMember:int}")]
+        public IActionResult GetOne([FromRoute] int idProject, [FromRoute] int idMember)
         {
-            AssignDto dto = _assignService.Get(assign.Project, assign.Member);
+            AssignDto dto = _assignService.Get(idProject, idMember);
             if (dto is null)
                 return NotFound("Assign not found.");
             else

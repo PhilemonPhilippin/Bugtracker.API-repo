@@ -99,6 +99,7 @@
     <Build Include="StoredProcedures\AssignProcedures\PPSP_ReadAssign.sql" />
     <Build Include="StoredProcedures\AssignProcedures\PPSP_ReadAllAssigns.sql" />
     <Build Include="StoredProcedures\AssignProcedures\PPSP_AssignExist.sql" />
+    <Build Include="StoredProcedures\MemberProcedures\PPSP_UpdateMemberPswd.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Seed.sql" />

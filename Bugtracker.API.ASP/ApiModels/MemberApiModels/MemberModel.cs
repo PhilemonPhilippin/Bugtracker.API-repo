@@ -52,4 +52,15 @@ namespace Bugtracker.API.ASP.ApiModels.MemberApiModels
         [DataType(DataType.Password)]
         public string Password { get; set; }
     }
+    public class MemberPostPswdModel
+    {
+        [Required]
+        public int IdMember { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
+        public string OldPassword { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
+        public string NewPassword { get; set; }
+    }
 }

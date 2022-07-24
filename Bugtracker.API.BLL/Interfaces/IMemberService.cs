@@ -17,5 +17,6 @@ namespace Bugtracker.API.BLL.Interfaces
         IEnumerable<MemberDto> GetAll();
         MemberDto GetById(int id);
         bool Remove(int id);
+        bool ChangePswd(MemberPostPswdDto postPswdDto);
     }
 }

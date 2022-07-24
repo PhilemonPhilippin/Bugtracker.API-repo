@@ -73,5 +73,14 @@ namespace Bugtracker.API.ASP.ApiMappers
                 Activated = model.Activated
             };
         }
+        public static MemberPostPswdDto ToPostPswdDto(this MemberPostPswdModel postPswdModel)
+        {
+            return new MemberPostPswdDto()
+            {
+                IdMember = postPswdModel.IdMember,
+                OldPassword = postPswdModel.OldPassword,
+                NewPassword = postPswdModel.NewPassword
+            };
+        }
     }
 }

@@ -72,12 +72,23 @@ namespace Bugtracker.API.BLL.Services
         }
         public int Register(MemberPostDto postDto)
         {
-            // TODO : Vérifier que le pseudo ou email n'existent pas
             IfExistThrowException(postDto);
 
             string hashedPswd = Argon2.Hash(postDto.Password);
             postDto.Password = hashedPswd;
             return _memberRepository.Register(postDto.ToPostEntity());
+        }
+        public bool ChangePswd(MemberPostPswdDto postPswdDto)
+        {
+            MemberEntity entity = _memberRepository.GetById(postPswdDto.IdMember);
+            bool isPasswordCorrect = Argon2.Verify(entity.PswdHash, postPswdDto.OldPassword);
+            if (!isPasswordCorrect)
+                throw new MemberException("Password incorrect.");
+            else
+            {
+                string hashedNewPswd = Argon2.Hash(postPswdDto.NewPassword);
+                return _memberRepository.ChangePswd(postPswdDto.IdMember, hashedNewPswd);
+            }
         }
         public bool Remove(int id)
         {

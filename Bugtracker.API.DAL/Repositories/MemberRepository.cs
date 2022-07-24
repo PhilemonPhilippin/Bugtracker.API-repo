@@ -76,7 +76,13 @@ namespace Bugtracker.API.DAL.Repositories
             cmd.AddParameter("Lastname", entity.Lastname);
             return Connection.ExecuteNonQuery(cmd) == 1;
         }
-
+        public bool ChangePswd(int id, string pswd)
+        {
+            Command cmd = new Command("PPSP_UpdateMemberPswd", true);
+            cmd.AddParameter("Id_Member", id);
+            cmd.AddParameter("Pswd_Hash", pswd);
+            return Connection.ExecuteNonQuery(cmd) == 1;
+        }
         public bool MemberPseudoExist(string pseudo)
         {
             Command cmd = new Command("PPSP_MemberPseudoExist", true);

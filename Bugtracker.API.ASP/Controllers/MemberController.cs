@@ -99,5 +99,19 @@ namespace Bugtracker.API.ASP.Controllers
                 return exception.Message.Contains("Member pseudo not found.") ? NotFound(exception.Message) : BadRequest(exception.Message);
             }
         }
+        [HttpPost]
+        [Route("changepswd")]
+        public IActionResult ChangePswd(MemberPostPswdModel postPswdModel)
+        {
+            try
+            {
+                bool isPswdChanged = _memberService.ChangePswd(postPswdModel.ToPostPswdDto());
+                return Ok();
+            }
+            catch (MemberException exception)
+            {
+                return BadRequest(exception.Message);
+            }
+        }
     }
 }

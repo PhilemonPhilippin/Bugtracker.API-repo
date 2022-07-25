@@ -14,7 +14,7 @@ INSERT INTO [Member] ([Id_Member], [Pseudo], [Email], [Pswd_Hash], [Firstname], 
  (7, 'Tanguy', 'tanguy@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Tanguy', 'Verhaegen', 1),
  (8, 'Anto', 'anto@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Antoine', 'Lallemand', 1),
  (9, 'Santiago', 'santiago@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Santiago', 'Astete', 1),
- (10, 'Laet', 'laet@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Laetitia', 'Hartman', 1),
+ (10, 'Laet', 'laet@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Laetitia', 'Hardman', 1),
  (11, 'Gucci', 'gucci@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Gauthier', 'Pladet', 1);
 
 SET IDENTITY_INSERT [Member] OFF;

@@ -50,7 +50,7 @@ INSERT INTO [Ticket] ([Id_Ticket], [Title], [Status], [Priority], [Type], [Descr
 (2, 'Displaying hangman error', 2, 2, 'Error in display', 'There is a space too much in the display of the word to guess.','2022-07-12 11:11:26.057', 2, 2, 2),
 (3, 'Hero never wins', 3, 3, 'Error in game design', 'I face every monster and cant ever kill any of them.', '2022-07-12 11:11:26.057', 3, 3, 3),
 (4, 'Book not registered', 1, 1, 'Error in logic', 'When i register a new book it doesnt work.', '2022-07-12 11:11:26.057', 2, 4, 6),
-(5, 'Trip impossible in Italy', 2, 1, 'Error in structure', 'I cannot book a second trip in Italiy.', '2022-07-12 11:11:26.057', 2, 2, 4),
+(5, 'Trip impossible in Italy', 2, 1, 'Error in structure', 'I cannot book a second trip in Italy.', '2022-07-12 11:11:26.057', 2, 2, 4),
 (6, 'Train ticket is null', 4, 3, 'Error in mapping', 'My train ticket is null when i insert one in DB.', '2022-07-12 11:11:26.057', 7, 3, 5),
 (7, 'Sql object not found', 4, 1, 'Error in DB', 'My table is not recognized as existing.', '2022-07-12 11:11:26.057', 10, 5, 7),
 (8, 'Book is null', 4, 1, 'Error in C#', 'My book is null in my BLL.', '2022-07-12 11:11:26.057', 8, 5, 7),
@@ -60,7 +60,11 @@ INSERT INTO [Ticket] ([Id_Ticket], [Title], [Status], [Priority], [Type], [Descr
 (12, 'Can not book a hostel room', 1, 1, 'Error in hostel', 'My hostel room is not booked.', '2022-07-12 11:11:26.057', 2, 8, 10),
 (13, 'Energy not green', 1, 1, 'Error in energy', 'My energy is not marked as renewable in my display-energies.', '2022-07-12 11:11:26.057', 6, 9, 11),
 (14, 'Not relaxed', 2, 3, 'Error in relaxation', 'My relaxation products are not marked as relaxing in my DB.', '2022-07-12 11:11:26.057', 6, 10, 12),
-(15, 'No LOTR', 3, 1, 'Error in movie taste', 'Lord of the Rings is not well rated on this website.', '2022-07-12 11:11:26.057', 6, 11, 13);
+(15, 'No LOTR', 3, 1, 'Error in movie taste', 'Lord of the Rings is not well rated on this website.', '2022-07-12 11:11:26.057', 6, 11, 13),
+(16, 'No bg color', 1, 1, 'Error in graphics', 'There is no background-color on the main page.', '2022-07-12 11:11:26.057', 6, 5, 1),
+(17, 'No heading', 1, 2, 'Error in graphics', 'There is no heading on the description page.', '2022-07-12 11:11:26.057', 2, 5, 1),
+(18, 'Btn close', 2, 3, 'Error in graphics', 'The button to close the form doesnt work.', '2022-07-12 11:11:26.057', 1, 5, 4),
+(19, 'Favicon', 4, 3, 'Error in graphics', 'The fav icon doesnt show.', '2022-07-12 11:11:26.057', 1, 5, 6);
 
 SET IDENTITY_INSERT [Ticket] OFF;
 GO
@@ -81,7 +85,10 @@ INSERT INTO [Assign] ([Id_Assign], [Assign_Time], [Project], [Member])
  (10, '2022-07-12 11:11:26.057', 10, 8),
  (11, '2022-07-12 11:11:26.057',11, 9),
  (12, '2022-07-12 11:11:26.057', 12, 10),
- (13, '2022-07-12 11:11:26.057', 13, 11);
+ (13, '2022-07-12 11:11:26.057', 13, 11),
+ (14, '2022-07-12 11:11:26.057', 1, 5),
+ (15, '2022-07-12 11:11:26.057', 4, 5),
+ (16, '2022-07-12 11:11:26.057', 6, 5);
 
 SET IDENTITY_INSERT [Assign] OFF;
 GO

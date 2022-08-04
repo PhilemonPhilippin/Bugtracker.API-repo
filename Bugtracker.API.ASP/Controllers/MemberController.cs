@@ -67,7 +67,7 @@ namespace Bugtracker.API.ASP.Controllers
         {
             string token = HttpContext.GetTokenAsync("access_token").Result;
             TokenData data = _memberService.GetTokenData(token);
-            int? idMember = data.IdMember;
+            int idMember = data.IdMember;
             return Ok(idMember);
         }
         [AllowAnonymous]

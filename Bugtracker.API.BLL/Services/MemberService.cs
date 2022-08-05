@@ -56,7 +56,6 @@ namespace Bugtracker.API.BLL.Services
                 throw new MemberException("Password incorrect.");
             else
             {
-                //MemberDto memberDto = entity.ToDto();
                 TokenData tokenData = new TokenData()
                 {
                     IdMember = entity.IdMember,

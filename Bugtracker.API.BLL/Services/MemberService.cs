@@ -48,7 +48,7 @@ namespace Bugtracker.API.BLL.Services
         public string TryToLogin(MemberLoginDto loginDto)
         {
             MemberEntity entity = GetByPseudo(loginDto.Pseudo);
-            if (entity.Activated == false)
+            if (entity.Disabled == true)
                 throw new MemberException("Member has been disabled.");
 
             bool isPasswordCorrect = Argon2.Verify(entity.PswdHash, loginDto.Password);

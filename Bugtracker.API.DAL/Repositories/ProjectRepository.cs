@@ -25,7 +25,8 @@ namespace Bugtracker.API.DAL.Repositories
                 IdProject = (int)record["Id_Project"],
                 Name = (string)record["Name"],
                 Description = (string)record["Description"],
-                Manager = (record["Manager"] is DBNull) ? null : (int)record["Manager"]
+                Manager = (record["Manager"] is DBNull) ? null : (int)record["Manager"],
+                Disabled = (bool)record["Disabled"]
             };
         }
         public IEnumerable<ProjectEntity> GetAll()

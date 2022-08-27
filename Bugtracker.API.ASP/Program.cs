@@ -56,7 +56,7 @@ builder.Services.AddSwaggerGen();
 // Config injection
 builder.Services.AddTransient<Connection>((service) =>
 {
-    return new Connection(builder.Configuration.GetConnectionString("HerseConnectionString"));
+    return new Connection(builder.Configuration.GetConnectionString("LaptopConnectionString"));
 });
 
 // DAL

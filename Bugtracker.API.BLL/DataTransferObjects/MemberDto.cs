@@ -15,7 +15,7 @@ namespace Bugtracker.API.BLL.DataTransferObjects
         public string PswdHash { get; set; }
         public string? Firstname { get; set; }
         public string? Lastname { get; set; }
-        public bool? Activated { get; set; }
+        public bool Disabled { get; set; }
     }
     public class MemberNoPswdDto
     {
@@ -24,7 +24,7 @@ namespace Bugtracker.API.BLL.DataTransferObjects
         public string Email { get; set; }
         public string? Firstname { get; set; }
         public string? Lastname { get; set; }
-        public bool? Activated { get; set; }
+        public bool Disabled { get; set; }
     }
     public class MemberPostDto
     {

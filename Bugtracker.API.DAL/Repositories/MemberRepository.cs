@@ -28,7 +28,7 @@ namespace Bugtracker.API.DAL.Repositories
                 PswdHash = (string)record["Pswd_Hash"],
                 Firstname = record["Firstname"] is DBNull ? null : (string)record["Firstname"],
                 Lastname = record["Lastname"] is DBNull ? null : (string)record["Lastname"],
-                Activated = record["Activated"] is DBNull ? null : (bool)record["Activated"]
+                Disabled = (bool)record["Disabled"]
             };
         }
         public IEnumerable<MemberEntity> GetAll()

@@ -4,18 +4,18 @@ GO
 SET IDENTITY_INSERT [Member] ON;
 GO
 
-INSERT INTO [Member] ([Id_Member], [Pseudo], [Email], [Pswd_Hash], [Firstname], [Lastname], [Activated])
- VALUES (1, 'Phil', 'phil@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$rKUgopRwzGsKcA5HQsMIog$FDH6HYrHkQUr7VLuIWoDGL7xxwKrma3kOoSC4m43lAY', 'Philemon', 'Philippin', 1),
- (2, 'Corentintin', 'corentintin@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$VXXJDG1IozK6m1XnHeovGg$orS9JdKlVUsWHtk48wp8ml+hzm1h3AqpIgU/ql2wXUo', 'Corentin', 'De Conninck', 1),
- (3, 'Dom', 'dom@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Dominique', 'Lafitte', 1),
- (4, 'Vins', 'vins@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Vincent', 'Gadé', 1),
- (5, 'Wass', 'wass@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Wassime', 'Akachar', 1),
- (6, 'Avet', 'avet@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Avet', 'Avetyan', 1),
- (7, 'Tanguy', 'tanguy@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Tanguy', 'Verhaegen', 1),
- (8, 'Anto', 'anto@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Antoine', 'Lallemand', 1),
- (9, 'Santiago', 'santiago@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Santiago', 'Astete', 1),
- (10, 'Laet', 'laet@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Laetitia', 'Hardman', 1),
- (11, 'Gucci', 'gucci@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Gauthier', 'Pladet', 1);
+INSERT INTO [Member] ([Id_Member], [Pseudo], [Email], [Pswd_Hash], [Firstname], [Lastname], [Disabled])
+ VALUES (1, 'Phil', 'phil@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$rKUgopRwzGsKcA5HQsMIog$FDH6HYrHkQUr7VLuIWoDGL7xxwKrma3kOoSC4m43lAY', 'Philemon', 'Philippin', 0),
+ (2, 'Corentintin', 'corentintin@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$VXXJDG1IozK6m1XnHeovGg$orS9JdKlVUsWHtk48wp8ml+hzm1h3AqpIgU/ql2wXUo', 'Corentin', 'De Conninck', 0),
+ (3, 'Dom', 'dom@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Dominique', 'Lafitte', 0),
+ (4, 'Vins', 'vins@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Vincent', 'Gadé', 0),
+ (5, 'Wass', 'wass@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Wassime', 'Akachar', 0),
+ (6, 'Avet', 'avet@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Avet', 'Avetyan', 0),
+ (7, 'Tanguy', 'tanguy@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Tanguy', 'Verhaegen', 0),
+ (8, 'Anto', 'anto@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Antoine', 'Lallemand', 0),
+ (9, 'Santiago', 'santiago@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Santiago', 'Astete', 0),
+ (10, 'Laet', 'laet@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Laetitia', 'Hardman', 0),
+ (11, 'Gucci', 'gucci@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Gauthier', 'Pladet', 0);
 
 SET IDENTITY_INSERT [Member] OFF;
 GO
@@ -23,21 +23,21 @@ GO
 SET IDENTITY_INSERT [Project] ON;
 GO
 
-INSERT INTO [Project] ([Id_Project], [Name], [Description], [Manager])
- VALUES (1,'Four in a row', 'A game of Four in which you win after setting 4 coins in a row.', 1),
- (2,'Hangman game', 'A game of Hangman in which you must find a word by guessing letters.', 1),
- (3,'HeroesVsMonster', 'A game of Heroes Vs Monster in which you are a hero and you fight monsters.', 1),
- (4,'TripCompanion', 'An application to organize trips.', 2),
- (5,'TicketTroc', 'Website to re-sell train tickets.', 3),
- (6,'BookXchange', 'An application to exchange books.', 4),
- (7,'HolydayBooks', 'Website to register children books reservations during holidays.', 5),
- (8,'Carfinder', 'An application to help choosing the car you really want to buy.', 6),
- (9,'Futurotheque', 'An web app to reservate and manage books.', 7),
- (10,'ProjetHotel', 'An application to book hostel reservations.', 8),
- (11,'GreenEnergyAI', 'A marketplace website for renewable energie.', 9),
- (12,'Brussels Relaxation Garden', 'A market web application themed on relaxation products and services.', 10),
- (13,'MoviesWorld', 'A social network themed on movies.', 11),
- (14,'Bugtracker', 'An application to track bugs.', 1);
+INSERT INTO [Project] ([Id_Project], [Name], [Description], [Manager], [Disabled])
+ VALUES (1,'Four in a row', 'A game of Four in which you win after setting 4 coins in a row.', 1, 0),
+ (2,'Hangman game', 'A game of Hangman in which you must find a word by guessing letters.', 1, 0),
+ (3,'HeroesVsMonster', 'A game of Heroes Vs Monster in which you are a hero and you fight monsters.', 1, 0),
+ (4,'TripCompanion', 'An application to organize trips.', 2, 0),
+ (5,'TicketTroc', 'Website to re-sell train tickets.', 3, 0),
+ (6,'BookXchange', 'An application to exchange books.', 4, 0),
+ (7,'HolydayBooks', 'Website to register children books reservations during holidays.', 5, 0),
+ (8,'Carfinder', 'An application to help choosing the car you really want to buy.', 6, 0),
+ (9,'Futurotheque', 'An web app to reservate and manage books.', 7, 0),
+ (10,'ProjetHotel', 'An application to book hostel reservations.', 8, 0),
+ (11,'GreenEnergyAI', 'A marketplace website for renewable energie.', 9, 0),
+ (12,'Brussels Relaxation Garden', 'A market web application themed on relaxation products and services.', 10, 0),
+ (13,'MoviesWorld', 'A social network themed on movies.', 11, 0),
+ (14,'Bugtracker', 'An application to track bugs.', 1, 0);
 
 SET IDENTITY_INSERT [Project] OFF;
 GO

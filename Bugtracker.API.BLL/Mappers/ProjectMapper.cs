@@ -17,7 +17,8 @@ namespace Bugtracker.API.BLL.Mappers
                 IdProject = entity.IdProject,
                 Name = entity.Name,
                 Description = entity.Description,
-                Manager = entity.Manager
+                Manager = entity.Manager,
+                Disabled = entity.Disabled,
             };
         }
         public static ProjectEntity ToEntity(this ProjectDto dto)
@@ -27,7 +28,8 @@ namespace Bugtracker.API.BLL.Mappers
                 IdProject = dto.IdProject,
                 Name = dto.Name,
                 Description = dto.Description,
-                Manager = dto.Manager
+                Manager = dto.Manager,
+                Disabled= dto.Disabled,
             };
         }
     }

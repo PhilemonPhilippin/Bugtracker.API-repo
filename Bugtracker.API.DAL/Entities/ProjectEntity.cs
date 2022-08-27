@@ -12,5 +12,7 @@ namespace Bugtracker.API.DAL.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public int? Manager { get; set; }
+        public bool Disabled { get; set; }
+
     }
 }

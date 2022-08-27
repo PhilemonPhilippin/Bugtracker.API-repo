@@ -2,6 +2,6 @@
 	@Id_Project INT
 AS
 	BEGIN
-		DELETE FROM [Project] WHERE [Id_Project] = @Id_Project;
+		UPDATE [Project] SET [Disabled] = 1 WHERE [Id_Project] = @Id_Project;
 	END
 RETURN 0

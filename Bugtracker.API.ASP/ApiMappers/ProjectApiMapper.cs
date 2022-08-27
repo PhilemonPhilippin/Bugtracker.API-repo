@@ -13,7 +13,8 @@ namespace Bugtracker.API.ASP.ApiMappers
                 IdProject = model.IdProject,
                 Name = model.Name,
                 Description = model.Description,
-                Manager = model.Manager
+                Manager = model.Manager,
+                Disabled = model.Disabled
             };
         }
         public static ProjectModel ToModel(this ProjectDto dto)
@@ -23,7 +24,8 @@ namespace Bugtracker.API.ASP.ApiMappers
                 IdProject = dto.IdProject,
                 Name = dto.Name,
                 Description = dto.Description,
-                Manager = dto.Manager
+                Manager = dto.Manager,
+                Disabled = dto.Disabled
             };
         }
     }

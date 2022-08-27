@@ -10,5 +10,6 @@ namespace Bugtracker.API.ASP.ApiModels
         [MaxLength(750)]
         public string Description { get; set; }
         public int? Manager { get; set; }
+        public bool Disabled { get; set; }
     }
 }

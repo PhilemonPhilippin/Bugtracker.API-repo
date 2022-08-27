@@ -17,7 +17,7 @@ namespace Bugtracker.API.ASP.ApiModels
         public string Description { get; set; }
         [DataType(DataType.DateTime)]
         public DateTime SubmitTime { get; set; }
-        public int? SubmitMember { get; set; }
+        public int SubmitMember { get; set; }
         public int? AssignedMember { get; set; }
         public int Project { get; set; }
     }

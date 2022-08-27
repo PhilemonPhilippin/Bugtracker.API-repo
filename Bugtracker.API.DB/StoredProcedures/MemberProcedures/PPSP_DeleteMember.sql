@@ -2,6 +2,6 @@
 	@Id_Member INT
 AS
 	BEGIN
-		DELETE FROM [Member] WHERE [Id_Member] = @Id_Member;
+		UPDATE [Member] SET [Disabled] = 1 WHERE [Id_Member] = @Id_Member;
 	END
 RETURN 0

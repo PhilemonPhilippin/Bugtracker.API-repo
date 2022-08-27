@@ -15,7 +15,7 @@ namespace Bugtracker.API.DAL.Entities
         public string Type { get; set; }
         public string Description { get; set; }
         public DateTime SubmitTime { get; set; }
-        public int? SubmitMember { get; set; }
+        public int SubmitMember { get; set; }
         public int? AssignedMember { get; set; }
         public int Project { get; set; }
     }

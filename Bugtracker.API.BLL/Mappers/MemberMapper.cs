@@ -20,7 +20,7 @@ namespace Bugtracker.API.BLL.Mappers
                 PswdHash = entity.PswdHash,
                 Firstname = entity.Firstname,
                 Lastname = entity.Lastname,
-                Activated = entity.Activated
+                Disabled = entity.Disabled
             };
         }
 
@@ -34,7 +34,7 @@ namespace Bugtracker.API.BLL.Mappers
                 PswdHash = dto.PswdHash,
                 Firstname = dto.Firstname,
                 Lastname = dto.Lastname,
-                Activated = dto.Activated
+                Disabled = dto.Disabled
             };
         }
         public static MemberPostEntity ToPostEntity(this MemberPostDto postDto)

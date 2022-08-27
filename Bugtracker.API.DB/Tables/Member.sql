@@ -6,7 +6,7 @@
 	[Pswd_Hash] NVARCHAR(100) NOT NULL,
 	[Firstname] NVARCHAR(50),
 	[Lastname] NVARCHAR(50),
-	[Activated] BIT NULL DEFAULT 1,
+	[Disabled] BIT NOT NULL DEFAULT 0,
 	CONSTRAINT PK_Member PRIMARY KEY ([Id_Member]),
 	CONSTRAINT UK_Member__Pseudo UNIQUE ([Pseudo]),
 	CONSTRAINT UK_Member__Email UNIQUE ([Email])
@@ -19,5 +19,5 @@ CREATE TRIGGER [dbo].[PPTrigger_DeleteMember]
     INSTEAD OF DELETE
     AS
     BEGIN
-        UPDATE [Member] SET [Activated] = 0 WHERE [Id_Member] = (SELECT Id_Member FROM deleted);
+        UPDATE [Member] SET [Disabled] = 1 WHERE [Id_Member] = (SELECT [Id_Member] FROM deleted);
     END

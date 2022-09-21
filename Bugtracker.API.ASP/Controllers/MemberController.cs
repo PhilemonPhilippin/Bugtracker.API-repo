@@ -1,15 +1,11 @@
-﻿using Bugtracker.API.BLL.Interfaces;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Bugtracker.API.BLL.DataTransferObjects;
-using System.Diagnostics.Metrics;
-using Isopoh.Cryptography.Argon2;
-using System;
+﻿using Bugtracker.API.ASP.ApiMappers;
 using Bugtracker.API.ASP.ApiModels.MemberApiModels;
+using Bugtracker.API.BLL.DataTransferObjects;
+using Bugtracker.API.BLL.Interfaces;
 using Bugtracker.API.BLL.Tools;
-using Microsoft.AspNetCore.Authorization;
-using Bugtracker.API.ASP.ApiMappers;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using static Bugtracker.API.BLL.Tools.JwtManager;
 
 namespace Bugtracker.API.ASP.Controllers

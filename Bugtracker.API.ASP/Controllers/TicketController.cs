@@ -4,7 +4,6 @@ using Bugtracker.API.BLL.DataTransferObjects;
 using Bugtracker.API.BLL.Interfaces;
 using Bugtracker.API.BLL.Tools;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bugtracker.API.ASP.Controllers

@@ -5,12 +5,6 @@ using Bugtracker.API.BLL.Tools;
 using Bugtracker.API.DAL.Entities;
 using Bugtracker.API.DAL.Interfaces;
 using Isopoh.Cryptography.Argon2;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Metrics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static Bugtracker.API.BLL.Tools.JwtManager;
 
 namespace Bugtracker.API.BLL.Services

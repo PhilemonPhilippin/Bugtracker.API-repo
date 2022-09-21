@@ -1,6 +1,5 @@
 ﻿using Bugtracker.API.ASP.ApiModels;
 using Bugtracker.API.BLL.DataTransferObjects;
-using System.Reflection;
 
 namespace Bugtracker.API.ASP.ApiMappers
 {

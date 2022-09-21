@@ -4,12 +4,6 @@ using Bugtracker.API.BLL.Mappers;
 using Bugtracker.API.BLL.Tools;
 using Bugtracker.API.DAL.Entities;
 using Bugtracker.API.DAL.Interfaces;
-using Bugtracker.API.DAL.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bugtracker.API.BLL.Services
 {

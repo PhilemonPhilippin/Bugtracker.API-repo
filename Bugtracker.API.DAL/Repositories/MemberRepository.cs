@@ -1,12 +1,7 @@
 ﻿using Bugtracker.API.ADO;
 using Bugtracker.API.DAL.Entities;
 using Bugtracker.API.DAL.Interfaces;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bugtracker.API.DAL.Repositories
 {
@@ -36,7 +31,7 @@ namespace Bugtracker.API.DAL.Repositories
             Command cmd = new Command("PPSP_ReadAllMembers", true);
             return Connection.ExecuteReader(cmd, MapRecordToEntity);
         }
-        
+
         public int Register(MemberPostEntity postEntity)
         {
             Command cmd = new Command("PPSP_CreateMember", true);

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Bugtracker.API.BLL.DataTransferObjects
+﻿namespace Bugtracker.API.BLL.DataTransferObjects
 {
     public class MemberDto
     {
@@ -37,7 +30,7 @@ namespace Bugtracker.API.BLL.DataTransferObjects
         public string Pseudo { get; set; }
         public string Password { get; set; }
     }
-   
+
     public class MemberPostPswdDto
     {
         public int IdMember { get; set; }

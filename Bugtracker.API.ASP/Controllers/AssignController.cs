@@ -4,7 +4,6 @@ using Bugtracker.API.BLL.DataTransferObjects;
 using Bugtracker.API.BLL.Interfaces;
 using Bugtracker.API.BLL.Tools;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bugtracker.API.ASP.Controllers
@@ -34,7 +33,7 @@ namespace Bugtracker.API.ASP.Controllers
         }
         [HttpDelete]
         [Route("{idProject:int}/{idMember:int}")]
-        public IActionResult Remove([FromRoute]int idProject, [FromRoute]int idMember)
+        public IActionResult Remove([FromRoute] int idProject, [FromRoute] int idMember)
         {
             bool isRemoved = _assignService.Remove(idProject, idMember);
             return isRemoved ? NoContent() : NotFound("Assign not found.");

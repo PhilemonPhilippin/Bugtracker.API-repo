@@ -5,17 +5,17 @@ SET IDENTITY_INSERT [Member] ON;
 GO
 
 INSERT INTO [Member] ([Id_Member], [Pseudo], [Email], [Pswd_Hash], [Firstname], [Lastname], [Disabled])
- VALUES (1, 'Phil', 'phil@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$rKUgopRwzGsKcA5HQsMIog$FDH6HYrHkQUr7VLuIWoDGL7xxwKrma3kOoSC4m43lAY', 'Philemon', 'Philippin', 0),
- (2, 'Corentintin', 'corentintin@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$VXXJDG1IozK6m1XnHeovGg$orS9JdKlVUsWHtk48wp8ml+hzm1h3AqpIgU/ql2wXUo', 'Corentin', 'De Conninck', 0),
- (3, 'Dom', 'dom@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Dominique', 'Lafitte', 0),
- (4, 'Vins', 'vins@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Vincent', 'Gadé', 0),
- (5, 'Wass', 'wass@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Wassime', 'Akachar', 0),
- (6, 'Avet', 'avet@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Avet', 'Avetyan', 0),
- (7, 'Tanguy', 'tanguy@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Tanguy', 'Verhaegen', 0),
- (8, 'Anto', 'anto@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Antoine', 'Lallemand', 0),
- (9, 'Santiago', 'santiago@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Santiago', 'Astete', 0),
- (10, 'Laet', 'laet@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Laetitia', 'Hardman', 0),
- (11, 'Gucci', 'gucci@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$HWC1LJss5d4OG1ceSAavYA$4mDHICxlCZg70M8AkpLfL2W2Jhsrp+9ExPe3WpLieN0', 'Gauthier', 'Pladet', 0);
+ VALUES (1, 'Phil', 'phil@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$WCb6YxftSaJ11EsVNQby3g$Y7Sygq/oz+uqFo+HA9Kvqy68XVPWaWXotMMOvYXZE3U', 'Philemon', 'Philippin', 0),
+ (2, 'Corentintin', 'corentintin@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$WCb6YxftSaJ11EsVNQby3g$Y7Sygq/oz+uqFo+HA9Kvqy68XVPWaWXotMMOvYXZE3U', 'Corentin', 'De Conninck', 0),
+ (3, 'Dom', 'dom@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$WCb6YxftSaJ11EsVNQby3g$Y7Sygq/oz+uqFo+HA9Kvqy68XVPWaWXotMMOvYXZE3U', 'Dominique', 'Lafitte', 0),
+ (4, 'Vins', 'vins@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$WCb6YxftSaJ11EsVNQby3g$Y7Sygq/oz+uqFo+HA9Kvqy68XVPWaWXotMMOvYXZE3U', 'Vincent', 'Gadé', 0),
+ (5, 'Wass', 'wass@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$WCb6YxftSaJ11EsVNQby3g$Y7Sygq/oz+uqFo+HA9Kvqy68XVPWaWXotMMOvYXZE3U', 'Wassime', 'Akachar', 0),
+ (6, 'Avet', 'avet@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$WCb6YxftSaJ11EsVNQby3g$Y7Sygq/oz+uqFo+HA9Kvqy68XVPWaWXotMMOvYXZE3U', 'Avet', 'Avetyan', 0),
+ (7, 'Tanguy', 'tanguy@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$WCb6YxftSaJ11EsVNQby3g$Y7Sygq/oz+uqFo+HA9Kvqy68XVPWaWXotMMOvYXZE3U', 'Tanguy', 'Verhaegen', 0),
+ (8, 'Anto', 'anto@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$WCb6YxftSaJ11EsVNQby3g$Y7Sygq/oz+uqFo+HA9Kvqy68XVPWaWXotMMOvYXZE3U', 'Antoine', 'Lallemand', 0),
+ (9, 'Santiago', 'santiago@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$WCb6YxftSaJ11EsVNQby3g$Y7Sygq/oz+uqFo+HA9Kvqy68XVPWaWXotMMOvYXZE3U', 'Santiago', 'Astete', 0),
+ (10, 'Laet', 'laet@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$WCb6YxftSaJ11EsVNQby3g$Y7Sygq/oz+uqFo+HA9Kvqy68XVPWaWXotMMOvYXZE3U', 'Laetitia', 'Hardman', 0),
+ (11, 'Gucci', 'gucci@gmail.com', '$argon2id$v=19$m=65536,t=3,p=1$WCb6YxftSaJ11EsVNQby3g$Y7Sygq/oz+uqFo+HA9Kvqy68XVPWaWXotMMOvYXZE3U', 'Gauthier', 'Pladet', 0);
 
 SET IDENTITY_INSERT [Member] OFF;
 GO

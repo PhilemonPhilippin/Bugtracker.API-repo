@@ -21,6 +21,7 @@ namespace Bugtracker.API.ASP.Controllers
         {
             _memberService = memberService;
         }
+
         [HttpGet]
         public IActionResult GetAll()
         {

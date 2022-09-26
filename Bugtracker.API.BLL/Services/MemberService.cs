@@ -106,6 +106,11 @@ namespace Bugtracker.API.BLL.Services
 
             return _memberRepository.Edit(memberDto.ToEntity());
         }
+
+        public bool EditRole(int id, int role)
+        {
+            return _memberRepository.EditRole(id, role);
+        }
         private void IfExistWithIdThrowException(MemberDto memberDto)
         {
             bool pseudoExist = false;

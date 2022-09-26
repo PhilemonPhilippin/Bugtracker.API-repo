@@ -105,5 +105,12 @@ namespace Bugtracker.API.DAL.Repositories
             cmd.AddParameter("Id_Member", id);
             return (int)Connection.ExecuteScalar(cmd) > 0;
         }
+        public bool EditRole(int id, int role)
+        {
+            Command cmd = new Command("PPSP_UpdateRoleMember", true);
+            cmd.AddParameter("Id_Member", id);
+            cmd.AddParameter("Role", role);
+            return Connection.ExecuteNonQuery(cmd) == 1;
+        }
     }
 }

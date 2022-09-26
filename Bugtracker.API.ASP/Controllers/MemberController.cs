@@ -58,6 +58,15 @@ namespace Bugtracker.API.ASP.Controllers
                 return BadRequest(exception.Message);
             }
         }
+
+        [HttpPut]
+        [Route("{id:int}/{role:int}")]
+        public IActionResult EditRole([FromRoute]int id, [FromRoute]int role, MemberNoPswdModel memberEdit)
+        {
+            bool isEdited = _memberService.EditRole(id, role);
+            return isEdited ? NoContent() : NotFound("Member not found");
+        }
+
         [HttpGet]
         [Route("idfromjwt")]
         public IActionResult GetIdFromJwt()

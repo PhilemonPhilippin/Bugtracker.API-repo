@@ -15,5 +15,6 @@ namespace Bugtracker.API.DAL.Interfaces
         bool Edit(MemberEntity entity);
         bool Remove(int id);
         bool ChangePswd(int id, string pswd);
+        bool EditRole(int id, int role);
     }
 }

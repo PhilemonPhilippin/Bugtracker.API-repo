@@ -13,5 +13,6 @@ namespace Bugtracker.API.BLL.Interfaces
         MemberDto GetById(int id);
         bool Remove(int id);
         bool ChangePswd(MemberPostPswdDto postPswdDto);
+        bool EditRole(int id, int role);
     }
 }

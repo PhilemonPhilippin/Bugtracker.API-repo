@@ -6,6 +6,7 @@
 	[Pswd_Hash] NVARCHAR(100) NOT NULL,
 	[Firstname] NVARCHAR(50),
 	[Lastname] NVARCHAR(50),
+	[Role] INT NOT NULL DEFAULT 1,
 	[Disabled] BIT NOT NULL DEFAULT 0,
 	CONSTRAINT PK_Member PRIMARY KEY ([Id_Member]),
 	CONSTRAINT UK_Member__Pseudo UNIQUE ([Pseudo]),

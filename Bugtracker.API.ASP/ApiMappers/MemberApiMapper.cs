@@ -16,6 +16,7 @@ namespace Bugtracker.API.ASP.ApiMappers
                 PswdHash = memberModel.PswdHash,
                 Firstname = memberModel.Firstname,
                 Lastname = memberModel.Lastname,
+                Role = memberModel.Role,
                 Disabled = memberModel.Disabled
             };
         }
@@ -29,6 +30,7 @@ namespace Bugtracker.API.ASP.ApiMappers
                 PswdHash = memberDto.PswdHash,
                 Firstname = memberDto.Firstname,
                 Lastname = memberDto.Lastname,
+                Role = memberDto.Role,
                 Disabled = memberDto.Disabled
             };
         }
@@ -58,6 +60,7 @@ namespace Bugtracker.API.ASP.ApiMappers
                 Email = dto.Email,
                 Firstname = dto.Firstname,
                 Lastname = dto.Lastname,
+                Role = dto.Role,
                 Disabled = dto.Disabled
             };
         }
@@ -70,6 +73,7 @@ namespace Bugtracker.API.ASP.ApiMappers
                 Email = model.Email,
                 Firstname = model.Firstname,
                 Lastname = model.Lastname,
+                Role = model.Role,
                 Disabled = model.Disabled
             };
         }

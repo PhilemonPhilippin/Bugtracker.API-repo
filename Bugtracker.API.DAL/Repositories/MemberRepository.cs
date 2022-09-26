@@ -23,6 +23,7 @@ namespace Bugtracker.API.DAL.Repositories
                 PswdHash = (string)record["Pswd_Hash"],
                 Firstname = record["Firstname"] is DBNull ? null : (string)record["Firstname"],
                 Lastname = record["Lastname"] is DBNull ? null : (string)record["Lastname"],
+                Role = (int)record["Role"],
                 Disabled = (bool)record["Disabled"]
             };
         }

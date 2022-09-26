@@ -15,6 +15,7 @@ namespace Bugtracker.API.BLL.Mappers
                 PswdHash = entity.PswdHash,
                 Firstname = entity.Firstname,
                 Lastname = entity.Lastname,
+                Role = entity.Role,
                 Disabled = entity.Disabled
             };
         }
@@ -29,6 +30,7 @@ namespace Bugtracker.API.BLL.Mappers
                 PswdHash = dto.PswdHash,
                 Firstname = dto.Firstname,
                 Lastname = dto.Lastname,
+                Role = dto.Role,
                 Disabled = dto.Disabled
             };
         }

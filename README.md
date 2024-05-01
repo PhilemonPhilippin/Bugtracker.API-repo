@@ -18,8 +18,9 @@ The database is created via Transact-SQL scripts, and its data is accessed via A
 ## Authentication
 I have written a custom authentication system with Json Web Tokens (JWT). I am aware that this is not good practice.  
 Recreating this system gave me a better understanding of how authentication works on a website. This project was never intended to be deployed anyway.  
+
 I worked on it to practice the concepts I'd learned during my training and to show potential recruiters what I was capable of achieving in a relatively short time.
 
-## Link to the front end Blazor project
+## Link to the frontend Blazor project
 This repository contains only the back end.  
 To examine the front end, you can consult my project created with Blazor, a framework for creating web site user interfaces using C# and web assembly technology, at this address : [Bugtracker.WASM-repo](https://github.com/PhilemonPhilippin/Bugtracker.WASM-repo).
